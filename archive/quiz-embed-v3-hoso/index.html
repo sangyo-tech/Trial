@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>確認テスト | 産業技術アカデミー</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:transparent}
+#R{font-family:'Noto Sans JP',system-ui,sans-serif;color:#f1f5f9;line-height:1.7;max-width:800px;margin:0 auto;padding:24px 16px}
+#R *{box-sizing:border-box;margin:0;padding:0}
+#R button{font-family:inherit;cursor:pointer}
+.tt{display:flex;gap:0;margin-bottom:32px;background:#0f172a;border-radius:14px;padding:5px;border:1px solid #1e293b}
+.tb{flex:1;padding:14px 20px;border-radius:10px;font-size:15px;font-weight:700;border:none;background:transparent;color:#64748b;transition:all .3s;letter-spacing:.02em;text-align:center}
+.tb:hover:not(.on){color:#94a3b8;background:rgba(255,255,255,.03)}
+.tb.on{color:#fff;box-shadow:0 2px 12px rgba(0,0,0,.3)}
+.tb.t-video.on{background:linear-gradient(135deg,#22c55e,#16a34a);color:#000;box-shadow:0 4px 16px rgba(34,197,94,.3)}
+.tb.t-course.on{background:linear-gradient(135deg,#f59e0b,#d97706);color:#000;box-shadow:0 4px 16px rgba(245,158,11,.3)}
+.S{border-radius:14px;padding:32px 24px;text-align:center}
+.S.s-video{background:linear-gradient(135deg,rgba(34,197,94,.05),rgba(34,197,94,.08));border:1px solid rgba(34,197,94,.2)}
+.S.s-course{background:linear-gradient(135deg,rgba(245,158,11,.05),rgba(245,158,11,.08));border:1px solid rgba(245,158,11,.2)}
+.S h3{font-size:18px;font-weight:700;margin-bottom:8px;color:#f1f5f9}
+.S p{color:#94a3b8;font-size:14px;margin-bottom:20px;line-height:1.8}
+.sp{display:flex;justify-content:center;gap:24px;margin-bottom:24px;flex-wrap:wrap}
+.sv{font-size:22px;font-weight:700}
+.s-video .sv{color:#22c55e}
+.s-course .sv{color:#f59e0b}
+.sl{font-size:11px;color:#64748b}
+.B{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;border-radius:12px;font-size:16px;font-weight:700;border:none;transition:all .3s;position:relative;overflow:hidden}
+.B::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.2),transparent);opacity:0;transition:opacity .3s}
+.B:hover{transform:translateY(-3px)}.B:hover::after{opacity:1}
+.B:active{transform:translateY(-1px)}
+.B.bg{background:linear-gradient(135deg,#22c55e,#4ade80);color:#000;box-shadow:0 6px 24px rgba(34,197,94,.3)}
+.B.bo{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#000;box-shadow:0 6px 24px rgba(245,158,11,.3)}
+.Q{display:none}
+.pg{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.pgb{flex:1;height:6px;background:#1e293b;border-radius:3px;overflow:hidden}
+.pgf{height:100%;border-radius:3px;transition:width .3s}
+.pgf.c-video{background:#22c55e}.pgf.c-course{background:#f59e0b}
+.pgc{font-size:13px;color:#64748b;white-space:nowrap}
+.qm{font-size:12px;color:#06b6d4;margin-bottom:8px;font-weight:500}
+.qt{font-size:16px;font-weight:600;margin-bottom:18px;line-height:1.6;color:#f1f5f9}
+.hb{font-size:12px;color:#d4a017;background:rgba(212,160,23,.1);border:1px solid rgba(212,160,23,.3);border-radius:6px;padding:4px 12px;margin-bottom:14px;display:inline-block}
+.hi{display:none;font-size:13px;color:#94a3b8;background:rgba(212,160,23,.05);border-left:3px solid #d4a017;padding:10px 14px;border-radius:6px;margin-bottom:14px}
+.os{display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
+.o{background:#111827;border:2px solid #1e293b;border-radius:10px;padding:13px 16px;font-size:14px;cursor:pointer;transition:all .15s;display:flex;align-items:flex-start;gap:12px;text-align:left;color:#f1f5f9}
+.o:hover:not(.lk){border-color:#334155;background:#1a2332}
+.ol{width:26px;height:26px;border-radius:50%;background:#1e293b;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;color:#94a3b8}
+.o.ok{border-color:#22c55e;background:rgba(34,197,94,.08)}.o.ok .ol{background:#22c55e;color:#fff}
+.o.ng{border-color:#ef4444;background:rgba(239,68,68,.08)}.o.ng .ol{background:#ef4444;color:#fff}
+.ex{display:none;background:rgba(59,130,246,.06);border-left:3px solid #3b82f6;border-radius:6px;padding:12px 14px;margin-bottom:18px;font-size:13px;color:#94a3b8;line-height:1.7}
+.nx{display:none;border:none;border-radius:8px;padding:11px 28px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s}
+.nx:hover{transform:translateY(-2px)}
+.nx.c-video{background:linear-gradient(135deg,#22c55e,#4ade80);color:#000}
+.nx.c-course{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#000}
+.Rs{display:none}
+.rc{border-radius:14px;padding:32px 24px;text-align:center;margin-bottom:24px}
+.rc.ps{background:linear-gradient(135deg,rgba(34,197,94,.04),rgba(34,197,94,.08));border:1px solid rgba(34,197,94,.2)}
+.rc.fl{background:linear-gradient(135deg,rgba(239,68,68,.04),rgba(239,68,68,.08));border:1px solid rgba(239,68,68,.2)}
+.rk{font-size:52px;font-weight:700;margin-bottom:6px}
+.rs{font-size:24px;font-weight:700;color:#f1f5f9;margin-bottom:4px}
+.rd{font-size:14px;color:#94a3b8;margin-bottom:14px}
+.rpm{font-size:15px;font-weight:600;color:#22c55e;margin-bottom:14px}
+.rfm{font-size:15px;font-weight:600;color:#ef4444;margin-bottom:14px}
+.rvt{font-size:16px;font-weight:700;margin-bottom:14px;color:#f59e0b}
+.rvi{background:#111827;border:1px solid #1e293b;border-radius:10px;padding:16px 18px;margin-bottom:10px;text-align:left}
+.rvq{font-size:13px;font-weight:600;margin-bottom:6px;color:#f1f5f9}
+.rvy{font-size:12px;color:#ef4444;margin-bottom:3px}
+.rvc{font-size:12px;color:#22c55e;margin-bottom:6px}
+.rve{font-size:12px;color:#64748b;line-height:1.6}
+.rt{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:20px}
+.sl-list{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.sl-item{background:#111827;border:1px solid #1e293b;border-radius:10px;padding:14px 16px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:12px}
+.sl-item:hover{border-color:#334155;background:#1a2332;transform:translateX(4px)}
+.sl-num{width:32px;height:32px;border-radius:8px;background:#22c55e;color:#000;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.sl-title{font-size:14px;color:#f1f5f9;line-height:1.5}
+</style>
+</head>
+<body>
+<div id="R">
+  <div class="tt">
+    <button class="tb t-video on" onclick="switchTab('select')">動画別テスト</button>
+    <button class="tb t-course" onclick="switchTab('course')">コース全体テスト</button>
+  </div>
+
+  <!-- 動画選択 -->
+  <div id="panelSelect">
+    <div class="sl-list" id="slList"></div>
+  </div>
+
+  <!-- 動画別テスト -->
+  <div id="panelVideo" style="display:none">
+    <div class="S s-video">
+      <h3 id="svTitle"></h3>
+      <p>この動画の内容を確認する問題です。</p>
+      <div class="sp">
+        <div><div class="sv" id="svCount">10</div><div class="sl">問題数</div></div>
+      </div>
+      <button class="B bg" id="startVideo" onclick="go('video')">▶ テスト開始</button>
+    </div>
+    <div class="Q" id="qVideo"></div>
+    <div class="Rs" id="rVideo"></div>
+  </div>
+
+  <!-- コース全体テスト -->
+  <div id="panelCourse" style="display:none">
+    <div class="S s-course">
+      <h3>コース全体テスト</h3>
+      <p>全動画の問題からランダムに出題します。</p>
+      <div class="sp">
+        <div><div class="sv" id="courseCount">-</div><div class="sl">出題数</div></div>
+        <div><div class="sv" id="courseTotal">-</div><div class="sl">総問題数</div></div>
+      </div>
+      <button class="B bo" id="startCourse" onclick="go('course')">▶ テスト開始</button>
+    </div>
+    <div class="Q" id="qCourse"></div>
+    <div class="Rs" id="rCourse"></div>
+  </div>
+</div>
+
+<script>
+const QD = {"titles": ["第1回：段ボールの基礎知識 — 構造・フルート種類・JIS規格", "第2回：段ボールの品質検査実務 — BCT・含水率・受入検査手順", "第3回：プラスチック包装材の種類と食品衛生規制", "第4回：包装資材のコスト管理とサステナビリティ対応"], "questions": [{"m": 0, "q": "段ボールの基本構造として正しいものはどれですか？", "o": ["平板の厚紙を複数枚重ねた構造", "波形加工された「中しん」をライナーではさんだ構造", "蜂の巣状の空洞を持つ構造", "プラスチックフィルムと紙を貼り合わせた構造"], "h": "「波」と「挟む」というキーワードが構造を表しています。", "c": 1, "e": "段ボールは波形加工された「中しん」をライナーではさんだ構造の板紙製品です。この構造が軽量でありながら高い強度を実現しています。"}, {"m": 0, "q": "3プライ（両面段ボール）と5プライ（複両面段ボール）の使い分けとして正しいものはどれですか？", "o": ["3プライは重量物向け、5プライは軽量物向け", "3プライが最も一般的な輸送用、5プライは重量物・精密機器向け高強度タイプ", "3プライと5プライは用途に違いはない", "5プライは食品専用"], "h": "プライ数が多いほど強度が高い製品向けです。", "c": 1, "e": "3プライ（両面段ボール）が最も一般的な輸送用段ボール箱で、5プライ（複両面段ボール）は重量物・精密機器向けの高強度タイプです。"}, {"m": 0, "q": "Aフルートの特徴として正しいものはどれですか？", "o": ["波高1.5mm・薄型・精密印刷向け", "波高3mm・強度重視・積み重ね向き", "波高5mm・緩衝性重視", "波高3.5mm・欧州標準・バランス良好"], "h": "Aフルートは最も波が高く、クッション性が特徴です。", "c": 2, "e": "Aフルートは波高5mmで緩衝性重視のフルートです。精密機器など衝撃に弱い製品の保護に適しています。"}, {"m": 0, "q": "Bフルートの特徴として正しいものはどれですか？", "o": ["波高5mm・緩衝性重視", "波高3mm・強度重視・積み重ね向き", "波高1.5mm・薄型・精密印刷向け", "波高3.5mm・欧州標準・バランス良好"], "h": "BはBig stackの「B」ではなく、波の形状が特徴です。", "c": 1, "e": "Bフルートは波高3mmで強度重視・積み重ね向きです。圧縮強度が高く、積み重ねが多い食品・飲料用途に多く使われます。"}, {"m": 0, "q": "段ボールの品質に関する主要JIS規格として正しいものはどれですか？", "o": ["JIS Q 9001・JIS Q 14001・JIS Q 45001", "JIS Z1516（段ボール）・JIS Z1506（段ボール箱）・JIS P3902（ライナ）", "JIS B 0001・JIS B 0205・JIS B 1501", "JIS A 1201・JIS A 1301・JIS A 5001"], "h": "Z規格（荷造包装）とP規格（紙・板紙）が主体です。", "c": 1, "e": "段ボールの主要JIS規格は JIS Z1516（段ボール品質・試験方法）・JIS Z1506（段ボール箱）・JIS P3902（ライナ紙質基準）・JIS P3904（中芯原紙基準）です。"}, {"m": 0, "q": "ライナーの坪量（K5-180など）の単位として正しいものはどれですか？", "o": ["kg/m²", "g/m²", "mm厚み", "N/m²"], "h": "坪量は「単位面積あたりの重量」です。", "c": 1, "e": "ライナーの坪量の単位はg/m²（グラム毎平方メートル）です。K5-180はKライナーの坪量180g/m²を意味し、坪量が大きいほど丈夫です。"}, {"m": 0, "q": "れいかさんが夏場の製品破損クレームを調査した結果わかったことはどれですか？", "o": ["輸送中の温度管理が不十分だった", "段ボールメーカーがライナーをK5-180から安価なK5-160に無断変更していた", "倉庫の積み重ね方法が間違っていた", "製品の重量が過大だった"], "h": "発注仕様書と異なる材料が使われていました。", "c": 1, "e": "調査の結果、段ボールメーカーがライナーをK5-180から安価なK5-160に無断変更していたことが判明しました。以降は発注仕様書に坪量・BCT値を明記し、受入時の圧縮強度試験を導入しました。"}, {"m": 0, "q": "クレーム発生後に導入した再発防止策として正しいものはどれですか？", "o": ["段ボールメーカーを別の会社に変更した", "発注仕様書に坪量・BCT値を明記し、取決めに仕様変更事前連絡を追加、受入BCT試験を導入", "コスト削減のため段ボールをやめて木箱に変更した", "受入検査は段ボールメーカーに全委託した"], "h": "仕様書・取決め・受入検査の3点セットで再発防止しました。", "c": 1, "e": "再発防止として①発注仕様書に坪量・BCT値を明記、②段ボールメーカーとの取決めに「仕様変更の事前連絡」を追加、③受入時の圧縮強度抜取試験（BCT）を導入しました。"}, {"m": 0, "q": "食品工場での段ボール異物管理（紙粉混入リスク対策）として正しいものはどれですか？", "o": ["段ボールは製造エリアで直接開梱して使用する", "開梱エリアと製造エリアのゾーニング・外装ライナー廃棄後に製造エリアへ搬入・保管エリアの定期清掃記録管理", "段ボールを使わずにプラスチックコンテナのみを使用する", "紙粉フィルターを全設備に設置する"], "h": "ゾーニング（区域分け）が異物管理の基本です。", "c": 1, "e": "食品工場での紙粉混入リスク管理として①開梱エリアと製造エリアのゾーニング、②外装ライナー廃棄後に製造エリアへ搬入、③保管エリアの定期清掃記録管理をHACCP一般衛生管理手順に組み込んでいます。"}, {"m": 0, "q": "Eフルートの主な用途として正しいものはどれですか？", "o": ["重量物輸送用の頑丈な外装箱", "緩衝性重視の精密機器包装", "薄型・精密印刷向けの化粧箱等", "農産物の鮮度保持"], "h": "「E」はExtremely thin（極薄）のイメージです。", "c": 2, "e": "Eフルート（波高1.5mm）は薄型・精密印刷向けで、化粧箱や小型の個装箱に適しています。Fフルート（マイクロフルート・1mm以下）はさらに小型高品質箱向けです。"}, {"m": 1, "q": "BCT（Box Compression Test）が測定するものとして正しいものはどれですか？", "o": ["段ボールの落下衝撃耐性", "段ボール箱の積み重ね強度（圧縮強度）", "段ボールの引張強度", "段ボールの破裂強度"], "h": "「Compression＝圧縮」が測定対象です。", "c": 1, "e": "BCT（Box Compression Test）は段ボール箱の積み重ね強度を測定します。JIS Z1532に準拠し、上段箱重量×段数×安全率1.5〜2.0で設計値を計算します。"}, {"m": 1, "q": "BCT設計値計算における安全率として正しいものはどれですか？", "o": ["1.0〜1.2", "1.5〜2.0", "2.5〜3.0", "5.0以上"], "h": "余裕をもって強度を設計するための係数です。", "c": 1, "e": "BCT設計値は「上段箱重量×段数×安全率1.5〜2.0」で計算します。安全率を設けることで、実際の使用条件での変動（湿気・衝撃等）に対応できます。"}, {"m": 1, "q": "段ボールの含水率管理値として正しいものはどれですか？", "o": ["3〜5%以内", "8〜10%以内", "12〜14%以内", "18〜20%以内"], "h": "高すぎると強度低下、低すぎると割れが生じます。", "c": 2, "e": "段ボールの含水率管理値は12〜14%以内が一般的です。この範囲を超えると強度が大幅に低下し、特に梅雨期・夏場は注意が必要です。"}, {"m": 1, "q": "含水率と段ボールの圧縮強度の関係として正しいものはどれですか？", "o": ["含水率が高いほど強度が上がる", "含水率1%増加で圧縮強度が約5〜10%低下する", "含水率と強度に相関関係はない", "含水率が低いほど強度が下がる"], "h": "水分が多いと紙の繊維が弱くなります。", "c": 1, "e": "含水率1%増加で圧縮強度が約5〜10%低下します。梅雨期・夏場の湿気による含水率上昇が積み重ね強度の低下につながります。"}, {"m": 1, "q": "受入検査でBCT試験の結果が規格（1200N以上）を大きく下回る750Nだった際のれいかさんの対応として正しいものはどれですか？", "o": ["強度不足だが許容範囲として受け入れた", "不合格品を全数隔離し段ボールメーカーに返品・交換を要求、取決めに仕様変更連絡義務を追加", "追加の品質試験を実施して合否を再判定した", "製造を継続しながら対策を検討した"], "h": "不合格品は「使わない」のが基本です。", "c": 1, "e": "れいかさんは不合格品（K160材料が使用された段ボール）を全数隔離し、段ボールメーカーに返品・交換を要求しました。また取決め書に仕様変更連絡義務を追加しました。"}, {"m": 1, "q": "梅雨期に倉庫保管の段ボールの含水率が18%（管理値超過）になった際の対策として正しいものはどれですか？", "o": ["含水率超過の段ボールをそのまま使用し、問題が出たら交換する", "梅雨期（6〜8月）は月2回含水率測定を実施し、倉庫に除湿機を設置する", "段ボールの使用を夏場だけ中止する", "段ボールメーカーに全て管理を委ねる"], "h": "測定頻度を上げる＋環境対策の2点セットです。", "c": 1, "e": "梅雨期の含水率超過への対策として、梅雨期（6〜8月）は月2回含水率測定を実施し、倉庫に除湿機を設置しました。定期測定で早期発見、除湿機で環境管理の両面からアプローチします。"}, {"m": 1, "q": "受入検査の5ステップとして正しいものはどれですか？", "o": ["注文書確認→請求書照合→支払い処理→在庫登録→倉庫収納", "仕様書照合→外観検査→圧縮強度抜取試験→含水率測定→受入記録作成", "外観目視→重量測定→寸法確認→価格確認→合否判定", "品番確認→納品書照合→在庫数確認→棚入れ→台帳更新"], "h": "5ステップの最初は「仕様書照合」、最後は「記録作成」です。", "c": 1, "e": "受入検査5ステップはStep1仕様書照合（フルート種・坪量・寸法）、Step2外観検査（汚損・破損・印刷ずれ）、Step3圧縮強度抜取試験、Step4含水率測定（梅雨期は必須）、Step5受入記録作成・不合格品の格離し管理です。"}, {"m": 1, "q": "段ボールの破裂強度試験の規格として正しいものはどれですか？", "o": ["JIS Z1532", "JIS P8131", "JIS P8124", "JIS Z1516"], "h": "「破裂（Mullen Test）」に対応するJIS規格番号です。", "c": 1, "e": "破裂強度（Mullen Test）の試験規格はJIS P8131です。JIS Z1532はBCT（圧縮強度試験方法）、JIS P8124は坪量測定方法です。"}, {"m": 1, "q": "受入検査で「不合格品の格離し管理」が重要な理由として最も適切なものはどれですか？", "o": ["不合格品を展示して教育用に活用するため", "不合格品が誤って生産に使われることを防ぐため", "不合格品をメーカーに返品するための証拠として", "在庫数を正確に把握するため"], "h": "「格離し」は「他の品と区別して保管する」という意味です。", "c": 1, "e": "不合格品の格離し管理は、不合格品が誤って生産に使われることを防ぐためです。不合格品が見やすい場所に混在していると誤使用のリスクがあります。"}, {"m": 1, "q": "段ボール受入検査において「仕様書照合」が最初のステップとして重要な理由はどれですか？", "o": ["仕様書を確認することで製造コストが下がるから", "発注した通りのフルート種・坪量・寸法の段ボールが届いているかを確認するため", "仕様書照合は法的義務だから", "仕様書照合で検査担当者のスキルが向上するから"], "h": "「発注した通り」が届いているかの確認が出発点です。", "c": 1, "e": "仕様書照合は発注した仕様（フルート種・坪量・寸法）通りの段ボールが届いているかを確認する最初の関門です。この確認を怠ると、見た目は同じでも強度が不十分な材料が使われる事態が起きます。"}, {"m": 2, "q": "食品包装で最も多く使用されるプラスチック素材として正しいものはどれですか？", "o": ["PP（ポリプロピレン）", "PE（ポリエチレン）", "PET（ポリエチレンテレフタレート）", "PA（ナイロン）"], "h": "袋・フィルム・キャップに最もよく使われます。", "c": 1, "e": "PE（ポリエチレン）は袋・フィルム・キャップに最も多く使用される食品包装材です。食品包装での使用量が最多の素材です。"}, {"m": 2, "q": "レトルト食品の容器に適した素材として正しいものはどれですか？", "o": ["PE（ポリエチレン）", "PP（ポリプロピレン）", "PVC（ポリ塩化ビニル）", "EPS（発泡スチロール）"], "h": "耐熱性が高く高温殺菌に耐えられる素材が必要です。", "c": 1, "e": "PP（ポリプロピレン）は耐熱性が高くレトルト（高温高圧殺菌）対応に適した素材です。PE はレトルトの高温に耐えられないため不適切です。"}, {"m": 2, "q": "飲料ボトルや医薬品ボトルによく使われ、透明性が高い素材はどれですか？", "o": ["PE（ポリエチレン）", "PP（ポリプロピレン）", "PET（ポリエチレンテレフタレート）", "PA（ナイロン）"], "h": "ペットボトル飲料の「ペット」に当たる素材です。", "c": 2, "e": "PET（ポリエチレンテレフタレート）は飲料ボトル・医薬品ボトルによく使われ、透明性が高い素材です。軽量で強度もあり、広く普及しています。"}, {"m": 2, "q": "食品接触プラスチック材料に関する食品衛生法の規格基準として正しいものはどれですか？", "o": ["平成27年内閣府令第10号", "昭和34年厚生省告示第370号", "令和4年経済産業省令第55号", "平成16年厚生労働省令第136号"], "h": "昭和の時代に制定された告示です。", "c": 1, "e": "食品衛生法の食品接触プラスチック材料の規格基準は昭和34年厚生省告示第370号です。使用できる材質・添加物・残留溶出量の基準が定められています。"}, {"m": 2, "q": "あかりさんの会社でレトルト食品用容器を誤って選定したことで起きたトラブルはどれですか？", "o": ["容器の色が変色した", "高温殺菌工程で容器が変形し、製品が全量廃棄になった", "容器の開口部が開かなくなった", "容器のラベルがはがれた"], "h": "レトルト（高温高圧）に非対応の容器を使った結果です。", "c": 1, "e": "レトルト非対応のPP容器を使用した結果、高温殺菌工程で容器が変形し製品が全量廃棄になりました。以降は容器仕様チェックリストに「レトルト対応可否」「最高使用温度」を必須記載項目として追加しました。"}, {"m": 2, "q": "新たなプラスチック容器を採用する際の山田製造所の標準3ステップとして正しいものはどれですか？", "o": ["価格比較→サンプル外観確認→発注", "食品衛生法適合証明書取得→自社用途への適合確認→溶出試験結果確認", "メーカーへのヒアリング→現地視察→採用決定", "デザイン確認→印刷品質確認→量産発注"], "h": "安全性確認の3段階です。", "c": 1, "e": "山田製造所の標準手順は①メーカーから「食品衛生法適合証明書」を取得、②対象食品の種類・保存温度・接触時間への適合確認、③初回採用時の溶出試験結果確認という3ステップです。"}, {"m": 2, "q": "「食品衛生法適合」の表示がある容器でも追加確認が必要な理由として最も適切なものはどれですか？", "o": ["食品衛生法適合の表示は偽造が多いから", "食品衛生法適合は一般的な要件であり、自社の具体的な用途（保存温度・接触食品・時間等）に適合しているかを別途確認する必要があるから", "食品衛生法は輸入品には適用されないから", "適合証明書は3年に一度更新が必要だから"], "h": "「一般的な適合」と「自社用途への適合」は別物です。", "c": 1, "e": "「食品衛生法適合」は一般的な適合であり、自社の具体的な用途（食品の種類・保存温度・接触時間等）に適合しているかを確認する必要があります。容器選定のたびに適合確認記録を残す習慣が重要です。"}, {"m": 2, "q": "真空包装フィルムに多く使われ、ガスバリア性が高い素材はどれですか？", "o": ["PE（ポリエチレン）", "PP（ポリプロピレン）", "PVC（ポリ塩化ビニル）", "PA（ナイロン）"], "h": "「Nylon」とも呼ばれる素材です。", "c": 3, "e": "PA（ポリアミド・ナイロン）は真空包装フィルムに多く使われ、ガスバリア性が高い素材です。食品の酸化防止・鮮度保持に有効です。"}, {"m": 2, "q": "電子レンジ対応容器に求められる耐熱性要件として正しいものはどれですか？", "o": ["60℃以上", "80℃以上", "100℃以上", "120℃以上"], "h": "電子レンジ内の温度は100℃以上になります。", "c": 3, "e": "電子レンジ対応容器には耐熱性要件として120℃以上等の基準が求められます。容器選定時には使用条件（最高温度・時間）を確認することが重要です。"}, {"m": 2, "q": "溶出試験が特に必要になる用途として正しいものはどれですか？", "o": ["常温で長期保存する乾燥食品", "高温工程（レトルト・蒸着等）で使用される食品包装", "冷蔵保存の食品包装", "ドライフード専用容器"], "h": "高温になると溶出リスクが高まります。", "c": 1, "e": "溶出試験は特に高温工程（レトルト・蒸着等）で使用される食品包装で重要です。高温で容器成分が溶出するリスクが高まるため、初回採用時に溶出試験結果の確認が推奨されます。"}, {"m": 3, "q": "包装資材のコスト管理の4手法として正しいものはどれですか？", "o": ["外注化・在庫削減・価格交渉・品質低下", "仕様の標準化・メーカー複数購買・年次コスト検討会・設計変更（軽量化）", "大量発注・長期契約・海外調達・代替材採用", "品質保証の廃止・検査省略・代替材使用・リサイクル材採用"], "h": "品質を維持しながらコストを管理する4つのアプローチです。", "c": 1, "e": "包装資材のコスト管理4手法は①仕様の標準化（段ボールサイズ・フルート種を集約）、②メーカー複数購買（購買交渉力の確保）、③年次コスト検討会（値上げ根拠確認）、④設計変更（軽量化・材料使用量削減）です。"}, {"m": 3, "q": "プラスチック資源循環促進法の施行日として正しいものはどれですか？", "o": ["平成25年4月", "平成30年4月", "令和4年4月", "令和6年4月"], "h": "比較的最近施行された環境法令です。", "c": 2, "e": "プラスチック資源循環促進法は令和4年4月に施行されました。不必要なプラスチック使用の抑制・設計の工夫を求める法律です。"}, {"m": 3, "q": "グリーンマーク（古紙促進センター）の付与条件として正しいものはどれですか？", "o": ["再生プラスチック配合率50%以上", "古紙パルプ配合率70%以上", "バイオマス素材配合率50%以上", "CO2排出量を50%削減した製品"], "h": "紙の再利用促進を目的としたマークです。", "c": 1, "e": "グリーンマーク（古紙促進センター）は古紙パルプ配合率70%以上の紙・段ボール・印刷物に表示できるマークです。"}, {"m": 3, "q": "日本の段ボールリサイクル率として正しいものはどれですか？", "o": ["約50%（世界平均と同水準）", "約70%", "約85%", "95%以上（世界最高水準）"], "h": "日本のリサイクル技術と回収体制は世界でもトップクラスです。", "c": 3, "e": "日本の段ボールリサイクル率は95%以上と世界最高水準です。高度なリサイクルインフラと事業者・消費者の分別意識が支えています。"}, {"m": 3, "q": "れいかさんの会社がAフルートからBフルートに変更してコスト削減を実現した条件として正しいものはどれですか？", "o": ["製品重量が重くなったため強度アップが必要だったから", "製品重量が軽く積み重ね強度として十分だったので、変更によりコスト12%削減を実現", "Aフルートの生産が困難になったから", "環境規制によりAフルートが使用禁止になったから"], "h": "「必要十分」な強度のフルートを選ぶことがコスト最適化のポイントです。", "c": 1, "e": "製品重量が軽くBフルートでも積み重ね強度が十分だったため、AフルートからBフルートへ変更し材料コストを12%削減しました。変更前後のBCT試験実施と仕様変更記録も保管しました。"}, {"m": 3, "q": "あかりさんの会社がプラスチック資源循環促進法施行を受けて実施した取り組みはどれですか？", "o": ["プラスチック包装材の全廃", "商品の過剰包装（不必要な内装フィルム等）を見直し、プラスチック使用量を前年比15%削減", "全製品をガラス容器に変更", "プラスチックの使用量を倍増させて強化した"], "h": "「過剰」な包装を見直すアプローチです。", "c": 1, "e": "プラスチック資源循環促進法施行を受け、商品の過剰包装（不必要な内装フィルム等）を見直し、プラスチック使用量を前年比15%削減しました。削減量の記録は環境報告書に活用しています。"}, {"m": 3, "q": "年次コスト検討会の主な目的として正しいものはどれですか？", "o": ["メーカーとの価格交渉を一方的に有利に進めるため", "メーカーの値上げ要求の根拠を確認し、コスト増加の妥当性を評価するため", "原材料相場の情報収集のみが目的", "担当者の採用・教育コストを削減するため"], "h": "「根拠確認」が年次コスト検討会の核心です。", "c": 1, "e": "年次コスト検討会の目的はメーカーの値上げ要求の根拠を確認し、コスト増加の妥当性を客観的に評価することです。根拠不明な値上げへの対応力が購買力の源泉です。"}, {"m": 3, "q": "包装設計変更でのコスト削減を実施する際に必ず行うこととして正しいものはどれですか？", "o": ["設計変更は自社判断のみで実施してよい", "変更前後のBCT試験を実施し、仕様変更記録と試験データを保管する", "コスト削減効果の算出だけで十分", "取引先への報告は事後でよい"], "h": "「変更後の品質確認」と「記録」がセットで必要です。", "c": 1, "e": "包装設計変更によるコスト削減を実施する際は、変更前後のBCT試験を実施し、仕様変更記録と試験データを保管することが重要です。品質を維持しながらコスト削減を実現します。"}, {"m": 3, "q": "容器包装リサイクル法における「特定事業者」の義務として正しいものはどれですか？", "o": ["容器包装材の回収を自社で実施する義務", "再商品化義務または指定法人（協会）への委託義務", "容器包装の使用を禁止する義務", "リサイクル材のみを使用する義務"], "h": "「自分でやる」か「協会に任せる」かの選択肢があります。", "c": 1, "e": "容器包装リサイクル法における特定事業者は再商品化義務または指定法人（協会）への委託義務を負います。多くの事業者はコストと手間の観点から協会委託を選択しています。"}, {"m": 3, "q": "包装資材管理における「品質・コスト・環境の三方向からの管理」が必要な理由として最も適切なものはどれですか？", "o": ["3つの指標を同時に評価することで担当者の評価がしやすいから", "品質だけでは競争力が生まれず、コストだけでは品質が保てず、環境対応なしでは法規制と取引先要件を満たせないから", "3方向管理は業界団体が定めた基準だから", "環境対応は別部署が担当するから"], "h": "どれか1つだけでは不十分で、3つのバランスが必要です。", "c": 1, "e": "包装資材は品質（製品保護・規制適合）・コスト（収益性）・環境（法規制・取引先要件・CSR）の三方向からの管理が必要です。法規制改正に先回りした対応が企業の持続可能性につながります。"}]};
+const totalPool = QD.questions.length;
+const courseShowCount = Math.floor(totalPool / 2);
+
+// コース全体テスト表示数の初期化
+document.getElementById('courseTotal').textContent = totalPool;
+document.getElementById('courseCount').textContent = courseShowCount;
+
+// 動画選択リスト生成
+var sl = document.getElementById('slList');
+QD.titles.forEach(function(t, i) {
+  var cnt = QD.questions.filter(function(q){return q.m===i}).length;
+  var div = document.createElement('div');
+  div.className='sl-item';
+  div.innerHTML='<div class="sl-num">'+(i+1)+'</div><div class="sl-title">'+t+'</div>';
+  div.onclick=function(){selectVideo(i)};
+  sl.appendChild(div);
+});
+
+var modIdx = 0, mode = 'video';
+
+function selectVideo(idx) {
+  modIdx = idx;
+  document.getElementById('panelSelect').style.display='none';
+  document.getElementById('svTitle').textContent = QD.titles[idx]+' 確認テスト';
+  var mc = QD.questions.filter(function(q){return q.m===idx}).length;
+  document.getElementById('svCount').textContent = mc;
+  document.getElementById('panelVideo').style.display='block';
+  document.getElementById('startVideo').style.display='block';
+  document.getElementById('qVideo').style.display='none';
+  document.getElementById('rVideo').style.display='none';
+}
+
+function switchTab(t) {
+  document.querySelectorAll('.tb').forEach(function(b){
+    var isMatch=(t==='select'&&b.classList.contains('t-video'))||b.classList.contains('t-'+t);
+    b.classList.toggle('on',isMatch);
+  });
+  var ps=document.getElementById('panelSelect');
+  if(t==='select'){
+    if(ps)ps.style.display='block';
+    document.getElementById('panelVideo').style.display='none';
+  }else if(t==='video'){
+    if(ps)ps.style.display='none';
+    document.getElementById('panelVideo').style.display='block';
+  }else{
+    if(ps)ps.style.display='none';
+    document.getElementById('panelVideo').style.display='none';
+  }
+  document.getElementById('panelCourse').style.display=t==='course'?'block':'none';
+}
+
+var quizzes = {video:{qs:[],ci:0,sc:0,ans:[]},course:{qs:[],ci:0,sc:0,ans:[]}};
+
+window.go = function(m) {
+  mode=m; var qz=quizzes[m]; qz.ci=0; qz.sc=0; qz.ans=[];
+  if(m==='video'){
+    qz.qs = QD.questions.filter(function(q){return q.m===modIdx});
+    for(var i=qz.qs.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=qz.qs[i];qz.qs[i]=qz.qs[j];qz.qs[j]=t}
+  } else {
+    var pool = QD.questions.slice();
+    for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=pool[i];pool[i]=pool[j];pool[j]=t}
+    qz.qs = pool.slice(0, courseShowCount);
+  }
+  g('start'+(m==='video'?'Video':'Course')).style.display='none';
+  g('r'+(m==='video'?'Video':'Course')).style.display='none';
+  var qEl=g('q'+(m==='video'?'Video':'Course'));
+  qEl.style.display='block';
+  showQ(m); qEl.scrollIntoView({behavior:'smooth'});
+};
+
+function g(id){return document.getElementById(id)}
+
+function showQ(m) {
+  var qz=quizzes[m], q=qz.qs[qz.ci], total=qz.qs.length;
+  var cls=m==='video'?'c-video':'c-course';
+  var qEl=g('q'+(m==='video'?'Video':'Course'));
+  var pct=Math.round((qz.ci/total)*100);
+  qEl.innerHTML=
+    '<div class="pg"><div class="pgb"><div class="pgf '+cls+'" style="width:'+pct+'%"></div></div>'+
+    '<div class="pgc">'+(qz.ci+1)+'/'+total+'</div></div>'+
+    '<div class="qm">Q'+(qz.ci+1)+'</div>'+
+    '<div class="qt">'+q.q+'</div>'+
+    '<button class="hb" onclick="toggleHint(this,\''+m+'\')">💡 ヒントを見る</button>'+
+    '<div class="hi">'+q.h+'</div>'+
+    '<div class="os">'+
+    q.o.map(function(opt,i){
+      return '<button class="o" onclick="ans('+i+',\''+m+'\')" data-idx="'+i+'">'+
+             '<div class="ol">'+['Ａ','Ｂ','Ｃ','Ｄ'][i]+'</div><div>'+opt+'</div></button>';
+    }).join('')+
+    '</div>'+
+    '<div class="ex"></div>'+
+    '<button class="nx '+cls+'" onclick="next(\''+m+'\')" id="nx'+m+'">'+(qz.ci+1<total?'次の問題 →':'結果を見る')+'</button>';
+}
+
+function toggleHint(btn, m) {
+  var qEl=g('q'+(m==='video'?'Video':'Course'));
+  var hi=qEl.querySelector('.hi');
+  hi.style.display=hi.style.display==='block'?'none':'block';
+}
+
+function ans(idx, m) {
+  var qz=quizzes[m], q=qz.qs[qz.ci];
+  var qEl=g('q'+(m==='video'?'Video':'Course'));
+  var os=qEl.querySelectorAll('.o');
+  os.forEach(function(o){o.classList.add('lk');o.style.cursor='default'});
+  var correct=(idx===q.c);
+  if(correct)qz.sc++;
+  qz.ans.push({q:q.q,ua:q.o[idx],ca:q.o[q.c],correct:correct,e:q.e});
+  os[idx].classList.add(correct?'ok':'ng');
+  if(!correct)os[q.c].classList.add('ok');
+  var ex=qEl.querySelector('.ex');
+  ex.style.display='block'; ex.textContent=q.e;
+  g('nx'+m).style.display='inline-block';
+}
+
+function next(m) {
+  var qz=quizzes[m];
+  qz.ci++;
+  if(qz.ci<qz.qs.length){
+    showQ(m);
+  } else {
+    showResult(m);
+  }
+}
+
+function showResult(m) {
+  var qz=quizzes[m];
+  var rEl=g('r'+(m==='video'?'Video':'Course'));
+  var qEl=g('q'+(m==='video'?'Video':'Course'));
+  qEl.style.display='none';
+  rEl.style.display='block';
+  var pct=Math.round((qz.sc/qz.qs.length)*100);
+  var pass=pct>=70;
+  var emoji=pct>=90?'🎉':pct>=70?'😊':pct>=50?'📚':'💪';
+  var wrongItems=qz.ans.filter(function(a){return !a.correct}).map(function(a){
+    return '<div class="rvi"><div class="rvq">'+a.q+'</div>'+
+           '<div class="rvy">あなたの回答：'+a.ua+'</div>'+
+           '<div class="rvc">正解：'+a.ca+'</div>'+
+           '<div class="rve">'+a.e+'</div></div>';
+  }).join('');
+  rEl.innerHTML=
+    '<div class="rc '+(pass?'ps':'fl')+'">'+
+    '<div class="rk">'+emoji+'</div>'+
+    '<div class="rs">'+qz.sc+' / '+qz.qs.length+'問正解</div>'+
+    '<div class="rd">正答率 '+pct+'%</div>'+
+    (pass?'<div class="rpm">✅ 合格！よくできました</div>':'<div class="rfm">📖 復習して再挑戦しましょう</div>')+
+    '</div>'+
+    (wrongItems?'<div class="rvt">📝 間違えた問題</div>'+wrongItems:'')+
+    '<div class="rt">'+
+    (m==='video'?'<button class="B bg" onclick="go(\'video\')">🔄 もう一度</button><button class="B" style="background:#1e293b;color:#f1f5f9" onclick="switchTab(\'select\')">← 動画選択に戻る</button>':
+                 '<button class="B bo" onclick="go(\'course\')">🔄 もう一度</button>')+
+    '</div>';
+}
+</script>
+</body>
+</html>

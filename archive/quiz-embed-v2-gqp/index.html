@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>確認テスト | 産業技術アカデミー</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:transparent}
+#R{font-family:'Noto Sans JP',system-ui,sans-serif;color:#f1f5f9;line-height:1.7;max-width:800px;margin:0 auto;padding:24px 16px}
+#R *{box-sizing:border-box;margin:0;padding:0}
+#R button{font-family:inherit;cursor:pointer}
+.tt{display:flex;gap:0;margin-bottom:32px;background:#0f172a;border-radius:14px;padding:5px;border:1px solid #1e293b}
+.tb{flex:1;padding:14px 20px;border-radius:10px;font-size:15px;font-weight:700;border:none;background:transparent;color:#64748b;transition:all .3s;letter-spacing:.02em;text-align:center}
+.tb:hover:not(.on){color:#94a3b8;background:rgba(255,255,255,.03)}
+.tb.on{color:#fff;box-shadow:0 2px 12px rgba(0,0,0,.3)}
+.tb.t-video.on{background:linear-gradient(135deg,#22c55e,#16a34a);color:#000;box-shadow:0 4px 16px rgba(34,197,94,.3)}
+.tb.t-course.on{background:linear-gradient(135deg,#f59e0b,#d97706);color:#000;box-shadow:0 4px 16px rgba(245,158,11,.3)}
+.S{border-radius:14px;padding:32px 24px;text-align:center}
+.S.s-video{background:linear-gradient(135deg,rgba(34,197,94,.05),rgba(34,197,94,.08));border:1px solid rgba(34,197,94,.2)}
+.S.s-course{background:linear-gradient(135deg,rgba(245,158,11,.05),rgba(245,158,11,.08));border:1px solid rgba(245,158,11,.2)}
+.S h3{font-size:18px;font-weight:700;margin-bottom:8px;color:#f1f5f9}
+.S p{color:#94a3b8;font-size:14px;margin-bottom:20px;line-height:1.8}
+.sp{display:flex;justify-content:center;gap:24px;margin-bottom:24px;flex-wrap:wrap}
+.sv{font-size:22px;font-weight:700}
+.s-video .sv{color:#22c55e}
+.s-course .sv{color:#f59e0b}
+.sl{font-size:11px;color:#64748b}
+.B{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;border-radius:12px;font-size:16px;font-weight:700;border:none;transition:all .3s;position:relative;overflow:hidden}
+.B::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.2),transparent);opacity:0;transition:opacity .3s}
+.B:hover{transform:translateY(-3px)}.B:hover::after{opacity:1}
+.B:active{transform:translateY(-1px)}
+.B.bg{background:linear-gradient(135deg,#22c55e,#4ade80);color:#000;box-shadow:0 6px 24px rgba(34,197,94,.3)}
+.B.bo{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#000;box-shadow:0 6px 24px rgba(245,158,11,.3)}
+.Q{display:none}
+.pg{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.pgb{flex:1;height:6px;background:#1e293b;border-radius:3px;overflow:hidden}
+.pgf{height:100%;border-radius:3px;transition:width .3s}
+.pgf.c-video{background:#22c55e}.pgf.c-course{background:#f59e0b}
+.pgc{font-size:13px;color:#64748b;white-space:nowrap}
+.qm{font-size:12px;color:#06b6d4;margin-bottom:8px;font-weight:500}
+.qt{font-size:16px;font-weight:600;margin-bottom:18px;line-height:1.6;color:#f1f5f9}
+.hb{font-size:12px;color:#d4a017;background:rgba(212,160,23,.1);border:1px solid rgba(212,160,23,.3);border-radius:6px;padding:4px 12px;margin-bottom:14px;display:inline-block}
+.hi{display:none;font-size:13px;color:#94a3b8;background:rgba(212,160,23,.05);border-left:3px solid #d4a017;padding:10px 14px;border-radius:6px;margin-bottom:14px}
+.os{display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
+.o{background:#111827;border:2px solid #1e293b;border-radius:10px;padding:13px 16px;font-size:14px;cursor:pointer;transition:all .15s;display:flex;align-items:flex-start;gap:12px;text-align:left;color:#f1f5f9}
+.o:hover:not(.lk){border-color:#334155;background:#1a2332}
+.ol{width:26px;height:26px;border-radius:50%;background:#1e293b;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;color:#94a3b8}
+.o.ok{border-color:#22c55e;background:rgba(34,197,94,.08)}.o.ok .ol{background:#22c55e;color:#fff}
+.o.ng{border-color:#ef4444;background:rgba(239,68,68,.08)}.o.ng .ol{background:#ef4444;color:#fff}
+.ex{display:none;background:rgba(59,130,246,.06);border-left:3px solid #3b82f6;border-radius:6px;padding:12px 14px;margin-bottom:18px;font-size:13px;color:#94a3b8;line-height:1.7}
+.nx{display:none;border:none;border-radius:8px;padding:11px 28px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s}
+.nx:hover{transform:translateY(-2px)}
+.nx.c-video{background:linear-gradient(135deg,#22c55e,#4ade80);color:#000}
+.nx.c-course{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#000}
+.Rs{display:none}
+.rc{border-radius:14px;padding:32px 24px;text-align:center;margin-bottom:24px}
+.rc.ps{background:linear-gradient(135deg,rgba(34,197,94,.04),rgba(34,197,94,.08));border:1px solid rgba(34,197,94,.2)}
+.rc.fl{background:linear-gradient(135deg,rgba(239,68,68,.04),rgba(239,68,68,.08));border:1px solid rgba(239,68,68,.2)}
+.rk{font-size:52px;font-weight:700;margin-bottom:6px}
+.rs{font-size:24px;font-weight:700;color:#f1f5f9;margin-bottom:4px}
+.rd{font-size:14px;color:#94a3b8;margin-bottom:14px}
+.rpm{font-size:15px;font-weight:600;color:#22c55e;margin-bottom:14px}
+.rfm{font-size:15px;font-weight:600;color:#ef4444;margin-bottom:14px}
+.rvt{font-size:16px;font-weight:700;margin-bottom:14px;color:#f59e0b}
+.rvi{background:#111827;border:1px solid #1e293b;border-radius:10px;padding:16px 18px;margin-bottom:10px;text-align:left}
+.rvq{font-size:13px;font-weight:600;margin-bottom:6px;color:#f1f5f9}
+.rvy{font-size:12px;color:#ef4444;margin-bottom:3px}
+.rvc{font-size:12px;color:#22c55e;margin-bottom:6px}
+.rve{font-size:12px;color:#64748b;line-height:1.6}
+.rt{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:20px}
+.sl-list{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.sl-item{background:#111827;border:1px solid #1e293b;border-radius:10px;padding:14px 16px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:12px}
+.sl-item:hover{border-color:#334155;background:#1a2332;transform:translateX(4px)}
+.sl-num{width:32px;height:32px;border-radius:8px;background:#22c55e;color:#000;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.sl-title{font-size:14px;color:#f1f5f9;line-height:1.5}
+</style>
+</head>
+<body>
+<div id="R">
+  <div class="tt">
+    <button class="tb t-video on" onclick="switchTab('select')">動画別テスト</button>
+    <button class="tb t-course" onclick="switchTab('course')">コース全体テスト</button>
+  </div>
+
+  <!-- 動画選択 -->
+  <div id="panelSelect">
+    <div class="sl-list" id="slList"></div>
+  </div>
+
+  <!-- 動画別テスト -->
+  <div id="panelVideo" style="display:none">
+    <div class="S s-video">
+      <h3 id="svTitle"></h3>
+      <p>この動画の内容を確認する問題です。</p>
+      <div class="sp">
+        <div><div class="sv" id="svCount">10</div><div class="sl">問題数</div></div>
+      </div>
+      <button class="B bg" id="startVideo" onclick="go('video')">▶ テスト開始</button>
+    </div>
+    <div class="Q" id="qVideo"></div>
+    <div class="Rs" id="rVideo"></div>
+  </div>
+
+  <!-- コース全体テスト -->
+  <div id="panelCourse" style="display:none">
+    <div class="S s-course">
+      <h3>コース全体テスト</h3>
+      <p>全動画の問題からランダムに出題します。</p>
+      <div class="sp">
+        <div><div class="sv" id="courseCount">-</div><div class="sl">出題数</div></div>
+        <div><div class="sv" id="courseTotal">-</div><div class="sl">総問題数</div></div>
+      </div>
+      <button class="B bo" id="startCourse" onclick="go('course')">▶ テスト開始</button>
+    </div>
+    <div class="Q" id="qCourse"></div>
+    <div class="Rs" id="rCourse"></div>
+  </div>
+</div>
+
+<script>
+const QD = {"titles": ["第1回：GQP省令とは何か — 品質管理基準の全体像と位置づけ", "第2回：品質保証責任者（QP）の役割・要件・実務", "第3回：製造業者との取決め — GQP省令第7条の実務", "第4回：市場への出荷管理 — 出荷判定の手順と記録", "第5回：変更管理と逸脱管理 — GQP省令第9・10条", "第6回：品質情報処理と回収対応 — GQP省令第11条・回収管理", "第7回：自己点検・教育訓練・文書管理 — GQP省令の維持管理三本柱"], "questions": [{"m": 0, "q": "GQP省令の制定根拠として正しいものはどれですか？", "o": ["昭和35年厚生省令第1号", "平成16年厚生労働省令第136号", "令和3年内閣府令第10号", "平成21年消費者庁告示第1号"], "h": "「平成16年」という制定年がポイントです。", "c": 1, "e": "GQP省令は平成16年厚生労働省令第136号として制定されました。令和3年に電磁的記録対応等の改正が行われています。"}, {"m": 0, "q": "GQP省令が直接規制する対象者として正しいのはどれですか？", "o": ["医薬品等の製造業者（工場）", "医薬品等の製造販売業者（ブランドオーナー）", "医療機関の購買担当者", "消費者"], "h": "「製造する」と「製造して販売する」は異なる許可です。", "c": 1, "e": "GQP省令は医薬品等の製造販売業者（ブランドオーナー側）の品質管理責任を定めています。製造業者（工場）が遵守するのはGMP省令です。"}, {"m": 0, "q": "GVP省令とGQP省令の役割の違いとして正しいものはどれですか？", "o": ["どちらも製造前の品質管理を担う", "GQPは市場に出す前の品質管理、GVPは市場に出た後の安全管理", "GQPは輸出品専用、GVPは国内品専用", "GVPは製造業者向け、GQPは販売業者向け"], "h": "GVPのVはVigilance（安全性監視）の略です。", "c": 1, "e": "GQPは「市場に出す前の品質管理」を担い、GVPは「市場に出た後の安全管理」を担います。この2つが二人三脚で品質と安全を守ります。"}, {"m": 0, "q": "化粧品の製造販売業許可の種類として正しいものはどれですか？", "o": ["第一種のみ", "第一種と第二種の2種類", "第一種・第二種・第三種の3種類", "許可は不要で届出のみ"], "h": "品目の危険度によって許可の種類が分かれています。", "c": 2, "e": "製造販売業許可には第一種・第二種・第三種があります。化粧品は第三種に該当し、GQP省令はすべての種類の取得・維持に不可欠です。"}, {"m": 0, "q": "GQP省令が義務付ける品質管理体制の四本柱として正しいものはどれですか？", "o": ["人員確保・設備整備・資金調達・技術開発", "手順書整備・記録保管・製造業者との取決め・自己点検", "製品開発・製造委託・品質試験・市場調査", "企画・設計・生産・廃棄"], "h": "省令第3条・第7条・第18条などに対応した4つの柱です。", "c": 1, "e": "GQP省令の四本柱は①手順書整備、②記録保管、③製造業者との取決め、④自己点検です。これらを着実に実施することが基盤となります。"}, {"m": 0, "q": "令和3年のGQP省令改正の主な内容として正しいものはどれですか？", "o": ["製造委託の全面禁止", "電磁的記録対応等の改正", "外国製造業者への適用拡大", "製造販売業許可の廃止"], "h": "デジタル化・ペーパーレスが社会全体で進んだ時代背景があります。", "c": 1, "e": "令和3年の改正では電磁的記録（デジタルデータ）への対応が盛り込まれました。デジタル署名や電子的な取決め締結も認められるようになりました。"}, {"m": 0, "q": "スマイル化粧品工業がGQP対応として最初に作成した手順書は何本でしたか？", "o": ["3本", "5本", "8本", "12本"], "h": "品質保証部のあかりさんが省令第3条を読み込んで作成しました。", "c": 2, "e": "品質保証部のあかりさんが省令第3条（品質管理業務の実施）を読み込み、必要な手順書リストを8本作成しました。"}, {"m": 0, "q": "製造委託先との取決めで明記すべき内容として、この研修で紹介されたものはどれですか？", "o": ["製品の小売価格と販売計画", "変更の事前連絡タイムライン・逸脱報告のグレード分類・年次監査の実施権", "製造設備の所有権と保険の取り決め", "従業員の給与体系と福利厚生"], "h": "品質保証に直結する三つの柱が取決めに盛り込まれました。", "c": 1, "e": "スマイル化粧品工業と山田製造所の取決めには、変更の事前連絡タイムライン、逸脱報告のグレード分類、年次監査の実施権が明記されました。"}, {"m": 0, "q": "薬務課の実地確認を経て学んだ教訓として最も適切なものはどれですか？", "o": ["記録の様式を完璧に整えることが最優先", "記録の様式より確認内容と結果が分かることが重要", "実地確認は事前通知なく抜き打ちで行われる", "様式が揃っていれば内容は問われない"], "h": "実地確認で担当者から直接もらったアドバイスです。", "c": 1, "e": "薬務課担当者から「記録の様式より確認内容と結果が分かることが重要」という助言を受けました。シンプルなチェック方式でも実質的な内容があれば通過できます。"}, {"m": 0, "q": "GQP省令においてGMP省令と役割が異なる主な点はどれですか？", "o": ["GQPは輸出品のみ対象、GMPは国内品のみ対象", "GQPは製造販売業者（ブランドオーナー）の品質管理責任、GMPは製造業者（工場）の製造管理責任", "GQPは医薬品のみ、GMPは化粧品のみに適用される", "GQPは任意規格、GMPは法定規格"], "h": "「誰の」責任を定めているかが違います。", "c": 1, "e": "GQPは製造販売業者（ブランドオーナー）の品質管理責任を定め、GMPは製造業者（工場）の製造管理責任を定めています。両者が連携して品質を守ります。"}, {"m": 1, "q": "品質保証責任者（QP）の法的要件として正しいものはどれですか？", "o": ["医薬品等の品質管理業務に1年以上従事した者", "医薬品等の品質管理業務に3年以上従事した者、または同等以上の知識・経験を有する者", "薬剤師資格を有する者のみ", "大学の薬学部を卒業した者のみ"], "h": "GQP省令第4条第2項に規定されています。", "c": 1, "e": "第4条第2項のQP要件は①医薬品等の品質管理業務に3年以上従事した者、または②同等以上の知識・経験を有する者です。薬剤師資格は必須ではありません。"}, {"m": 1, "q": "QPの専任・兼務に関する規定として正しいものはどれですか？", "o": ["QPは必ず専任でなければならない", "QPは専任規定はなく兼務も可能だが、実質的に業務を遂行できることが必要", "QPは他の職務との兼務は一切禁止", "QPは外部委託が認められている"], "h": "「名義だけ」の就任が問題になっています。", "c": 1, "e": "QPには専任規定はなく兼務も可能ですが、実質的に業務を遂行できることが必要です。名義だけの就任（名義貸し）は行政処分の原因となります。"}, {"m": 1, "q": "あかりさんが作成した「QP権限規程」に明記した5権限として正しいものはどれですか？", "o": ["製品企画・原料調達・価格決定・販売計画・広告審査", "市場出荷承認・変更管理最終承認・逸脱グレード判定・回収判断関与・製造業者監査指示", "人事採用・給与決定・教育計画・設備購入・予算管理", "研究開発・特許申請・新製品承認・輸出許可・在庫管理"], "h": "品質に関わる重要な判断・承認がすべて含まれています。", "c": 1, "e": "QP権限規程には①市場出荷承認、②変更管理最終承認、③逸脱グレード判定、④回収判断関与、⑤製造業者監査指示の5権限が明記されました。"}, {"m": 1, "q": "GQP省令第5条におけるQPの責務として正しいものはどれですか？", "o": ["製造業者の従業員を直接指揮・監督すること", "品質管理業務遂行のために必要な意見を製造販売業者に述べる義務があり、製造販売業者はその意見を尊重しなければならない", "製造販売業者の決定に従って行動するだけでよい", "製品の価格設定に関与すること"], "h": "QPは単なる実務担当者ではなく、経営者へ意見を述べる立場です。", "c": 1, "e": "第5条ではQPが製造販売業者に対して品質管理業務遂行のために必要な意見を述べる責務を持ち、製造販売業者はその意見を尊重しなければなりません。"}, {"m": 1, "q": "「名義貸し」が問題となる理由として最も適切なものはどれですか？", "o": ["QPの給与が不当に低くなるから", "実質的な品質管理機能が失われ、行政処分の原因となるから", "QPが忙しくなりすぎるから", "名義貸しは法的に認められているが慣習的に避けるべきだから"], "h": "形だけのQP就任が品質管理体制全体を形骸化させます。", "c": 1, "e": "名義貸し（実務をせず名前だけQPに就任すること）は実質的な品質管理機能を失わせ、行政処分の原因となります。"}, {"m": 1, "q": "あかりさんが初めての出荷判定で発見した問題はどれですか？", "o": ["試験成績書の数値が規格外だった", "製造記録に製造日の記入がなかった", "包装記録の記載漏れがあった", "製品の外観に異常があった"], "h": "4書類を照合する中で気づいた記録の不備です。", "c": 2, "e": "あかりさんは試験成績書・製造記録・包装記録・表示記録の4書類を照合する中で、包装記録の記載漏れを発見しました。製造業者に確認・補完してから出荷承認しました。"}, {"m": 1, "q": "出荷判定で確認すべき4種類の書類として正しいものはどれですか？", "o": ["注文書・請求書・納品書・領収書", "試験成績書・製造記録・包装記録・表示記録", "設計図・仕様書・工程表・検査表", "原料証明書・製造許可書・輸送記録・倉庫記録"], "h": "市場に出す前の最終チェックで必要な4種類の記録です。", "c": 1, "e": "出荷判定で確認すべき書類は①試験成績書（規格適合確認）、②製造記録（手順書通りの製造確認）、③包装・表示記録（正確な表示確認）、④逸脱の有無と処置の確認です。"}, {"m": 1, "q": "QP不在時のリスク管理として適切な対応はどれですか？", "o": ["不在時は出荷判定を一時停止する", "代行者を規程に定め、要件を満たした人物を事前に届け出て、復帰後に引き継ぎ確認を行う", "不在時は営業担当者が代わりに出荷判定を行う", "QP不在時は全ての出荷を中止する"], "h": "事前準備と引き継ぎの両方が大切です。", "c": 1, "e": "れいかさんの会社ではQP代行者を規程に定め、代行者も要件を満たした人物を事前に届け出ています。QP復帰後に全記録を引き継ぎ確認する体制です。"}, {"m": 1, "q": "QPを「品質の最後の砦」と表現する理由として最も適切なものはどれですか？", "o": ["QPの判定後に再確認する仕組みがないから", "QPが全ての品質判断に実質的に関与し、形骸化した運用は行政処分リスクを高めるから", "QPは製品が市場に出た後の問題も管理するから", "QPは法的に最高責任者だから"], "h": "「最後の砦」の意味は、それ以上に頼れるものがないという厳しさを含んでいます。", "c": 1, "e": "QPは市場に出す前の最終判断者として、すべての品質判断に実質的に関与します。形骸化した運用は行政処分リスクを高めるため、「品質の最後の砦」と言われます。"}, {"m": 1, "q": "あかりさんが初回出荷判定から貫いた姿勢として正しいものはどれですか？", "o": ["記録に軽微な不備があっても納期優先で承認する", "記録に不明点があれば確認・補完してから出荷承認する", "疑問点は後回しにして速やかに承認する", "製造業者を信頼して書類の詳細確認は省略する"], "h": "「最後の砦」としての姿勢が初回から示されました。", "c": 1, "e": "あかりさんは「記録に不明点があれば出荷承認しない」という姿勢を初回から貫きました。包装記録の記載漏れを発見した際も、補完を確認してから承認しました。"}, {"m": 2, "q": "製造業者との取決めの根拠条文として正しいものはどれですか？", "o": ["GQP省令第3条", "GQP省令第5条", "GQP省令第7条", "GQP省令第11条"], "h": "第7章ではなく第7条です。", "c": 2, "e": "製造業者との取決めはGQP省令第7条に基づきます。第7条第1項が取決めに記載すべき事項を定めています。"}, {"m": 2, "q": "製造業者への変更連絡について、重要変更の場合の事前連絡目安として正しいものはどれですか？", "o": ["1日前", "1週間前", "30日前", "3ヶ月前"], "h": "軽微変更は1週間前、重要変更はより長い期間が目安です。", "c": 2, "e": "重要変更は30日前、軽微変更は1週間前が事前連絡の目安です。スマイル化粧品工業と山田製造所の取決めでも重要変更は30日前書面通知と合意しました。"}, {"m": 2, "q": "グレードA（重大逸脱）が発生した場合の報告期限として正しいものはどれですか？", "o": ["7日以内", "48時間以内", "24時間以内", "月次報告でよい"], "h": "重大な問題ほど迅速な報告が求められます。", "c": 2, "e": "グレードA重大逸脱は24時間以内の電話＋書面報告が求められます。グレードB軽微逸脱は月次報告でよい場合もあります。"}, {"m": 2, "q": "令和3年改正によって取決め締結に追加された方法はどれですか？", "o": ["FAXによる締結", "電話による口頭合意", "電磁的方法（電子署名等）による締結", "第三者機関による公正証書作成"], "h": "デジタル化対応の改正内容です。", "c": 2, "e": "令和3年改正で電磁的方法（電子署名等）での取決め締結も認められました。ペーパーレス化への対応です。"}, {"m": 2, "q": "取決め書に記載すべき事項（第7条第1項）に含まれないものはどれですか？", "o": ["製造業務の範囲と品質管理の方法", "変更時の事前連絡方法", "逸脱発生時の報告と措置", "製品の小売価格設定方法"], "h": "取決めは「品質管理」に関する事項を定めるものです。", "c": 3, "e": "第7条第1項の取決め記載事項には製造業務の範囲、変更時連絡、逸脱報告、回収措置、品質情報の共有などが含まれますが、小売価格設定は品質管理の取決め範囲外です。"}, {"m": 2, "q": "あかりさんとれいかさんが取決め締結に要した打ち合わせ回数はどれですか？", "o": ["1回", "3回", "5回", "10回"], "h": "複数回の協議を経て合意に至りました。", "c": 1, "e": "あかりさんとれいかさんは3回の打ち合わせを経て取決め書を締結しました。変更管理・逸脱報告・回収対応・年次監査の4点が主な合意事項でした。"}, {"m": 2, "q": "複数の製造業者に製造委託している場合の管理として適切な方法はどれですか？", "o": ["最も重要な製造業者1社とのみ取決めを締結すればよい", "すべての製造業者と個別に取決めを締結し、管理台帳で一元管理する", "製造業者同士でまとめて取決めを締結させる", "取決めは任意なので締結しなくてもよい"], "h": "それぞれとの取決めが必要です。", "c": 1, "e": "複数の製造業者がいる場合は各社と個別に取決めを締結する必要があります。取決め書管理台帳を作成し、有効期限・最終改定日・次回レビュー予定を一元管理することで漏れを防ぎます。"}, {"m": 2, "q": "取決め書のレビューについて適切な頻度はどれですか？", "o": ["1回締結すれば永続的に有効で見直し不要", "年1回のレビュー会議で内容を確認する", "5年に1回見直す", "法改正があった場合のみ見直す"], "h": "取決めは「生きた文書」として維持が必要です。", "c": 1, "e": "スマイル化粧品工業と山田製造所の取決めでは年1回のレビュー会議で内容を確認する仕組みも設けました。法改正・体制変更があれば速やかに改定することが重要です。"}, {"m": 2, "q": "回収対応における製造販売業者（あかりさん）と製造業者（れいかさん）の役割分担として正しいものはどれですか？", "o": ["回収の判断も在庫保留もすべてあかりさんが実施", "回収判断はあかりさん、在庫保留（24時間以内）はれいかさんが実施", "回収判断はれいかさん、在庫保留はあかりさんが実施", "回収対応は薬務課に全部委ねる"], "h": "判断する側と現場で動く側が明確に分かれています。", "c": 1, "e": "取決めにより、回収の判断はあかりさん（製造販売業者のQP）が行い、在庫保留はれいかさん（製造業者）が24時間以内に実施する役割分担が明記されました。"}, {"m": 2, "q": "取決めを「形式的な書類ではなく実際の運用に即した内容」にするために重要なことはどれですか？", "o": ["できるだけ多くの条項を盛り込んで分厚い文書にする", "定期的に見直し、法改正・体制変更があれば速やかに改定する", "一度締結したら変更しないことで一貫性を保つ", "第三者機関に作成を委託して完璧な文書にする"], "h": "「生きた取決め」にするための継続的なアクションです。", "c": 1, "e": "取決めは形式的な書類ではなく実際の運用に即した内容を定期的に見直すことが重要です。法改正・体制変更があれば速やかに改定することで、実効性を保ちます。"}, {"m": 3, "q": "市場への出荷管理の根拠条文として正しいものはどれですか？", "o": ["GQP省令第4条", "GQP省令第6条", "GQP省令第8条", "GQP省令第10条"], "h": "「市場への出荷管理」の章番号を覚えましょう。", "c": 2, "e": "市場への出荷管理はGQP省令第8条に規定されています。「市場に出荷するときはQPが製造管理・品質管理の結果を確認した上で出荷しなければならない」と定めています。"}, {"m": 3, "q": "出荷判定記録の保管期間（通常品目）として正しいものはどれですか？", "o": ["1年間", "最低3年間", "5年間", "10年間"], "h": "再生医療等製品は30年と特別に長い期間が設定されています。", "c": 1, "e": "出荷判定記録は最低3年間保管が必要です。なお再生医療等製品は30年間の保管が義務付けられています。"}, {"m": 3, "q": "QPのデジタル署名（タイムスタンプ付き）による出荷判定記録が認められるようになったのはいつですか？", "o": ["平成16年のGQP省令制定時から", "平成21年の改正から", "令和3年の改正から", "令和5年の改正から"], "h": "電磁的記録対応の改正と同じタイミングです。", "c": 2, "e": "令和3年改正でQPのデジタル署名（タイムスタンプ付き）による出荷判定記録も認められました。ペーパーレス化対応の一環です。"}, {"m": 3, "q": "あかりさんが毎週火曜日を「出荷判定日」として管理していたロット数として正しいものはどれですか？", "o": ["月1〜2ロット", "月10〜20ロット", "月50〜100ロット", "月200ロット以上"], "h": "中規模化粧品会社として現実的な規模感です。", "c": 1, "e": "あかりさんは毎週火曜日を「出荷判定日」として月10〜20ロットを管理していました。定期的な判定日を設けることで業務を効率化しています。"}, {"m": 3, "q": "あかりさんがローション製品の試験成績書で気づいた「異常」はどれですか？", "o": ["試験成績書の数値が規格外だった", "粘度数値が規格内だが前ロットと大きく異なっていた（傾向変化）", "試験成績書に承認印がなかった", "試験日付が製造日より前だった"], "h": "「規格を満たしている」のに気づいた点がポイントです。", "c": 1, "e": "規格は満たしているものの、粘度数値が前ロットと大きく異なる傾向変化を発見しました。調査すると原料ロット変更の変更管理漏れが判明しました。"}, {"m": 3, "q": "規格内の数値でも傾向変化を見逃さない姿勢が重要な理由として最も適切なものはどれですか？", "o": ["規格内なら問題なく、念のため確認する程度でよい", "傾向変化は変更管理漏れや品質リスクの早期サインである可能性があるから", "傾向変化は必ず規格外につながるから", "試験機器の精度確認が目的だから"], "h": "「規格内だから大丈夫」という思い込みが落とし穴になります。", "c": 1, "e": "規格内でも傾向変化は変更管理漏れや品質劣化の早期サインである可能性があります。あかりさんの事例では傾向変化の発見が原料ロット変更の変更管理漏れを未然に防ぎました。"}, {"m": 3, "q": "電子出荷判定システムを導入する際に行政から問題なしとされた条件はどれですか？", "o": ["紙の書類も同時に作成して保管する", "QP電子署名（タイムスタンプ付き）で承認を記録する", "第三者機関の認証を取得する", "薬務課に事前申請して許可を得る"], "h": "電子署名の要件を満たせば認められます。", "c": 1, "e": "れいかさんの会社が令和5年から導入した電子出荷判定システムでは、QP電子署名（タイムスタンプ付き）で承認を記録しており、行政確認でも問題なしとされています。"}, {"m": 3, "q": "出荷管理を「品質の最後の砦」と表現する理由として最も適切なものはどれですか？", "o": ["出荷後に回収する仕組みがないから", "この段階で品質不良品を止められなければ消費者の手に渡るから", "出荷管理だけが法的義務だから", "出荷管理の担当者の権限が最も大きいから"], "h": "市場に出た後では取り戻せないという意味です。", "c": 1, "e": "出荷管理は市場に製品が出る最後の確認段階です。ここで品質不良品を止められなければ消費者の手に渡り、健康被害・回収・信頼失墜につながるため「品質の最後の砦」と言われます。"}, {"m": 3, "q": "出荷判定書類確認で重要な姿勢として、この研修で強調されているものはどれですか？", "o": ["書類確認の形式的実施を徹底する", "書類確認にとどまらず、傾向変化・異常兆候を見逃さない実質的な確認を行う", "速やかな出荷承認を最優先にする", "製造業者の記録を無条件に信頼する"], "h": "「形式的実施」との対比が重要なポイントです。", "c": 1, "e": "出荷管理では書類確認の形式的実施に終わらず、傾向変化・異常兆候を見逃さない姿勢が求められます。この姿勢が品質リスクを未然に防ぎます。"}, {"m": 3, "q": "第8条が規定する出荷時の確認義務の主体は誰ですか？", "o": ["製造業者の品質担当者", "製造販売業者のQP（品質保証責任者）", "薬務課の担当者", "販売先の品質担当者"], "h": "「市場に出荷するときは○○が確認した上で」と規定されています。", "c": 1, "e": "GQP省令第8条は「市場に出荷するときはQPが製造管理・品質管理の結果を確認した上で出荷しなければならない」と規定しており、確認義務の主体はQPです。"}, {"m": 4, "q": "変更管理の根拠条文として正しいものはどれですか？", "o": ["GQP省令第7条", "GQP省令第9条", "GQP省令第11条", "GQP省令第13条"], "h": "変更管理は9条、逸脱管理は10条です。", "c": 1, "e": "変更管理はGQP省令第9条に規定されています。重要な変更は事前にQPが評価・承認しなければなりません。"}, {"m": 4, "q": "変更管理における変更の重要度分類として正しいものはどれですか？", "o": ["A・B・Cの3分類", "軽微・中等度・重要の3分類", "グレード1・2・3・4の4分類", "緊急・通常・計画の3分類"], "h": "リスクの大きさによって分類します。", "c": 1, "e": "変更の重要度は軽微・中等度・重要の3分類が基本です。この分類基準を手順書で明確に定めることが求められます。"}, {"m": 4, "q": "ビタミンC誘導体原料のメーカー変更でのあかりさんの対応として正しいものはどれですか？", "o": ["変更後にまとめて記録を作成した", "変更申請書の作成・承認→新原料試験→製造業者への事前通知（30日前）→変更後ロット確認強化の4ステップを実施", "製造業者に変更を全て任せた", "軽微変更として事後報告のみ実施した"], "h": "変更管理手順書に従った4ステップが実施されました。", "c": 1, "e": "あかりさんは①変更申請書の作成・承認、②新原料の試験・比較データの確認、③製造業者への事前通知（30日前）、④変更後ロットの出荷前確認強化の4ステップを実施しました。"}, {"m": 4, "q": "逸脱管理の根拠条文として正しいものはどれですか？", "o": ["GQP省令第8条", "GQP省令第9条", "GQP省令第10条", "GQP省令第12条"], "h": "変更管理（第9条）の次の条文です。", "c": 2, "e": "逸脱管理はGQP省令第10条に規定されています。変更管理（第9条）と合わせて品質問題を防ぐ重要な仕組みです。"}, {"m": 4, "q": "れいかさんが充填量の規格下限に近い数値を発見した際に実施した最初のアクションはどれですか？", "o": ["作業を継続しながら様子を見た", "即座に作業を停止した", "上司に報告してから判断を仰いだ", "製造記録に数値を記録せずに作業を継続した"], "h": "逸脱発見時の「初動」が重要です。", "c": 1, "e": "れいかさんは充填量が規格下限に近い数値を発見した際、即座に作業を停止しました。その後グレード判定→設備点検→原因特定→是正処置という流れで対応しました。"}, {"m": 4, "q": "充填量逸脱の原因として特定されたものはどれですか？", "o": ["作業者の操作ミス", "充填設備のノズル詰まり", "原料の粘度変化", "計量器の故障"], "h": "設備点検の結果わかった物理的な原因です。", "c": 1, "e": "充填設備の点検を実施した結果、ノズル詰まりが原因と特定されました。詰まりの除去・再点検後に作業を再開し、逸脱記録・根本原因・是正処置・有効性確認を記録しました。"}, {"m": 4, "q": "「記録がなければ実施していないのと同じ」という原則が特に重要な局面はどれですか？", "o": ["日常的な製造作業", "変更管理・逸脱管理・是正処置などの品質管理活動全般", "製品の発送作業", "原料の発注作業"], "h": "品質管理の証拠となる記録の重要性です。", "c": 1, "e": "変更管理・逸脱管理・是正処置などの品質管理活動は、記録として残さなければ「実施していない」と見なされます。特に行政確認や監査では記録が唯一の証拠です。"}, {"m": 4, "q": "変更管理記録に明記すべき内容として正しいものはどれですか？", "o": ["変更費用と予算承認のみ", "変更理由・リスク評価・承認者・実施日", "変更の担当者の氏名と所属のみ", "変更前後の写真のみ"], "h": "なぜ変更するのか、誰が承認したのか、いつ実施するのかが重要です。", "c": 1, "e": "変更管理記録には変更理由・リスク評価・承認者・実施日を明記することが求められます。これらがあって初めて変更の適切性を後から確認できます。"}, {"m": 4, "q": "逸脱グレードAの発生時、製造業者から製造販売業者への報告の方法として取決めに定めるべきものはどれですか？", "o": ["週次メール報告", "月次報告書", "24時間以内の電話＋書面", "四半期ごとの報告会"], "h": "重大逸脱ほど迅速な報告が求められます。", "c": 2, "e": "グレードA重大逸脱は24時間以内の電話＋書面での報告を取決めに定めることが一般的です。重大な品質問題は迅速な情報共有が被害拡大防止につながります。"}, {"m": 4, "q": "再発防止の出発点として最も重要なことはどれですか？", "o": ["なるべく早く是正処置を実施して記録を閉じること", "発見した事実を正確に記録し、根本原因を追求すること", "問題が起きないよう業務量を減らすこと", "責任者を特定して処罰すること"], "h": "「対症療法」と「根本治療」の違いです。", "c": 1, "e": "再発防止の出発点は、発見した事実を正確に記録し、根本原因を追求することです。表面的な是正処置だけでは同じ問題が繰り返されます。"}, {"m": 5, "q": "品質情報処理の根拠条文として正しいものはどれですか？", "o": ["GQP省令第9条", "GQP省令第11条", "GQP省令第13条", "GQP省令第15条"], "h": "「11」というシンプルな番号です。", "c": 1, "e": "品質情報処理はGQP省令第11条に規定されています。クレーム・品質異常情報の収集・評価・処置の手順を定めることが求められます。"}, {"m": 5, "q": "重大な品質情報が発生した場合、QPへの報告期限として正しいものはどれですか？", "o": ["翌営業日まで", "48時間以内", "24時間以内", "1週間以内"], "h": "健康被害リスクがある情報ほど迅速な報告が必要です。", "c": 2, "e": "重大な品質情報はQPに24時間以内報告することが求められます。迅速な報告が対応の速さにつながり、被害の拡大を防ぎます。"}, {"m": 5, "q": "品質情報の収集対象として、この研修で特に言及されたものはどれですか？", "o": ["電話のクレームのみ", "電話・メール・Webフォームの受付窓口に加え、SNS情報も収集・評価の対象", "書面でのクレームのみ", "小売店経由のクレームのみ"], "h": "デジタル時代の品質情報収集では見落としがちな情報源があります。", "c": 1, "e": "品質情報の収集対象にはSNS情報も含まれます。消費者が公開投稿で品質問題を報告するケースがあるため、SNSも収集・評価の対象に含めることが重要です。"}, {"m": 5, "q": "あかりさんが対応した「容器変色クレーム」の調査結果として正しいものはどれですか？", "o": ["製造工程での異物混入", "保管中の紫外線影響", "製造業者の原料変更", "容器メーカーの素材変更"], "h": "保管環境が原因でした。", "c": 1, "e": "調査の結果、保管中の紫外線影響と特定されました。グレードCと判定し、次のロットから遮光包装に変更する是正処置を実施しました。"}, {"m": 5, "q": "容器変色クレームを月次報告に集積した結果、どのような対応が取られましたか？", "o": ["クレームを個別案件として終結させた", "次のロットから遮光包装に変更した", "製造業者を変更した", "製品の製造を中止した"], "h": "傾向把握から是正処置につながった好事例です。", "c": 1, "e": "クレーム情報を月次報告に集計し傾向を把握した結果、次のロットから遮光包装に変更する是正処置を実施しました。品質情報の活用が製品改良につながった事例です。"}, {"m": 5, "q": "異物混入（金属片）クレームの回収ランクとして正しいものはどれですか？", "o": ["クラスⅠ（最も軽微）", "クラスⅡ（重篤な健康被害のおそれ）", "クラスⅢ（軽微な健康被害のおそれ）", "ランク外（健康被害なし）"], "h": "金属片の混入は重篤な健康被害のリスクがあります。", "c": 1, "e": "金属片の異物混入は重篤な健康被害のおそれからクラスⅡと判定されます。対象ロットの在庫保留・出荷済み製品の顧客通知・薬務課への報告を24時間以内に実施しました。"}, {"m": 5, "q": "回収が決定した場合、在庫の保留を実施すべき期限として取決めに定めるべきものはどれですか？", "o": ["1週間以内", "72時間以内", "24時間以内", "翌月初めまで"], "h": "回収対応の初動は速やかであることが重要です。", "c": 2, "e": "回収時の措置として、製造業者による在庫保留は24時間以内に実施することを取決めに定めます。迅速な在庫保留が被害拡大を防ぎます。"}, {"m": 5, "q": "品質情報を「改善のための宝」と表現する意図として最も適切なものはどれですか？", "o": ["クレームが多いほど製品が売れている証拠だから", "クレームや品質情報を隠さず記録・評価・対処することで製品と組織が改善されるから", "クレームデータは競合他社に販売できる価値があるから", "クレームを集めることで法的責任を回避できるから"], "h": "「隠す」のではなく「活用する」という視点です。", "c": 1, "e": "品質情報は「改善のための宝」であり、隠すことなく記録し、評価・対処することが消費者保護と企業信頼の両立につながります。問題を隠蔽すると大規模回収・信頼失墜につながります。"}, {"m": 5, "q": "クレーム対応でまず行うべきことはどれですか？", "o": ["クレームを入れた消費者に直ちに返金対応する", "受付日時・内容・ロット番号を品質情報記録に残し、QPに報告する", "製造業者に連絡して対応を全て委ねる", "担当者の判断でクレームの重大性を評価してから記録する"], "h": "「記録」と「報告」が初動の基本です。", "c": 1, "e": "クレーム対応の初動は受付日時・内容・ロット番号を品質情報記録に残し、QPに報告することです。記録なしに対応を進めると後から経緯を追えなくなります。"}, {"m": 5, "q": "異物混入（金属片）の是正処置として実施されたものはどれですか？", "o": ["製造業者を別の会社に変更した", "製造工程の金属検出機の設定を見直した", "対象製品の製造を永久に中止した", "外部コンサルタントに改善を全て委ねた"], "h": "原因（金属検出機）に直接対処しています。", "c": 1, "e": "異物混入（金属片）の回収後、製造工程の金属検出機の設定を見直すという是正処置が実施されました。根本原因（設定の不備）に直接対処しています。"}, {"m": 6, "q": "自己点検の根拠条文として正しいものはどれですか？", "o": ["GQP省令第15条", "GQP省令第16条", "GQP省令第18条", "GQP省令第20条"], "h": "自己点検・教育訓練・文書管理の順に第18・19・3条です。", "c": 2, "e": "自己点検はGQP省令第18条に規定されています。年1回以上の計画を立案し実施記録を保管することが求められます。"}, {"m": 6, "q": "自己点検の実施頻度として正しいものはどれですか？", "o": ["3年に1回以上", "2年に1回以上", "年1回以上", "月1回以上"], "h": "「定期的に自分たちで点検する」ための最低頻度です。", "c": 2, "e": "GQP省令第18条では年1回以上の自己点検計画を立案し実施することが求められます。実施記録を保管し、不備事項は是正処置と期限・担当者を明記します。"}, {"m": 6, "q": "自己点検で不備事項が見つかった場合に記録すべき内容として正しいものはどれですか？", "o": ["不備事項の件数のみ", "不備事項・是正処置・期限・担当者を明記する", "不備事項の担当者名のみ記録する", "不備事項を非公開のメモとして保管する"], "h": "不備を発見するだけでなく、改善まで追跡できる記録が必要です。", "c": 1, "e": "不備事項が見つかった場合は是正処置と期限・担当者を明記した記録を作成します。この記録がQP・経営者への報告と翌年計画改善に活用されます。"}, {"m": 6, "q": "あかりさんが初回自己点検で発見した不備の件数はいくつでしたか？", "o": ["1件", "4件（SOP改定日記入漏れ・承認者欄の漏れ等）", "10件", "不備はゼロだった"], "h": "「軽微不備」という表現がポイントです。", "c": 1, "e": "初回自己点検でSOPの改定日記入漏れ・承認者欄の漏れ等4件の軽微不備を発見しました。是正処置記録を作成し期限内に全て是正、翌年の自己点検では不備ゼロを達成しました。"}, {"m": 6, "q": "教育訓練の根拠条文として正しいものはどれですか？", "o": ["GQP省令第17条", "GQP省令第18条", "GQP省令第19条", "GQP省令第20条"], "h": "自己点検（第18条）の次の条文です。", "c": 2, "e": "教育訓練はGQP省令第19条に規定されています。自己点検（第18条）と合わせて品質管理体制の維持を支える重要な要素です。"}, {"m": 6, "q": "れいかさんの会社がeラーニングシステムを導入した主なメリットはどれですか？", "o": ["教育訓練コストの増加", "動画視聴履歴・理解度テスト結果を自動記録し、教育訓練管理の工数を大幅削減", "社員の満足度向上のみが目的", "外部講師を不要にして質が低下した"], "h": "記録の自動化が最大のメリットです。", "c": 1, "e": "eラーニングシステムの導入により、動画視聴履歴・理解度テスト結果が自動記録され、教育訓練管理の工数が大幅削減されました。GQP省令が要求する教育訓練記録の維持が効率化されます。"}, {"m": 6, "q": "文書管理の根拠条文として正しいものはどれですか？", "o": ["GQP省令第1条", "GQP省令第3条", "GQP省令第8条", "GQP省令第19条"], "h": "第3条は「品質管理業務の実施」全般を定めており、文書管理も含まれます。", "c": 1, "e": "文書管理はGQP省令第3条に規定されています。手順書の整備・改訂・廃版管理が含まれます。"}, {"m": 6, "q": "自己点検・教育訓練・文書管理を「維持管理三本柱」と呼ぶ理由として最も適切なものはどれですか？", "o": ["この3つだけがGQP省令に規定されているから", "この3つが品質管理体制を継続的に維持・改善するための基盤となるから", "この3つは法的罰則が最も厳しいから", "この3つは外部審査の対象だから"], "h": "「三本柱」は互いに支え合う関係にあります。", "c": 1, "e": "自己点検・教育訓練・文書管理は品質管理体制を「生きた仕組み」として維持するための三本柱です。この3つが機能して初めて品質管理体制が継続的に改善されます。"}, {"m": 6, "q": "自己点検の結果をQP・経営者に報告することの主な目的はどれですか？", "o": ["責任追及のため", "翌年計画の改善とリソース確保に活用するため", "外部審査機関への提出のため", "競合他社の情報収集のため"], "h": "点検結果を「活用する」ことが本来の目的です。", "c": 1, "e": "自己点検結果をQP・経営者に報告する目的は、翌年計画の改善とリソース（人・予算・設備）の確保に活用するためです。報告書は改善のためのツールです。"}, {"m": 6, "q": "「形骸化しない運用」が特に重要と強調されている理由はどれですか？", "o": ["形骸化は法律で禁止されているから", "形骸化すると三本柱が機能せず、品質管理体制の継続的改善が止まるから", "形骸化した運用は外見上わかりやすいから", "形骸化は製造コストを増加させるから"], "h": "「形式だけ」の運用は品質管理の実効性を失わせます。", "c": 1, "e": "自己点検・教育訓練・文書管理が形骸化すると、これらが品質管理体制を維持・改善する機能を失います。「形だけ実施しているが実質は何も変わらない」状態は最も危険です。"}]};
+const totalPool = QD.questions.length;
+const courseShowCount = Math.floor(totalPool / 2);
+
+// コース全体テスト表示数の初期化
+document.getElementById('courseTotal').textContent = totalPool;
+document.getElementById('courseCount').textContent = courseShowCount;
+
+// 動画選択リスト生成
+var sl = document.getElementById('slList');
+QD.titles.forEach(function(t, i) {
+  var cnt = QD.questions.filter(function(q){return q.m===i}).length;
+  var div = document.createElement('div');
+  div.className='sl-item';
+  div.innerHTML='<div class="sl-num">'+(i+1)+'</div><div class="sl-title">'+t+'</div>';
+  div.onclick=function(){selectVideo(i)};
+  sl.appendChild(div);
+});
+
+var modIdx = 0, mode = 'video';
+
+function selectVideo(idx) {
+  modIdx = idx;
+  document.getElementById('panelSelect').style.display='none';
+  document.getElementById('svTitle').textContent = QD.titles[idx]+' 確認テスト';
+  var mc = QD.questions.filter(function(q){return q.m===idx}).length;
+  document.getElementById('svCount').textContent = mc;
+  document.getElementById('panelVideo').style.display='block';
+  document.getElementById('startVideo').style.display='block';
+  document.getElementById('qVideo').style.display='none';
+  document.getElementById('rVideo').style.display='none';
+}
+
+function switchTab(t) {
+  document.querySelectorAll('.tb').forEach(function(b){
+    var isMatch=(t==='select'&&b.classList.contains('t-video'))||b.classList.contains('t-'+t);
+    b.classList.toggle('on',isMatch);
+  });
+  var ps=document.getElementById('panelSelect');
+  if(t==='select'){
+    if(ps)ps.style.display='block';
+    document.getElementById('panelVideo').style.display='none';
+  }else if(t==='video'){
+    if(ps)ps.style.display='none';
+    document.getElementById('panelVideo').style.display='block';
+  }else{
+    if(ps)ps.style.display='none';
+    document.getElementById('panelVideo').style.display='none';
+  }
+  document.getElementById('panelCourse').style.display=t==='course'?'block':'none';
+}
+
+var quizzes = {video:{qs:[],ci:0,sc:0,ans:[]},course:{qs:[],ci:0,sc:0,ans:[]}};
+
+window.go = function(m) {
+  mode=m; var qz=quizzes[m]; qz.ci=0; qz.sc=0; qz.ans=[];
+  if(m==='video'){
+    qz.qs = QD.questions.filter(function(q){return q.m===modIdx});
+    for(var i=qz.qs.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=qz.qs[i];qz.qs[i]=qz.qs[j];qz.qs[j]=t}
+  } else {
+    var pool = QD.questions.slice();
+    for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=pool[i];pool[i]=pool[j];pool[j]=t}
+    qz.qs = pool.slice(0, courseShowCount);
+  }
+  g('start'+(m==='video'?'Video':'Course')).style.display='none';
+  g('r'+(m==='video'?'Video':'Course')).style.display='none';
+  var qEl=g('q'+(m==='video'?'Video':'Course'));
+  qEl.style.display='block';
+  showQ(m); qEl.scrollIntoView({behavior:'smooth'});
+};
+
+function g(id){return document.getElementById(id)}
+
+function showQ(m) {
+  var qz=quizzes[m], q=qz.qs[qz.ci], total=qz.qs.length;
+  var cls=m==='video'?'c-video':'c-course';
+  var qEl=g('q'+(m==='video'?'Video':'Course'));
+  var pct=Math.round((qz.ci/total)*100);
+  qEl.innerHTML=
+    '<div class="pg"><div class="pgb"><div class="pgf '+cls+'" style="width:'+pct+'%"></div></div>'+
+    '<div class="pgc">'+(qz.ci+1)+'/'+total+'</div></div>'+
+    '<div class="qm">Q'+(qz.ci+1)+'</div>'+
+    '<div class="qt">'+q.q+'</div>'+
+    '<button class="hb" onclick="toggleHint(this,\''+m+'\')">💡 ヒントを見る</button>'+
+    '<div class="hi">'+q.h+'</div>'+
+    '<div class="os">'+
+    q.o.map(function(opt,i){
+      return '<button class="o" onclick="ans('+i+',\''+m+'\')" data-idx="'+i+'">'+
+             '<div class="ol">'+['Ａ','Ｂ','Ｃ','Ｄ'][i]+'</div><div>'+opt+'</div></button>';
+    }).join('')+
+    '</div>'+
+    '<div class="ex"></div>'+
+    '<button class="nx '+cls+'" onclick="next(\''+m+'\')" id="nx'+m+'">'+(qz.ci+1<total?'次の問題 →':'結果を見る')+'</button>';
+}
+
+function toggleHint(btn, m) {
+  var qEl=g('q'+(m==='video'?'Video':'Course'));
+  var hi=qEl.querySelector('.hi');
+  hi.style.display=hi.style.display==='block'?'none':'block';
+}
+
+function ans(idx, m) {
+  var qz=quizzes[m], q=qz.qs[qz.ci];
+  var qEl=g('q'+(m==='video'?'Video':'Course'));
+  var os=qEl.querySelectorAll('.o');
+  os.forEach(function(o){o.classList.add('lk');o.style.cursor='default'});
+  var correct=(idx===q.c);
+  if(correct)qz.sc++;
+  qz.ans.push({q:q.q,ua:q.o[idx],ca:q.o[q.c],correct:correct,e:q.e});
+  os[idx].classList.add(correct?'ok':'ng');
+  if(!correct)os[q.c].classList.add('ok');
+  var ex=qEl.querySelector('.ex');
+  ex.style.display='block'; ex.textContent=q.e;
+  g('nx'+m).style.display='inline-block';
+}
+
+function next(m) {
+  var qz=quizzes[m];
+  qz.ci++;
+  if(qz.ci<qz.qs.length){
+    showQ(m);
+  } else {
+    showResult(m);
+  }
+}
+
+function showResult(m) {
+  var qz=quizzes[m];
+  var rEl=g('r'+(m==='video'?'Video':'Course'));
+  var qEl=g('q'+(m==='video'?'Video':'Course'));
+  qEl.style.display='none';
+  rEl.style.display='block';
+  var pct=Math.round((qz.sc/qz.qs.length)*100);
+  var pass=pct>=70;
+  var emoji=pct>=90?'🎉':pct>=70?'😊':pct>=50?'📚':'💪';
+  var wrongItems=qz.ans.filter(function(a){return !a.correct}).map(function(a){
+    return '<div class="rvi"><div class="rvq">'+a.q+'</div>'+
+           '<div class="rvy">あなたの回答：'+a.ua+'</div>'+
+           '<div class="rvc">正解：'+a.ca+'</div>'+
+           '<div class="rve">'+a.e+'</div></div>';
+  }).join('');
+  rEl.innerHTML=
+    '<div class="rc '+(pass?'ps':'fl')+'">'+
+    '<div class="rk">'+emoji+'</div>'+
+    '<div class="rs">'+qz.sc+' / '+qz.qs.length+'問正解</div>'+
+    '<div class="rd">正答率 '+pct+'%</div>'+
+    (pass?'<div class="rpm">✅ 合格！よくできました</div>':'<div class="rfm">📖 復習して再挑戦しましょう</div>')+
+    '</div>'+
+    (wrongItems?'<div class="rvt">📝 間違えた問題</div>'+wrongItems:'')+
+    '<div class="rt">'+
+    (m==='video'?'<button class="B bg" onclick="go(\'video\')">🔄 もう一度</button><button class="B" style="background:#1e293b;color:#f1f5f9" onclick="switchTab(\'select\')">← 動画選択に戻る</button>':
+                 '<button class="B bo" onclick="go(\'course\')">🔄 もう一度</button>')+
+    '</div>';
+}
+</script>
+</body>
+</html>

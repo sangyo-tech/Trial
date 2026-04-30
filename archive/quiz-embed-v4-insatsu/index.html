@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>確認テスト | 産業技術アカデミー</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:transparent}
+#R{font-family:'Noto Sans JP',system-ui,sans-serif;color:#f1f5f9;line-height:1.7;max-width:800px;margin:0 auto;padding:24px 16px}
+#R *{box-sizing:border-box;margin:0;padding:0}
+#R button{font-family:inherit;cursor:pointer}
+.tt{display:flex;gap:0;margin-bottom:32px;background:#0f172a;border-radius:14px;padding:5px;border:1px solid #1e293b}
+.tb{flex:1;padding:14px 20px;border-radius:10px;font-size:15px;font-weight:700;border:none;background:transparent;color:#64748b;transition:all .3s;letter-spacing:.02em;text-align:center}
+.tb:hover:not(.on){color:#94a3b8;background:rgba(255,255,255,.03)}
+.tb.on{color:#fff;box-shadow:0 2px 12px rgba(0,0,0,.3)}
+.tb.t-video.on{background:linear-gradient(135deg,#22c55e,#16a34a);color:#000;box-shadow:0 4px 16px rgba(34,197,94,.3)}
+.tb.t-course.on{background:linear-gradient(135deg,#f59e0b,#d97706);color:#000;box-shadow:0 4px 16px rgba(245,158,11,.3)}
+.S{border-radius:14px;padding:32px 24px;text-align:center}
+.S.s-video{background:linear-gradient(135deg,rgba(34,197,94,.05),rgba(34,197,94,.08));border:1px solid rgba(34,197,94,.2)}
+.S.s-course{background:linear-gradient(135deg,rgba(245,158,11,.05),rgba(245,158,11,.08));border:1px solid rgba(245,158,11,.2)}
+.S h3{font-size:18px;font-weight:700;margin-bottom:8px;color:#f1f5f9}
+.S p{color:#94a3b8;font-size:14px;margin-bottom:20px;line-height:1.8}
+.sp{display:flex;justify-content:center;gap:24px;margin-bottom:24px;flex-wrap:wrap}
+.sv{font-size:22px;font-weight:700}
+.s-video .sv{color:#22c55e}
+.s-course .sv{color:#f59e0b}
+.sl{font-size:11px;color:#64748b}
+.B{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;border-radius:12px;font-size:16px;font-weight:700;border:none;transition:all .3s;position:relative;overflow:hidden}
+.B::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.2),transparent);opacity:0;transition:opacity .3s}
+.B:hover{transform:translateY(-3px)}.B:hover::after{opacity:1}
+.B:active{transform:translateY(-1px)}
+.B.bg{background:linear-gradient(135deg,#22c55e,#4ade80);color:#000;box-shadow:0 6px 24px rgba(34,197,94,.3)}
+.B.bo{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#000;box-shadow:0 6px 24px rgba(245,158,11,.3)}
+.Q{display:none}
+.pg{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.pgb{flex:1;height:6px;background:#1e293b;border-radius:3px;overflow:hidden}
+.pgf{height:100%;border-radius:3px;transition:width .3s}
+.pgf.c-video{background:#22c55e}.pgf.c-course{background:#f59e0b}
+.pgc{font-size:13px;color:#64748b;white-space:nowrap}
+.qm{font-size:12px;color:#06b6d4;margin-bottom:8px;font-weight:500}
+.qt{font-size:16px;font-weight:600;margin-bottom:18px;line-height:1.6;color:#f1f5f9}
+.hb{font-size:12px;color:#d4a017;background:rgba(212,160,23,.1);border:1px solid rgba(212,160,23,.3);border-radius:6px;padding:4px 12px;margin-bottom:14px;display:inline-block}
+.hi{display:none;font-size:13px;color:#94a3b8;background:rgba(212,160,23,.05);border-left:3px solid #d4a017;padding:10px 14px;border-radius:6px;margin-bottom:14px}
+.os{display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
+.o{background:#111827;border:2px solid #1e293b;border-radius:10px;padding:13px 16px;font-size:14px;cursor:pointer;transition:all .15s;display:flex;align-items:flex-start;gap:12px;text-align:left;color:#f1f5f9}
+.o:hover:not(.lk){border-color:#334155;background:#1a2332}
+.ol{width:26px;height:26px;border-radius:50%;background:#1e293b;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;color:#94a3b8}
+.o.ok{border-color:#22c55e;background:rgba(34,197,94,.08)}.o.ok .ol{background:#22c55e;color:#fff}
+.o.ng{border-color:#ef4444;background:rgba(239,68,68,.08)}.o.ng .ol{background:#ef4444;color:#fff}
+.ex{display:none;background:rgba(59,130,246,.06);border-left:3px solid #3b82f6;border-radius:6px;padding:12px 14px;margin-bottom:18px;font-size:13px;color:#94a3b8;line-height:1.7}
+.nx{display:none;border:none;border-radius:8px;padding:11px 28px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s}
+.nx:hover{transform:translateY(-2px)}
+.nx.c-video{background:linear-gradient(135deg,#22c55e,#4ade80);color:#000}
+.nx.c-course{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#000}
+.Rs{display:none}
+.rc{border-radius:14px;padding:32px 24px;text-align:center;margin-bottom:24px}
+.rc.ps{background:linear-gradient(135deg,rgba(34,197,94,.04),rgba(34,197,94,.08));border:1px solid rgba(34,197,94,.2)}
+.rc.fl{background:linear-gradient(135deg,rgba(239,68,68,.04),rgba(239,68,68,.08));border:1px solid rgba(239,68,68,.2)}
+.rk{font-size:52px;font-weight:700;margin-bottom:6px}
+.rs{font-size:24px;font-weight:700;color:#f1f5f9;margin-bottom:4px}
+.rd{font-size:14px;color:#94a3b8;margin-bottom:14px}
+.rpm{font-size:15px;font-weight:600;color:#22c55e;margin-bottom:14px}
+.rfm{font-size:15px;font-weight:600;color:#ef4444;margin-bottom:14px}
+.rvt{font-size:16px;font-weight:700;margin-bottom:14px;color:#f59e0b}
+.rvi{background:#111827;border:1px solid #1e293b;border-radius:10px;padding:16px 18px;margin-bottom:10px;text-align:left}
+.rvq{font-size:13px;font-weight:600;margin-bottom:6px;color:#f1f5f9}
+.rvy{font-size:12px;color:#ef4444;margin-bottom:3px}
+.rvc{font-size:12px;color:#22c55e;margin-bottom:6px}
+.rve{font-size:12px;color:#64748b;line-height:1.6}
+.rt{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:20px}
+.sl-list{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.sl-item{background:#111827;border:1px solid #1e293b;border-radius:10px;padding:14px 16px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:12px}
+.sl-item:hover{border-color:#334155;background:#1a2332;transform:translateX(4px)}
+.sl-num{width:32px;height:32px;border-radius:8px;background:#22c55e;color:#000;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.sl-title{font-size:14px;color:#f1f5f9;line-height:1.5}
+</style>
+</head>
+<body>
+<div id="R">
+  <div class="tt">
+    <button class="tb t-video on" onclick="switchTab('select')">動画別テスト</button>
+    <button class="tb t-course" onclick="switchTab('course')">コース全体テスト</button>
+  </div>
+
+  <!-- 動画選択 -->
+  <div id="panelSelect">
+    <div class="sl-list" id="slList"></div>
+  </div>
+
+  <!-- 動画別テスト -->
+  <div id="panelVideo" style="display:none">
+    <div class="S s-video">
+      <h3 id="svTitle"></h3>
+      <p>この動画の内容を確認する問題です。</p>
+      <div class="sp">
+        <div><div class="sv" id="svCount">10</div><div class="sl">問題数</div></div>
+      </div>
+      <button class="B bg" id="startVideo" onclick="go('video')">▶ テスト開始</button>
+    </div>
+    <div class="Q" id="qVideo"></div>
+    <div class="Rs" id="rVideo"></div>
+  </div>
+
+  <!-- コース全体テスト -->
+  <div id="panelCourse" style="display:none">
+    <div class="S s-course">
+      <h3>コース全体テスト</h3>
+      <p>全動画の問題からランダムに出題します。</p>
+      <div class="sp">
+        <div><div class="sv" id="courseCount">-</div><div class="sl">出題数</div></div>
+        <div><div class="sv" id="courseTotal">-</div><div class="sl">総問題数</div></div>
+      </div>
+      <button class="B bo" id="startCourse" onclick="go('course')">▶ テスト開始</button>
+    </div>
+    <div class="Q" id="qCourse"></div>
+    <div class="Rs" id="rCourse"></div>
+  </div>
+</div>
+
+<script>
+const QD = {"titles": ["第1回：印刷品質管理の基礎 — 色差ΔE・バーコード品質・受入検査", "第2回：インク安全性管理 — NL規制・食品接触材料・残留溶剤", "第3回：ラベル表示管理と改訂管理 — 薬機法・食品表示法との連携", "第4回：グリーンマーク・植物油インク・環境配慮印刷"], "questions": [{"m": 0, "q": "色差ΔEの説明として正しいものはどれですか？", "o": ["印刷物の光沢度を測定する指標", "CIELab色空間での色の差を数値化した指標", "インクの乾燥速度を示す指標", "バーコードの読み取り精度を示す指標"], "h": "CIELabという色空間での差を数値化します。", "c": 1, "e": "ΔE（デルタE）はCIELab色空間での色の差を数値化した指標です。数値が大きいほど色の差が大きいことを意味します。"}, {"m": 0, "q": "ΔE=3の解釈として正しいものはどれですか？", "o": ["専門機器でのみ検出可能な微細な差", "注意して見て感じる差", "注意せずとも感じる差（一般人でも気づく差）", "明らかな色違いで誰でも即座にわかる差"], "h": "ΔE=1と3と6以上の3段階で覚えましょう。", "c": 2, "e": "ΔE=1は注意して見て感じる差、ΔE=3は注意せずとも感じる差、ΔE=6以上は明らかな色違いです。ΔE=3の段階で一般の消費者でも色の違いを認識できます。"}, {"m": 0, "q": "高品質印刷物（ブランドカラー管理等）における色差の許容基準として正しいものはどれですか？", "o": ["ΔE≦1", "ΔE≦3", "ΔE≦5", "ΔE≦8"], "h": "「高品質」は一般商業印刷より厳しい基準が適用されます。", "c": 1, "e": "高品質印刷物でΔE≦3、一般商業印刷でΔE≦5が許容基準の目安です。化粧品等ブランドカラーの厳密な管理が必要な場合はΔE≦3以内での管理が推奨されます。"}, {"m": 0, "q": "バーコード品質（ISO/IEC 15416）の等級評価として正しいものはどれですか？", "o": ["1〜10の数値で評価する", "A〜Fの6段階で評価する", "◎・○・△・×の4段階で評価する", "合格・不合格の2段階で評価する"], "h": "アルファベットで評価します。", "c": 1, "e": "バーコード品質はISO/IEC 15416（1次元）・15415（2次元）に基づき、A〜Fの6段階で等級評価します。AがベストグレードでFが最低です。"}, {"m": 0, "q": "JAN/EANコードのバーコード品質グレードの目安として正しいものはどれですか？", "o": ["グレードA以上", "グレードB以上", "グレードC以上", "グレードD以上"], "h": "小売のPOSシステムで安定的に読み取れるグレードが目安です。", "c": 1, "e": "JAN/EANコードはグレードB以上が目安です。グレードCやDでは読み取りエラーが増加し、小売店のPOSシステムでの誤読取りや業務遅延につながります。"}, {"m": 0, "q": "あかりさんのブランドカラー問題の原因として特定されたものはどれですか？", "o": ["印刷会社のインクが古くなっていた", "印刷会社の担当者交代によりインク調合比率が正確に引き継がれていなかった", "原紙の品質が低下していた", "印刷機の老朽化が原因だった"], "h": "「人が変わると知識が引き継がれない」という組織的な問題です。", "c": 1, "e": "印刷会社の担当者交代によりインク調合比率が正確に引き継がれていなかったことが原因でした。対策としてブランドカラーの標準分光データを印刷会社に提供し、各ロット印刷時のΔE≦3サインオフを義務化しました。"}, {"m": 0, "q": "ブランドカラー問題への具体的な対策として実施されたものはどれですか？", "o": ["印刷会社を変更した", "ブランドカラーの標準分光データを印刷会社に提供し、各ロット印刷時のΔE≦3サインオフを義務化・受入時の自社測色計確認を追加した", "印刷品質の許容基準をΔE≦10に緩和した", "消費者クレームが続くまで対策を取らなかった"], "h": "データ共有・承認基準の明確化・受入確認の3点セットです。", "c": 1, "e": "対策として①ブランドカラーの標準分光データを印刷会社に提供、②各ロット印刷時のΔE≦3サインオフを義務化、③受入時の自社測色計サンプリング確認を取決めに追記しました。"}, {"m": 0, "q": "POSシステムでの読み取りエラークレームを受けたれいかさんの調査で判明したことはどれですか？", "o": ["バーコードのデザインが規格外だった", "バーコード検証器での測定でグレードDと判定され、印刷会社のプリンターヘッド劣化が原因と判明した", "バーコードのサイズが小さすぎた", "印刷の向きが間違っていた"], "h": "測定→原因特定という順序で対応しました。", "c": 1, "e": "バーコード検証器での測定でグレードDと判定され、印刷会社のプリンターヘッド劣化が原因と判明しました。ヘッド交換・全ロット再検証・グレードB以上のものだけ出荷の取り決めが実施されました。"}, {"m": 0, "q": "見当精度（多色刷りのズレ）の許容基準として食品・医薬品ラベルでの目安はどれですか？", "o": ["±0.05mm以内", "±0.1mm以内", "±0.3mm以内", "±1.0mm以内"], "h": "精密な位置合わせが求められる用途では厳しい基準が適用されます。", "c": 2, "e": "見当精度（多色刷りのズレ）は食品・医薬品ラベルでは±0.3mm以内が目安です。ズレが大きいと文字の可読性が低下し、表示義務違反につながるリスクがあります。"}, {"m": 0, "q": "印刷品質管理に分光測色計を投資することの経営的意義として最も適切なものはどれですか？", "o": ["分光測色計は法定義務なので必須", "クレームコストの削減として投資を回収できるから", "分光測色計は安価で購入コストが低いから", "測色計がなければ印刷品質の管理は不可能だから"], "h": "投資対効果（ROI）の観点から正当化できます。", "c": 1, "e": "分光測色計・バーコード検証器への投資はクレームコスト（回収・対応費用・信頼失墜）の削減として回収できます。印刷品質管理への投資は「見た目の品質」から「物流効率」まで広範な効果があります。"}, {"m": 1, "q": "食品包装の外面印刷で特に懸念されるインクのリスクとして正しいものはどれですか？", "o": ["インクが剥がれて外観が悪化するリスク", "インク成分が内容物に移行（セットオフ・ガス移行）するリスク", "インクが変色して色管理が困難になるリスク", "インクの乾燥不良で印刷物が汚れるリスク"], "h": "「外側のインクが内側の食品に移る」というリスクです。", "c": 1, "e": "食品包装の外面印刷では、インク成分が内容物に移行（セットオフ：物理的接触、ガス移行：揮発）するリスクが特に懸念されます。食品の安全性に直結します。"}, {"m": 1, "q": "MOH（Mineral Oil Hydrocarbons）が問題となる印刷方式はどれですか？", "o": ["グラビア印刷", "フレキソ印刷", "オフセット印刷", "UV印刷"], "h": "石油系インクを使用する代表的な印刷方式です。", "c": 2, "e": "MOH（ミネラルオイル系成分）はオフセット印刷インクから食品への移行が問題となります。特にオフセット印刷で使用される石油系インクのミネラルオイルが段ボール等を経由して食品に移行するリスクがあります。"}, {"m": 1, "q": "NL規制（Non-Listed規制）の管理方式として正しいものはどれですか？", "o": ["ネガティブリスト方式（使用禁止物質リスト）", "ポジティブリスト方式（使用可能物質リストのみ使用可）", "自主申告方式", "認証機関による許可方式"], "h": "「リストに載っているもの以外は使えない」という考え方です。", "c": 1, "e": "NL規制はポジティブリスト方式で管理されています。リストに掲載された物質のみが食品包装用インクに使用可能です。法規制ではありませんが、大手食品メーカーはNL規制適合を取引条件とする場合が増えています。"}, {"m": 1, "q": "残留溶剤の分析方法として正しいものはどれですか？", "o": ["pH測定", "GC（ガスクロマトグラフィー）分析", "UV吸光度測定", "原子吸光分析"], "h": "揮発性有機化合物の分離・検出に適した分析法です。", "c": 1, "e": "残留溶剤の分析にはGC（ガスクロマトグラフィー）分析が使用されます。特にレトルト・蒸着等の高温工程製品では残留溶剤試験の実施・証明書取得が必須です。"}, {"m": 1, "q": "レトルト食品パッケージのインク臭クレームの原因として特定されたものはどれですか？", "o": ["インクの色が変化したため", "グラビアインクの溶剤（酢酸エチル）が完全乾燥せず内容物に移行していた", "容器材料の劣化", "保管環境の温度が高かった"], "h": "溶剤の「乾燥不足」が問題でした。", "c": 1, "e": "外面印刷のグラビアインクの溶剤（酢酸エチル）が完全乾燥しておらず内容物に移行していたことが原因でした。対策として残留溶剤試験証明書の毎ロット提供義務化・レトルト対応インクへの変更・受入時の臭気チェック追加を実施しました。"}, {"m": 1, "q": "UV硬化インクで問題となる安全性リスクとして正しいものはどれですか？", "o": ["UV照射による紙の劣化", "未硬化の光開始剤（PI）が食品に移行するリスク", "UV硬化インクの高コスト", "UV照射設備の安全管理"], "h": "「硬化が不十分」だと問題が起きます。", "c": 1, "e": "UV硬化インクでは未硬化の光開始剤（PI：Photo Initiator）が食品に移行するリスクがあります。特に欧州向け輸出品ではEFSA規制に基づくPI管理が求められます。"}, {"m": 1, "q": "れいかさんの会社が欧州向け輸出品でインク安全性管理として実施した対応はどれですか？", "o": ["欧州向け製品の印刷を全て廃止した", "EFSA適合PIのみ使用する証明書を印刷会社から取得し、年次確認記録として保管した", "欧州向けには特別な表示を追加した", "欧州の印刷会社に製造委託した"], "h": "証明書取得＋年次確認の継続管理です。", "c": 1, "e": "欧州向け輸出品についてEFSA適合PIのみ使用する旨の証明書を印刷会社から取得し、年次確認記録として保管しています。"}, {"m": 1, "q": "印刷会社との取決めにインク安全性基準として明記すべき内容として正しいものはどれですか？", "o": ["インクの価格上限のみを明記する", "NL規制適合・残留溶剤証明書の提供を取決めに明記する", "インクの種類はメーカー選定に全委任する", "インク安全性は食品会社の責任で取決めには含めない"], "h": "適合証明書の提供を「義務」として取決めに盛り込みます。", "c": 1, "e": "印刷会社との取決めにNL規制適合・残留溶剤証明書の提供を明記することが食品包装印刷の品質保証の基本です。これにより責任の所在が明確になります。"}, {"m": 1, "q": "インク安全性確認の5ステップの最初のステップとして正しいものはどれですか？", "o": ["残留溶剤試験の実施", "印刷会社から使用インクのSDS（安全データシート）を入手する", "NL規制適合証明書の取得", "取決め書へのインク安全性基準の明記"], "h": "まず「何が使われているか」を把握することが出発点です。", "c": 1, "e": "インク安全性確認の最初のステップはStep1「印刷会社から使用インクのSDS（安全データシート）を入手する」です。SDSで成分・危険性・取り扱い方法を確認してから次のステップに進みます。"}, {"m": 1, "q": "インク安全性管理を「食の安全に直結する」と表現する理由として最も適切なものはどれですか？", "o": ["インクのコストが食品価格に影響するから", "食品包装外面のインク成分が内容物に移行し、消費者が摂取する可能性があるから", "インクの色が食欲に影響するから", "インクの品質が製品の保存性に影響するから"], "h": "「外から内へ」の移行が食品安全の問題の本質です。", "c": 1, "e": "食品包装の外面印刷のインク成分が内容物に移行し、消費者が気づかずに摂取する可能性があるため「食の安全に直結する」と言われます。インク管理は食品安全管理の一部です。"}, {"m": 2, "q": "ラベル改訂が必要になる5つのトリガーとして正しいものはどれですか？", "o": ["デザインの好みの変化・競合品の発売・価格改定・季節変更・イベント", "原材料変更・法規制改正・製造者情報の変更・承認内容の変更・ブランド変更", "製造量の増減・在庫状況・輸送方法・販売チャネル変更・広告予算", "工場移転・担当者交代・取引先変更・設備更新・認証取得"], "h": "すべて「表示内容に影響する変化」です。", "c": 1, "e": "ラベル改訂の5つのトリガーは①原材料・成分の変更、②法規制改正（義務表示事項の追加・変更）、③製造者情報の変更（住所・名称）、④承認内容の変更（医薬品・医薬部外品）、⑤ブランド変更（デザイン・商品名）です。"}, {"m": 2, "q": "ラベル改訂管理の標準フロー6ステップの最後のステップとして正しいものはどれですか？", "o": ["印刷会社への新版ラベル発注", "新版ラベルの受入確認", "旧版ラベルの回収・廃棄記録の作成", "改訂記録の保管（何を・いつ・なぜ変更したかを記録）"], "h": "最後は「記録として残す」ことで改訂が完了します。", "c": 3, "e": "ラベル改訂管理の最後のステップはStep6「改訂記録の保管（何を・いつ・なぜ変更したかを記録）」です。記録を残すことで後から経緯を確認でき、行政確認にも対応できます。"}, {"m": 2, "q": "廃版管理のポイントとして最も重要なことはどれですか？", "o": ["旧版ラベルは10年間保管してから廃棄する", "新版ラベルの受入と同時に旧版ラベルの全数回収・廃棄記録を作成する", "旧版ラベルは外部倉庫に移管するだけでよい", "旧版ラベルは在庫が尽きたら自然に使い切ればよい"], "h": "「新版切替と同時に旧版を回収」がポイントです。", "c": 1, "e": "新版ラベルの受入と同時に旧版ラベルの全数回収（製造現場・倉庫・外部倉庫）を実施し、廃棄記録（廃棄数量・廃棄日・担当者署名）を残すことが重要です。"}, {"m": 2, "q": "旧版ラベルが誤使用された実例の原因として正しいものはどれですか？", "o": ["新版ラベルの品質が悪く使用できなかった", "新版ラベルへの切替時に旧版在庫の廃棄確認が不徹底だった", "印刷会社が誤って旧版を納品した", "担当者が新旧の違いを認識していなかった"], "h": "管理プロセスの不徹底が根本原因です。", "c": 1, "e": "倉庫の奥に旧版ラベル（くるみ義務表示なし）の在庫が残り、誤って使用されました。新版ラベルへの切替時に旧版在庫の廃棄確認が不徹底だったことが原因です。"}, {"m": 2, "q": "「ラベル廃棄証明書」を作成するルールを設けた目的として正しいものはどれですか？", "o": ["廃棄コストを正確に記録するため", "廃棄担当者・数量・廃棄方法を記録し、旧版ラベルが完全に廃棄されたことを証明するため", "廃棄した分だけ新版ラベルを発注するため", "環境報告書に廃棄量を記載するため"], "h": "「廃棄したという証拠」が重要です。", "c": 1, "e": "ラベル廃棄証明書は廃棄担当者・数量・廃棄方法を記録し、旧版ラベルが完全に廃棄されたことを証明するためのものです。これにより旧版ラベルの誤使用リスクをゼロにします。"}, {"m": 2, "q": "れいかさんの会社が導入したクラウドラベル管理システムで管理する情報として正しいものはどれですか？", "o": ["ラベルのデザインのみを管理", "版番号・承認日・有効期限・印刷発注数・在庫数をリアルタイム管理し、廃版ラベルのステータスも更新", "ラベルのコストのみを管理", "サプライヤーの連絡先情報のみを管理"], "h": "在庫・ステータス・有効期限の全情報をリアルタイムで管理します。", "c": 1, "e": "クラウド管理システムでは版番号・承認日・有効期限・印刷発注数・在庫数をリアルタイム管理しています。旧版ラベルは廃棄確認後にシステム上でステータスが「廃版」に更新されます。"}, {"m": 2, "q": "ラベル改訂で三者確認を行う体制の目的として最も適切なものはどれですか？", "o": ["確認に時間をかけることで慎重さを示すため", "薬事・法務・品質それぞれの専門的観点からの確認により、見落としリスクを大幅に低減するため", "責任を三者に分散させて誰も責任を取らなくてよい状態にするため", "三者確認が法的義務だから"], "h": "専門知識の異なる3人がそれぞれの視点で確認します。", "c": 1, "e": "三者確認（薬事担当・品質担当・法務担当）はそれぞれの専門的観点（薬機法適合・品質基準・法律要件）から確認することで、1人では見落とす可能性がある問題を発見し、見落としリスクを大幅に低減します。"}, {"m": 2, "q": "ラベル管理の目標として最も適切に表現されているものはどれですか？", "o": ["できるだけ頻繁にラベルをリニューアルしてブランド力を高める", "正しいラベルが・正しい製品に・正しいタイミングで使われることを保証する仕組みを作る", "ラベルコストを最小化する", "ラベルの印刷品質を世界最高水準にする"], "h": "「正しい×3」という表現がポイントです。", "c": 1, "e": "ラベル管理の目標は「正しいラベルが・正しい製品に・正しいタイミングで使われる」ことを保証する仕組みです。改訂管理と廃版管理の両輪を確立することが表示ミスゼロにつながります。"}, {"m": 2, "q": "旧版ラベルが市場に出回ることで生じるリスクとして最も深刻なものはどれですか？", "o": ["旧版デザインが消費者に古い印象を与えるリスク", "表示違反（アレルゲン未表示・義務表示不備等）による回収・行政処分リスク", "ラベルの色が変色して見栄えが悪くなるリスク", "ラベルが剥がれやすくなるリスク"], "h": "表示内容の不備は法的な問題に直結します。", "c": 1, "e": "旧版ラベルが誤使用されると表示違反（アレルゲン未表示・義務表示不備等）になり、製品回収・行政処分につながります。特にくるみ義務化など法改正に対応した表示変更後の旧版管理は最重要です。"}, {"m": 2, "q": "改訂記録に「何を・いつ・なぜ変更したか」を残す目的として正しいものはどれですか？", "o": ["経営者への報告書を作成しやすくするため", "後から変更の経緯を確認でき、行政確認・監査・トラブル対応に活用できるから", "担当者の業績評価に使用するため", "競合他社への情報提供のため"], "h": "記録は「証拠」として機能します。", "c": 1, "e": "改訂記録に「何を・いつ・なぜ変更したか」を残すことで、後から変更の経緯を確認でき、行政確認・内部監査・トラブル対応時に活用できます。記録のない変更は「実施していない」と見なされます。"}, {"m": 3, "q": "グリーンマーク（古紙促進センター）の表示条件として正しいものはどれですか？", "o": ["再生プラスチック配合率70%以上", "古紙パルプ配合率70%以上", "植物油インク使用率70%以上", "CO2削減率70%以上"], "h": "「古紙」を促進するためのマークです。", "c": 1, "e": "グリーンマーク（古紙促進センター）は古紙パルプ配合率70%以上の紙・段ボール・印刷物に表示できるマークです。古紙のリサイクル促進を目的としています。"}, {"m": 3, "q": "植物油インクの説明として正しいものはどれですか？", "o": ["植物由来の染料を使用した水性インク", "石油系溶剤の代わりに大豆油・亜麻仁油等を使用したインクで、VOC排出量が少ない", "植物の葉から抽出した天然色素のみを使用したインク", "生分解性プラスチックと混合したインク"], "h": "石油系溶剤の「代替」として植物油を使用します。", "c": 1, "e": "植物油インクは石油系溶剤の代わりに大豆油・亜麻仁油等を使用するインクです。VOC（揮発性有機化合物）排出量が少なく環境負荷が小さい点が特徴です。"}, {"m": 3, "q": "ISO 12647の説明として正しいものはどれですか？", "o": ["食品安全マネジメントシステムの国際規格", "印刷品質（色再現・印刷安定性等）の国際標準規格", "環境マネジメントシステムの国際規格", "品質マネジメントシステムの国際規格"], "h": "印刷の「品質」を管理する国際規格です。", "c": 1, "e": "ISO 12647は印刷工程管理（色再現・インク濃度・見当精度等）の国際標準規格です。食品・化粧品パッケージ専門印刷会社での取得が増えており、調達先選定時の品質指標として活用できます。"}, {"m": 3, "q": "エコマーク（日本環境協会）の説明として正しいものはどれですか？", "o": ["古紙パルプ配合率を証明するマーク", "環境負荷の少ない製品（植物油インク使用・再生紙使用等）に表示できるマーク", "製品の安全性を証明する国家認定マーク", "食品安全認証マーク"], "h": "環境負荷の「少なさ」を認定するマークです。", "c": 1, "e": "エコマーク（日本環境協会）は環境負荷の少ない製品に表示できるマークです。植物油インク使用・再生紙使用等の要件を満たす印刷物にも適用される場合があります。"}, {"m": 3, "q": "スマイル化粧品工業の調達方針に記載された内容として正しいものはどれですか？", "o": ["最も価格が安い印刷会社を優先する", "植物油インク使用・グリーンマーク対応可能な印刷会社を優先する", "国内生産に限定して海外印刷会社は除外する", "ISO 9001認証取得企業のみと取引する"], "h": "環境対応が調達の優先基準になっています。", "c": 1, "e": "スマイル化粧品工業では調達方針に「植物油インク使用・グリーンマーク対応可能な印刷会社を優先する」と記載しています。取引開始前に印刷会社の環境対応状況を確認するチェックシートも実施しています。"}, {"m": 3, "q": "植物油インクの食品包装用途での採用が拡大している主な理由として正しいものはどれですか？", "o": ["石油系インクよりもコストが安いから", "VOC排出量が少なく環境負荷が小さいため、食品安全と環境の両面で評価されているから", "植物油インクの方が印刷品質が高いから", "植物油インクは法的義務となっているから"], "h": "環境と安全の両面からのメリットがあります。", "c": 1, "e": "植物油インクはVOC（揮発性有機化合物）排出量が少なく環境負荷が小さい点と、食品包装への安全性（石油系成分の低減）の両面から評価されています。食品包装用途での採用が拡大しています。"}, {"m": 3, "q": "れいかさんの会社が年次サステナビリティレポートに掲載した環境配慮データとして紹介されたものはどれですか？", "o": ["製品の売上高と利益率", "再生材料使用率・植物油インク使用比率・VOC削減量", "従業員の採用数と離職率", "工場の生産能力と稼働率"], "h": "環境配慮に直接関連する3種類のデータです。", "c": 1, "e": "れいかさんの会社では包装材・印刷物の環境配慮データ（再生材料使用率・植物油インク使用比率・VOC削減量）を年次でまとめ、サステナビリティレポートに掲載・主要取引先への環境報告に活用しています。"}, {"m": 3, "q": "グリーン調達基準を「文書化して取引先評価に組み込む」ことの意義として最も適切なものはどれですか？", "o": ["文書化は法的義務だから", "主観的な判断を排除し、一貫したグリーン調達を実現・取引先に環境対応を促すインセンティブを生むから", "文書化することで政府からの補助金が受けられるから", "取引先との価格交渉を有利に進めるため"], "h": "「基準の見える化」が調達と改善の両方を推進します。", "c": 1, "e": "グリーン調達基準の文書化と取引先評価への組み込みにより、主観的な判断を排除した一貫した調達を実現するとともに、取引先に環境対応改善のインセンティブを与えます。"}, {"m": 3, "q": "印刷会社へのグリーン調達チェックシートで確認すべき項目として紹介されたものはどれですか？", "o": ["印刷機の年式と生産能力", "植物油インク使用割合・再生紙対応・ISO12647取得状況", "社員数と財務状況", "配送能力と納期対応力"], "h": "環境対応の「実力」を確認する3つの指標です。", "c": 1, "e": "印刷会社への環境対応チェックシートでは植物油インク使用割合・再生紙対応・ISO12647取得状況を確認します。これらが取引先の環境対応レベルを判断する指標となります。"}, {"m": 3, "q": "環境配慮印刷への取り組みがCSR（企業の社会的責任）対応だけでなく信頼獲得にも直結すると言われる理由として最も適切なものはどれですか？", "o": ["環境配慮は追加コストが発生しないから", "消費者・取引先・投資家が環境対応を評価する基準として重視するようになっているから", "法的に義務付けられているから", "競合他社が全て取り組んでいるから"], "h": "ステークホルダー（利害関係者）の視点から考えましょう。", "c": 1, "e": "消費者・取引先・投資家がサステナビリティ（環境対応）を評価・選択基準として重視するようになっているため、環境配慮印刷はCSR対応を超えて信頼獲得・競争力強化の手段になっています。"}]};
+const totalPool = QD.questions.length;
+const courseShowCount = Math.floor(totalPool / 2);
+
+// コース全体テスト表示数の初期化
+document.getElementById('courseTotal').textContent = totalPool;
+document.getElementById('courseCount').textContent = courseShowCount;
+
+// 動画選択リスト生成
+var sl = document.getElementById('slList');
+QD.titles.forEach(function(t, i) {
+  var cnt = QD.questions.filter(function(q){return q.m===i}).length;
+  var div = document.createElement('div');
+  div.className='sl-item';
+  div.innerHTML='<div class="sl-num">'+(i+1)+'</div><div class="sl-title">'+t+'</div>';
+  div.onclick=function(){selectVideo(i)};
+  sl.appendChild(div);
+});
+
+var modIdx = 0, mode = 'video';
+
+function selectVideo(idx) {
+  modIdx = idx;
+  document.getElementById('panelSelect').style.display='none';
+  document.getElementById('svTitle').textContent = QD.titles[idx]+' 確認テスト';
+  var mc = QD.questions.filter(function(q){return q.m===idx}).length;
+  document.getElementById('svCount').textContent = mc;
+  document.getElementById('panelVideo').style.display='block';
+  document.getElementById('startVideo').style.display='block';
+  document.getElementById('qVideo').style.display='none';
+  document.getElementById('rVideo').style.display='none';
+}
+
+function switchTab(t) {
+  document.querySelectorAll('.tb').forEach(function(b){
+    var isMatch=(t==='select'&&b.classList.contains('t-video'))||b.classList.contains('t-'+t);
+    b.classList.toggle('on',isMatch);
+  });
+  var ps=document.getElementById('panelSelect');
+  if(t==='select'){
+    if(ps)ps.style.display='block';
+    document.getElementById('panelVideo').style.display='none';
+  }else if(t==='video'){
+    if(ps)ps.style.display='none';
+    document.getElementById('panelVideo').style.display='block';
+  }else{
+    if(ps)ps.style.display='none';
+    document.getElementById('panelVideo').style.display='none';
+  }
+  document.getElementById('panelCourse').style.display=t==='course'?'block':'none';
+}
+
+var quizzes = {video:{qs:[],ci:0,sc:0,ans:[]},course:{qs:[],ci:0,sc:0,ans:[]}};
+
+window.go = function(m) {
+  mode=m; var qz=quizzes[m]; qz.ci=0; qz.sc=0; qz.ans=[];
+  if(m==='video'){
+    qz.qs = QD.questions.filter(function(q){return q.m===modIdx});
+    for(var i=qz.qs.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=qz.qs[i];qz.qs[i]=qz.qs[j];qz.qs[j]=t}
+  } else {
+    var pool = QD.questions.slice();
+    for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=pool[i];pool[i]=pool[j];pool[j]=t}
+    qz.qs = pool.slice(0, courseShowCount);
+  }
+  g('start'+(m==='video'?'Video':'Course')).style.display='none';
+  g('r'+(m==='video'?'Video':'Course')).style.display='none';
+  var qEl=g('q'+(m==='video'?'Video':'Course'));
+  qEl.style.display='block';
+  showQ(m); qEl.scrollIntoView({behavior:'smooth'});
+};
+
+function g(id){return document.getElementById(id)}
+
+function showQ(m) {
+  var qz=quizzes[m], q=qz.qs[qz.ci], total=qz.qs.length;
+  var cls=m==='video'?'c-video':'c-course';
+  var qEl=g('q'+(m==='video'?'Video':'Course'));
+  var pct=Math.round((qz.ci/total)*100);
+  qEl.innerHTML=
+    '<div class="pg"><div class="pgb"><div class="pgf '+cls+'" style="width:'+pct+'%"></div></div>'+
+    '<div class="pgc">'+(qz.ci+1)+'/'+total+'</div></div>'+
+    '<div class="qm">Q'+(qz.ci+1)+'</div>'+
+    '<div class="qt">'+q.q+'</div>'+
+    '<button class="hb" onclick="toggleHint(this,\''+m+'\')">💡 ヒントを見る</button>'+
+    '<div class="hi">'+q.h+'</div>'+
+    '<div class="os">'+
+    q.o.map(function(opt,i){
+      return '<button class="o" onclick="ans('+i+',\''+m+'\')" data-idx="'+i+'">'+
+             '<div class="ol">'+['Ａ','Ｂ','Ｃ','Ｄ'][i]+'</div><div>'+opt+'</div></button>';
+    }).join('')+
+    '</div>'+
+    '<div class="ex"></div>'+
+    '<button class="nx '+cls+'" onclick="next(\''+m+'\')" id="nx'+m+'">'+(qz.ci+1<total?'次の問題 →':'結果を見る')+'</button>';
+}
+
+function toggleHint(btn, m) {
+  var qEl=g('q'+(m==='video'?'Video':'Course'));
+  var hi=qEl.querySelector('.hi');
+  hi.style.display=hi.style.display==='block'?'none':'block';
+}
+
+function ans(idx, m) {
+  var qz=quizzes[m], q=qz.qs[qz.ci];
+  var qEl=g('q'+(m==='video'?'Video':'Course'));
+  var os=qEl.querySelectorAll('.o');
+  os.forEach(function(o){o.classList.add('lk');o.style.cursor='default'});
+  var correct=(idx===q.c);
+  if(correct)qz.sc++;
+  qz.ans.push({q:q.q,ua:q.o[idx],ca:q.o[q.c],correct:correct,e:q.e});
+  os[idx].classList.add(correct?'ok':'ng');
+  if(!correct)os[q.c].classList.add('ok');
+  var ex=qEl.querySelector('.ex');
+  ex.style.display='block'; ex.textContent=q.e;
+  g('nx'+m).style.display='inline-block';
+}
+
+function next(m) {
+  var qz=quizzes[m];
+  qz.ci++;
+  if(qz.ci<qz.qs.length){
+    showQ(m);
+  } else {
+    showResult(m);
+  }
+}
+
+function showResult(m) {
+  var qz=quizzes[m];
+  var rEl=g('r'+(m==='video'?'Video':'Course'));
+  var qEl=g('q'+(m==='video'?'Video':'Course'));
+  qEl.style.display='none';
+  rEl.style.display='block';
+  var pct=Math.round((qz.sc/qz.qs.length)*100);
+  var pass=pct>=70;
+  var emoji=pct>=90?'🎉':pct>=70?'😊':pct>=50?'📚':'💪';
+  var wrongItems=qz.ans.filter(function(a){return !a.correct}).map(function(a){
+    return '<div class="rvi"><div class="rvq">'+a.q+'</div>'+
+           '<div class="rvy">あなたの回答：'+a.ua+'</div>'+
+           '<div class="rvc">正解：'+a.ca+'</div>'+
+           '<div class="rve">'+a.e+'</div></div>';
+  }).join('');
+  rEl.innerHTML=
+    '<div class="rc '+(pass?'ps':'fl')+'">'+
+    '<div class="rk">'+emoji+'</div>'+
+    '<div class="rs">'+qz.sc+' / '+qz.qs.length+'問正解</div>'+
+    '<div class="rd">正答率 '+pct+'%</div>'+
+    (pass?'<div class="rpm">✅ 合格！よくできました</div>':'<div class="rfm">📖 復習して再挑戦しましょう</div>')+
+    '</div>'+
+    (wrongItems?'<div class="rvt">📝 間違えた問題</div>'+wrongItems:'')+
+    '<div class="rt">'+
+    (m==='video'?'<button class="B bg" onclick="go(\'video\')">🔄 もう一度</button><button class="B" style="background:#1e293b;color:#f1f5f9" onclick="switchTab(\'select\')">← 動画選択に戻る</button>':
+                 '<button class="B bo" onclick="go(\'course\')">🔄 もう一度</button>')+
+    '</div>';
+}
+</script>
+</body>
+</html>
