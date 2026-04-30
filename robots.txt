@@ -1,0 +1,5 @@
+# robots.txt for trial.sangyo-tech.jp
+# This subdomain is intended for registered users only.
+# Search engines should NOT index this site.
+User-agent: *
+Disallow: /
