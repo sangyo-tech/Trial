@@ -1,278 +1,230 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-01642XG5SG"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-01642XG5SG');
-  </script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="canonical" href="https://trial.sangyo-tech.jp/">
-  <title>無料体験 | 産業技術アカデミー</title>
-  <meta name="description" content="産業技術アカデミーの無料体験。品質管理 基礎コースの一部を無料でご視聴いただけます。製造業向けeラーニング。">
-  <meta property="og:title" content="無料体験 | 産業技術アカデミー">
-  <meta property="og:description" content="製造業向けeラーニングを無料でお試しいただけます。">
-  <meta property="og:url" content="https://trial.sangyo-tech.jp/">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="産業技術アカデミー">
-  <meta property="og:image" content="https://sangyo-tech.jp/ogp.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <style>
-    :root {
-      --navy:        #0f1c35;
-      --navy-mid:    #162040;
-      --navy-light:  #1e2c52;
-      --white:       #f4f5f8;
-      --text:        rgba(255,255,255,0.85);
-      --text-muted:  rgba(255,255,255,0.65);
-      --border:      rgba(255,255,255,0.10);
-      --border-gold: rgba(200,168,75,0.40);
-      --accent:      #3a7bd5;
-      --accent-light:#5c9ae8;
-      --gold:        #c8a84b;
-      --gold-light:  #e2c97a;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',sans-serif;
-      background-color: var(--navy);
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 48px 48px;
-      color: var(--text);
-      line-height: 1.75;
-      font-size: 16px;
-    }
-    a { color: var(--accent-light); text-decoration: none; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://trial.sangyo-tech.jp/">
+<title>無料体験 ご案内｜産業技術アカデミー</title>
+<meta name="description" content="無料体験のお申込みありがとうございます。サンプル動画と確認テストをこちらからご利用ください。">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg-primary: #0a0f1a;
+    --bg-card: #111827;
+    --bg-card-hover: #1a2332;
+    --bg-accent: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --accent-gold: #d4a017;
+    --accent-blue: #3b82f6;
+    --accent-green: #22c55e;
+    --accent-purple: #a855f7;
+    --border: #1e293b;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.7;
+}
+.container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
 
-    .hero {
-      position: relative;
-      padding: 6rem 1.5rem 4.5rem;
-      text-align: center;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: ''; position: absolute;
-      top: -140px; left: 50%; transform: translateX(-50%);
-      width: 800px; height: 600px;
-      background: radial-gradient(ellipse at center,
-        rgba(58,123,213,0.20) 0%,
-        rgba(200,168,75,0.08) 40%,
-        transparent 68%);
-      pointer-events: none;
-    }
-    .hero-label {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      border: 1px solid var(--border-gold);
-      color: var(--gold); font-size: 0.78rem; font-weight: 700;
-      letter-spacing: 0.22em; padding: 0.38rem 1.4rem; border-radius: 2px;
-      margin-bottom: 1.8rem; text-transform: uppercase;
-      background: rgba(200,168,75,0.07);
-    }
-    .hero h1 {
-      color: var(--white);
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 700; line-height: 1.25;
-      margin-bottom: 1.3rem; letter-spacing: -0.01em;
-    }
-    .hero h1 em { color: var(--gold); font-style: normal; }
-    .hero p {
-      color: var(--text-muted);
-      font-size: clamp(1rem, 2vw, 1.1rem);
-      max-width: 620px; margin: 0 auto 2.5rem;
-    }
+.hero {
+    text-align: center;
+    padding: 70px 24px 40px;
+    background: linear-gradient(180deg, rgba(34,197,94,0.10) 0%, transparent 100%);
+}
+.hero-label { color: var(--accent-green); font-weight: 500; letter-spacing: 0.1em; font-size: 13px; margin-bottom: 12px; }
+.hero h1 { font-family: 'Noto Serif JP', serif; font-size: 38px; font-weight: 700; line-height: 1.4; margin-bottom: 16px; }
+.hero .lead { color: var(--text-secondary); font-size: 16px; max-width: 720px; margin: 0 auto; }
 
-    .section {
-      max-width: 980px; margin: 0 auto;
-      padding: 3rem 1.5rem;
-    }
-    .section-title {
-      color: var(--white);
-      font-size: clamp(1.5rem, 3.5vw, 2rem);
-      text-align: center; margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
-    }
-    .section-sub {
-      color: var(--text-muted); text-align: center;
-      margin-bottom: 2.5rem; font-size: 0.95rem;
-    }
+.access-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 22px;
+    margin: 40px 0 60px;
+}
+.access-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px 28px;
+    display: flex;
+    flex-direction: column;
+}
+.access-card .card-num {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--accent-gold);
+    color: var(--bg-primary);
+    text-align: center;
+    line-height: 32px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+.access-card h3 { font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+.access-card .desc { color: var(--text-secondary); font-size: 14px; flex-grow: 1; margin-bottom: 18px; }
+.access-card .btn {
+    display: inline-block;
+    text-align: center;
+    padding: 12px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    transition: transform 0.15s;
+}
+.access-card .btn:hover { transform: translateY(-2px); }
+.btn-gold { background: var(--accent-gold); color: var(--bg-primary); }
+.btn-blue { background: var(--accent-blue); color: white; }
+.btn-purple { background: var(--accent-purple); color: white; }
 
-    .options-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-    }
-    .option-card {
-      background: rgba(15,28,53,0.55);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 2rem 1.8rem;
-      transition: border-color 0.2s, transform 0.2s;
-      position: relative;
-      overflow: hidden;
-    }
-    .option-card.featured {
-      border-color: var(--border-gold);
-      background: linear-gradient(135deg, rgba(200,168,75,0.08) 0%, rgba(15,28,53,0.55) 100%);
-    }
-    .option-card.featured::before {
-      content: ''; position: absolute;
-      top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--gold) 0%, var(--accent) 100%);
-    }
-    .option-card:hover { border-color: var(--gold); transform: translateY(-2px); }
-    .option-icon {
-      font-size: 2.4rem; margin-bottom: 1rem; line-height: 1;
-    }
-    .option-name {
-      color: var(--white); font-size: 1.2rem; font-weight: 700;
-      margin-bottom: 0.6rem;
-    }
-    .option-desc {
-      color: var(--text-muted); font-size: 0.9rem;
-      line-height: 1.7; margin-bottom: 1.5rem;
-    }
-    .option-feat {
-      list-style: none; margin-bottom: 1.5rem;
-      color: var(--text); font-size: 0.88rem; line-height: 2;
-    }
-    .option-feat li::before {
-      content: '✦'; color: var(--gold); margin-right: 0.5rem;
-    }
-    .btn {
-      display: inline-block;
-      padding: 0.85rem 1.8rem;
-      border-radius: 4px;
-      font-weight: 600; font-size: 0.95rem;
-      text-align: center; width: 100%;
-      transition: all 0.2s;
-      cursor: pointer; border: none;
-    }
-    .btn-gold {
-      background: var(--gold); color: #0a1628 !important;
-    }
-    .btn-gold:hover { background: var(--gold-light); }
-    .btn-outline {
-      background: transparent;
-      border: 1px solid var(--border-gold);
-      color: var(--gold) !important;
-    }
-    .btn-outline:hover {
-      background: rgba(200,168,75,0.1);
-      border-color: var(--gold);
-    }
+.next-steps {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 40px;
+}
+.next-steps h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    border-left: 4px solid var(--accent-gold);
+    padding-left: 14px;
+}
+.next-steps ol { padding-left: 22px; color: var(--text-primary); }
+.next-steps ol li { margin: 8px 0; }
+.next-steps strong { color: var(--accent-gold); }
 
-    .info-box {
-      background: rgba(255,255,255,0.04);
-      border-left: 3px solid var(--gold);
-      padding: 1.2rem 1.4rem;
-      margin: 2rem auto;
-      max-width: 900px;
-      border-radius: 0 4px 4px 0;
-    }
-    .info-box-title {
-      color: var(--gold-light);
-      font-size: 0.9rem; font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-    .info-box ul {
-      margin: 0; padding-left: 1.2rem;
-      color: var(--text); font-size: 0.88rem; line-height: 1.9;
-    }
+.notice {
+    background: rgba(59,130,246,0.08);
+    border-left: 4px solid var(--accent-blue);
+    padding: 18px 24px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+.notice strong { color: var(--text-primary); }
 
-    footer {
-      padding: 3rem 1.5rem 2.5rem;
-      border-top: 1px solid var(--border);
-      text-align: center; color: var(--text-muted);
-      font-size: 0.85rem;
-    }
-    .footer-links {
-      display: flex; flex-wrap: wrap;
-      justify-content: center; gap: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    .footer-links a { color: var(--text-muted); }
-    .footer-links a:hover { color: var(--gold); }
+.support-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 60px;
+}
+.support-card {
+    background: var(--bg-accent);
+    border-radius: 12px;
+    padding: 18px 20px;
+    text-align: center;
+}
+.support-card .label { font-size: 13px; color: var(--accent-gold); margin-bottom: 4px; font-weight: 700; }
+.support-card .value { font-size: 14px; }
+.support-card a { color: var(--text-primary); text-decoration: none; }
+.support-card a:hover { color: var(--accent-gold); }
 
-    @media (max-width:600px) {
-      .hero { padding: 4rem 1rem 3rem; }
-      .section { padding: 2rem 1rem; }
-      .option-card { padding: 1.5rem 1.2rem; }
-    }
-  </style>
+footer {
+    background: var(--bg-card);
+    padding: 36px 24px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+footer a { color: var(--accent-gold); text-decoration: none; margin: 0 8px; }
+footer a:hover { text-decoration: underline; }
+
+@media (max-width: 720px) {
+    .hero h1 { font-size: 26px; }
+    .next-steps h2 { font-size: 19px; }
+}
+</style>
 </head>
 <body>
 
-<div class="hero">
-  <div class="hero-label">✦ FREE TRIAL</div>
-  <h1>まずは<em>無料</em>でお試しください</h1>
-  <p>製造業向けeラーニング「産業技術アカデミー」を、<br>登録不要で今すぐ体験いただけます。</p>
-</div>
+<!-- 共通ナビ -->
+<script src="https://sangyo-tech.jp/unav.js?v=3" defer></script>
 
-<div class="section">
-  <h2 class="section-title">体験のはじめ方</h2>
-  <p class="section-sub">2つの体験方法をご用意しています。気軽にお試しください。</p>
+<section class="hero">
+    <div class="hero-label">✓ FREE TRIAL ACCESS</div>
+    <h1>お申込みありがとうございます</h1>
+    <p class="lead">無料体験ページへようこそ。下記より、サンプル動画 と 確認テスト をすぐにご利用いただけます。<br>担当者からのご案内メールも近日中にお届けします。</p>
+</section>
 
-  <div class="options-grid">
-    <div class="option-card featured">
-      <div class="option-icon">▶</div>
-      <div class="option-name">サンプル動画を視聴する</div>
-      <div class="option-desc">
-        登録不要。ブラウザで開いてすぐに視聴開始できます。<br>
-        「品質管理 基礎コース」の一部をそのままご覧いただけます。
-      </div>
-      <ul class="option-feat">
-        <li>登録・申込み不要</li>
-        <li>すぐに視聴開始</li>
-        <li>サービス内容と動画品質を実機で確認</li>
-      </ul>
-      <a href="https://ulizaportal.jp/pages/0067697a-55c3-531f-d1fc-01ce48a11e98" target="_blank" rel="noopener" class="btn btn-gold">▶ 体験動画を見る</a>
+<div class="container">
+
+    <div class="notice">
+        <strong>お申込み内容について</strong> — ご登録いただいたメールアドレス宛に、企業契約のご検討用資料（料金詳細・導入事例・サポート体制）を担当者よりお送りいたします。お急ぎの場合は LINE 公式アカウントからもご相談いただけます。
     </div>
 
-    <div class="option-card">
-      <div class="option-icon">📝</div>
-      <div class="option-name">無料体験の申込み</div>
-      <div class="option-desc">
-        メールアドレスをご登録いただくと、より多くの無料コンテンツや、企業契約の検討にむけたご案内をお送りします。
-      </div>
-      <ul class="option-feat">
-        <li>無料体験の追加コンテンツをご案内</li>
-        <li>企業契約のご検討用資料</li>
-        <li>担当者よりご連絡（任意）</li>
-      </ul>
-      <a href="https://apply.sangyo-tech.jp/?plan=trial" class="btn btn-outline">📩 無料体験に申し込む</a>
+    <div class="access-grid">
+        <div class="access-card">
+            <div class="card-num">1</div>
+            <h3>サンプル動画を視聴する</h3>
+            <div class="desc">「品質管理 基礎コース」全動画＋関連動画をすぐにご視聴いただけます。<br>登録済みのため、すべての無料体験コンテンツがご利用可能です。</div>
+            <a class="btn btn-gold" href="https://ulizaportal.jp/pages/0067697a-55c3-531f-d1fc-01ce48a11e98" target="_blank" rel="noopener">▶ 体験動画ページへ</a>
+        </div>
+        <div class="access-card">
+            <div class="card-num">2</div>
+            <h3>確認テストで定着を確認</h3>
+            <div class="desc">動画ごと／コース別／大枠別の3軸でご利用いただけます。<br>視聴後のチェックで理解度がぐっと上がります。</div>
+            <a class="btn btn-blue" href="https://quiz.sangyo-tech.jp/" target="_blank" rel="noopener">📝 確認テストへ</a>
+        </div>
+        <div class="access-card">
+            <div class="card-num">3</div>
+            <h3>無料ツールも活用ください</h3>
+            <div class="desc">Cpk可視化ツールなど、現場で使える無料ツールも配信中。<br>どなたでもご利用いただけます。</div>
+            <a class="btn btn-purple" href="https://tools.sangyo-tech.jp/" target="_blank" rel="noopener">🛠 無料ツール集</a>
+        </div>
     </div>
-  </div>
 
-  <div class="info-box">
-    <div class="info-box-title">▷ ご利用前にご確認ください</div>
-    <ul>
-      <li>本ページは無料体験のご案内ページです。視聴自体に費用は発生しません。</li>
-      <li>「無料体験に申し込む」フォームのご送信後、自動的に企業契約が成立することはありません。</li>
-      <li>正式に企業契約をご希望の場合は、<a href="https://apply.sangyo-tech.jp/">お申込みフォーム</a>からお手続きください。</li>
-      <li>料金プランの詳細は<a href="https://pricing.sangyo-tech.jp/">料金ページ</a>をご確認ください。</li>
-    </ul>
-  </div>
+    <div class="next-steps">
+        <h2>このあとの流れ</h2>
+        <ol>
+            <li><strong>担当者からご連絡（1〜3営業日以内）</strong> — メールにて、企業契約のご検討にむけた資料・サポート体制をご案内します。</li>
+            <li><strong>ご質問は LINE / メールで随時受付</strong> — ご視聴中の不明点や、貴社の業種・規模にあった導入パターンのご相談をお受けします。</li>
+            <li><strong>正式契約をご希望の場合</strong> — お申込みフォームから正式に企業契約のお手続きをいただけます（年単位／月額1,000円〜）。</li>
+        </ol>
+    </div>
+
+    <div class="support-row">
+        <div class="support-card">
+            <div class="label">💬 LINE</div>
+            <div class="value"><a href="https://line.me/ti/p/RjdglqSu9M" target="_blank" rel="noopener">公式アカウント</a></div>
+        </div>
+        <div class="support-card">
+            <div class="label">💰 料金プラン</div>
+            <div class="value"><a href="https://pricing.sangyo-tech.jp/">月額1,000円〜</a></div>
+        </div>
+        <div class="support-card">
+            <div class="label">🏢 導入企業</div>
+            <div class="value"><a href="https://customers.sangyo-tech.jp/">導入事例を見る</a></div>
+        </div>
+        <div class="support-card">
+            <div class="label">📋 利用規約</div>
+            <div class="value"><a href="https://terms.sangyo-tech.jp/">解約条項を含む</a></div>
+        </div>
+    </div>
+
 </div>
 
 <footer>
-  <div class="footer-links">
-    <a href="https://sangyo-tech.jp/">トップ</a>
-    <a href="https://about-us.sangyo-tech.jp/">私たちについて</a>
-    <a href="https://pricing.sangyo-tech.jp/">料金プラン</a>
-    <a href="https://apply.sangyo-tech.jp/">お申込み・お問い合わせ</a>
-    <a href="https://sangyo-tech.jp/privacy/">プライバシーポリシー</a>
-  </div>
-  <p>© <a href="https://sangyo-tech.jp/" style="color:inherit">産業技術アカデミー</a>　Product by Qulio LLC</p>
+    <div>© 2026 産業技術アカデミー / Qulio LLC</div>
+    <div style="margin-top:8px;">
+        <a href="https://sangyo-tech.jp/">TOP</a>
+        <a href="https://contents.sangyo-tech.jp/">コンテンツ一覧</a>
+        <a href="https://pricing.sangyo-tech.jp/">料金</a>
+        <a href="https://apply.sangyo-tech.jp/">お申込み</a>
+        <a href="https://terms.sangyo-tech.jp/">利用規約</a>
+    </div>
 </footer>
 
-<script src="https://sangyo-tech.jp/unav.js?v=3" defer></script>
 </body>
 </html>
