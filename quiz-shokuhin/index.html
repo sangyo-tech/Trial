@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>確認テスト：食品表示法 | 産業技術アカデミー</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:transparent}
+#R{font-family:'Noto Sans JP',system-ui,sans-serif;color:#f1f5f9;line-height:1.7;max-width:800px;margin:0 auto;padding:24px 16px}
+#R *{box-sizing:border-box;margin:0;padding:0}
+#R button{font-family:inherit;cursor:pointer}
+.tt{display:flex;gap:0;margin-bottom:32px;background:#0f172a;border-radius:14px;padding:5px;border:1px solid #1e293b}
+.tb{flex:1;padding:14px 20px;border-radius:10px;font-size:15px;font-weight:700;border:none;background:transparent;color:#64748b;transition:all .3s;letter-spacing:.02em;text-align:center}
+.tb:hover:not(.on){color:#94a3b8;background:rgba(255,255,255,.03)}
+.tb.on{color:#fff;box-shadow:0 2px 12px rgba(0,0,0,.3)}
+.tb.t-video.on{background:linear-gradient(135deg,#22c55e,#16a34a);color:#000;box-shadow:0 4px 16px rgba(34,197,94,.3)}
+.tb.t-course.on{background:linear-gradient(135deg,#f59e0b,#d97706);color:#000;box-shadow:0 4px 16px rgba(245,158,11,.3)}
+.S{border-radius:14px;padding:32px 24px;text-align:center}
+.S.s-video{background:linear-gradient(135deg,rgba(34,197,94,.05),rgba(34,197,94,.08));border:1px solid rgba(34,197,94,.2)}
+.S.s-course{background:linear-gradient(135deg,rgba(245,158,11,.05),rgba(245,158,11,.08));border:1px solid rgba(245,158,11,.2)}
+.S h3{font-size:18px;font-weight:700;margin-bottom:8px;color:#f1f5f9}
+.S p{color:#94a3b8;font-size:14px;margin-bottom:20px;line-height:1.8}
+.sp{display:flex;justify-content:center;gap:24px;margin-bottom:24px;flex-wrap:wrap}
+.sv{font-size:22px;font-weight:700}
+.s-video .sv{color:#22c55e}
+.s-course .sv{color:#f59e0b}
+.sl{font-size:11px;color:#64748b}
+.B{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;border-radius:12px;font-size:16px;font-weight:700;border:none;transition:all .3s;position:relative;overflow:hidden}
+.B::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.2),transparent);opacity:0;transition:opacity .3s}
+.B:hover{transform:translateY(-3px)}.B:hover::after{opacity:1}
+.B:active{transform:translateY(-1px)}
+.B.bg{background:linear-gradient(135deg,#22c55e,#4ade80);color:#000;box-shadow:0 6px 24px rgba(34,197,94,.3)}
+.B.bo{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#000;box-shadow:0 6px 24px rgba(245,158,11,.3)}
+.Q{display:none}
+.pg{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.pgb{flex:1;height:6px;background:#1e293b;border-radius:3px;overflow:hidden}
+.pgf{height:100%;border-radius:3px;transition:width .3s}
+.pgf.c-video{background:#22c55e}.pgf.c-course{background:#f59e0b}
+.pgc{font-size:13px;color:#64748b;white-space:nowrap}
+.qm{font-size:12px;color:#06b6d4;margin-bottom:8px;font-weight:500}
+.qt{font-size:16px;font-weight:600;margin-bottom:18px;line-height:1.6;color:#f1f5f9}
+.hb{font-size:12px;color:#d4a017;background:rgba(212,160,23,.1);border:1px solid rgba(212,160,23,.3);border-radius:6px;padding:4px 12px;margin-bottom:14px;display:inline-block}
+.hi{display:none;font-size:13px;color:#94a3b8;background:rgba(212,160,23,.05);border-left:3px solid #d4a017;padding:10px 14px;border-radius:6px;margin-bottom:14px}
+.os{display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
+.o{background:#111827;border:2px solid #1e293b;border-radius:10px;padding:13px 16px;font-size:14px;cursor:pointer;transition:all .15s;display:flex;align-items:flex-start;gap:12px;text-align:left;color:#f1f5f9}
+.o:hover:not(.lk){border-color:#334155;background:#1a2332}
+.ol{width:26px;height:26px;border-radius:50%;background:#1e293b;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;color:#94a3b8}
+.o.ok{border-color:#22c55e;background:rgba(34,197,94,.08)}.o.ok .ol{background:#22c55e;color:#fff}
+.o.ng{border-color:#ef4444;background:rgba(239,68,68,.08)}.o.ng .ol{background:#ef4444;color:#fff}
+.ex{display:none;background:rgba(59,130,246,.06);border-left:3px solid #3b82f6;border-radius:6px;padding:12px 14px;margin-bottom:18px;font-size:13px;color:#94a3b8;line-height:1.7}
+.nx{display:none;border:none;border-radius:8px;padding:11px 28px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s}
+.nx:hover{transform:translateY(-2px)}
+.nx.c-video{background:linear-gradient(135deg,#22c55e,#4ade80);color:#000}
+.nx.c-course{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#000}
+.Rs{display:none}
+.rc{border-radius:14px;padding:32px 24px;text-align:center;margin-bottom:24px}
+.rc.ps{background:linear-gradient(135deg,rgba(34,197,94,.04),rgba(34,197,94,.08));border:1px solid rgba(34,197,94,.2)}
+.rc.fl{background:linear-gradient(135deg,rgba(239,68,68,.04),rgba(239,68,68,.08));border:1px solid rgba(239,68,68,.2)}
+.rk{font-size:52px;font-weight:700;margin-bottom:6px}
+.rs{font-size:24px;font-weight:700;color:#f1f5f9;margin-bottom:4px}
+.rd{font-size:14px;color:#94a3b8;margin-bottom:14px}
+.rpm{font-size:15px;font-weight:600;color:#22c55e;margin-bottom:14px}
+.rfm{font-size:15px;font-weight:600;color:#ef4444;margin-bottom:14px}
+.rvt{font-size:16px;font-weight:700;margin-bottom:14px;color:#f59e0b}
+.rvi{background:#111827;border:1px solid #1e293b;border-radius:10px;padding:16px 18px;margin-bottom:10px;text-align:left}
+.rvq{font-size:13px;font-weight:600;margin-bottom:6px;color:#f1f5f9}
+.rvy{font-size:12px;color:#ef4444;margin-bottom:3px}
+.rvc{font-size:12px;color:#22c55e;margin-bottom:6px}
+.rve{font-size:12px;color:#64748b;line-height:1.6}
+.rt{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:20px}
+.sl-list{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.sl-item{background:#111827;border:1px solid #1e293b;border-radius:10px;padding:14px 16px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:12px}
+.sl-item:hover{border-color:#334155;background:#1a2332;transform:translateX(4px)}
+.sl-num{width:32px;height:32px;border-radius:8px;background:#22c55e;color:#000;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.sl-title{font-size:14px;color:#f1f5f9;line-height:1.5}
+</style>
+</head>
+<body>
+<div id="R">
+  <div class="tt">
+    <button class="tb t-video on" onclick="switchTab('select')">動画別テスト</button>
+    <button class="tb t-course" onclick="switchTab('course')">コース全体テスト</button>
+  </div>
+
+  <!-- 動画選択 -->
+  <div id="panelSelect">
+    <div class="sl-list" id="slList"></div>
+  </div>
+
+  <!-- 動画別テスト -->
+  <div id="panelVideo" style="display:none">
+    <div class="S s-video">
+      <h3 id="svTitle"></h3>
+      <p>この動画の内容を確認する問題です。</p>
+      <div class="sp">
+        <div><div class="sv" id="svCount">10</div><div class="sl">問題数</div></div>
+      </div>
+      <button class="B bg" id="startVideo" onclick="go('video')">▶ テスト開始</button>
+    </div>
+    <div class="Q" id="qVideo"></div>
+    <div class="Rs" id="rVideo"></div>
+  </div>
+
+  <!-- コース全体テスト -->
+  <div id="panelCourse" style="display:none">
+    <div class="S s-course">
+      <h3>コース全体テスト</h3>
+      <p>全動画の問題からランダムに出題します。</p>
+      <div class="sp">
+        <div><div class="sv" id="courseCount">-</div><div class="sl">出題数</div></div>
+        <div><div class="sv" id="courseTotal">-</div><div class="sl">総問題数</div></div>
+      </div>
+      <button class="B bo" id="startCourse" onclick="go('course')">▶ テスト開始</button>
+    </div>
+    <div class="Q" id="qCourse"></div>
+    <div class="Rs" id="rCourse"></div>
+  </div>
+</div>
+
+<script>
+const QD = {"titles": ["第1回：食品表示法の目的と全体像 — 消費者庁の役割", "第2回：アレルゲン表示の実務 — 特定原材料8品目と義務/推奨の違い", "第3回：栄養成分表示の実務 — 5必須項目と測定方法", "第4回：景品表示法の基礎 — 不当表示の3類型と2024年改正", "第5回：食品表示違反の予防と内部監査 — 実務チェックリストの活用"], "questions": [{"m": 0, "q": "食品表示法の制定年として正しいものはどれですか？", "o": ["昭和37年", "平成15年", "平成25年", "令和元年"], "h": "消費者庁が本格稼働してから数年後に制定されました。", "c": 2, "e": "食品表示法は平成25年法律第70号として制定されました。消費者庁（平成21年設置）が所管し、令和3年4月から全面施行されました。"}, {"m": 0, "q": "食品表示法が一元化した法律の組み合わせとして正しいものはどれですか？", "o": ["景品表示法・独占禁止法・消費者契約法", "食品衛生法・JAS法・健康増進法", "医薬品医療機器等法・GMP省令・薬機法", "薬事法・化粧品規制法・製品安全法"], "h": "食の安全・品質・健康に関わる3法です。", "c": 1, "e": "食品表示法は食品衛生法・JAS法・健康増進法に分散していた表示規制を一元化した法律です。これにより表示ルールがわかりやすくなりました。"}, {"m": 0, "q": "食品表示法の全面施行（猶予期間終了）時期として正しいものはどれですか？", "o": ["平成27年4月", "平成30年4月", "令和3年4月", "令和5年4月"], "h": "制定から数年間の猶予期間があり、全面施行はその後です。", "c": 2, "e": "食品表示法は令和3年4月から全面施行（猶予期間終了）され、すべての食品関連事業者に適用されています。"}, {"m": 0, "q": "食品表示法の3つの目的として正しいものはどれですか？", "o": ["製造コスト削減・輸出促進・環境保護", "消費者の選択機会確保・食品安全性確保・食品事業者の適正な事業活動確保", "生産者保護・流通効率化・小売業界の発展", "農業振興・食料安全保障・地産地消促進"], "h": "消費者・安全・事業者の3方向の目的があります。", "c": 1, "e": "食品表示法の3つの目的は①消費者の自主的・合理的な食品選択の機会確保、②食品の安全性確保（アレルゲン・期限等）、③食品事業者の適正な事業活動の確保です。"}, {"m": 0, "q": "食品表示法違反に対して適用される措置として正しいものはどれですか？", "o": ["違反しても消費者への謝罪で済む", "行政指導・回収・懲役・罰金等の罰則が適用される", "初回違反は罰則なし", "業界団体による自主的な措置のみ"], "h": "法律違反は行政と刑事の両面から制裁を受けます。", "c": 1, "e": "食品表示法違反には行政指導・回収・罰則（懲役・罰金）が適用されます。表示ミス1つが企業存続を左右するリスクがある深刻な問題です。"}, {"m": 0, "q": "はるかさんが「プロテインバー」ラベル設計で参照した公式資料はどれですか？", "o": ["農林水産省の食品加工ガイドライン", "消費者庁の「食品表示実践マニュアル（令和3年2月版）」", "厚生労働省の医薬品規制ガイド", "経済産業省のJAS規格集"], "h": "所管官庁の実践向けマニュアルを活用しました。", "c": 1, "e": "はるかさんは消費者庁の「食品表示実践マニュアル（令和3年2月版）」を参照しながら義務9項目を確認しました。公式マニュアルの活用が実務の基本です。"}, {"m": 0, "q": "新製品ラベルの最終確認として行われた三者チェックの構成として正しいものはどれですか？", "o": ["製造担当・営業担当・経営者", "法務担当・薬事担当・品質保証担当", "デザイナー・印刷会社・消費者", "開発担当・生産担当・物流担当"], "h": "法的適合性・薬事規制・品質の専門家3名です。", "c": 1, "e": "ラベル最終確認は法務・薬事担当との三者チェックで完了しました。複数の専門家が確認することで、見落としリスクを大幅に低減できます。"}, {"m": 0, "q": "アレルゲン表示ミスによる回収事例から学ぶべき教訓として最も適切なものはどれですか？", "o": ["アレルゲン表示は任意なので省略しても問題ない", "表示ミス1つが回収費用と信頼失墜をもたらし、企業存続を左右するリスクがある", "回収はブランド力強化のチャンスである", "消費者が自分でアレルゲンを確認する責任がある"], "h": "被害の大きさを具体的にイメージすることが重要です。", "c": 1, "e": "そばアレルゲン未表示による回収事例では、回収費用・信頼失墜のコストが甚大でした。表示ミス1つが企業存続を左右するリスクがあります。"}, {"m": 0, "q": "消費者庁が設置された年として正しいものはどれですか？", "o": ["平成15年", "平成21年", "平成25年", "令和元年"], "h": "食品表示法制定より4年前に設置されました。", "c": 1, "e": "消費者庁は平成21年に設置されました。食品表示法（平成25年）を所管し、表示違反への行政指導・処分を行います。"}, {"m": 0, "q": "食品表示義務を定める具体的な規則として正しいものはどれですか？", "o": ["食品衛生法施行規則", "JAS規格", "食品表示基準（平成27年内閣府令第10号）", "消費者保護規則"], "h": "食品表示法に基づいて制定された具体的な基準です。", "c": 2, "e": "食品表示の具体的な義務は食品表示基準（平成27年内閣府令第10号）に定められています。食品表示法の委任を受けて制定された主要な実施規則です。"}, {"m": 1, "q": "特定原材料（義務表示）の品目数として正しいものはどれですか？", "o": ["5品目", "8品目", "20品目", "28品目"], "h": "くるみが令和5年に追加されて現在の数になりました。", "c": 1, "e": "特定原材料（義務表示）は8品目：えび・かに・くるみ・小麦・そば・卵・乳・落花生です。くるみは令和5年3月から義務化されました。"}, {"m": 1, "q": "くるみが義務表示の特定原材料に追加された時期として正しいものはどれですか？", "o": ["平成27年4月", "令和元年6月", "令和5年3月", "令和6年10月"], "h": "この年の3月に義務化されました。", "c": 2, "e": "くるみは令和5年3月から義務表示の特定原材料に変更されました。以前は推奨表示（特定原材料に準ずるもの）でしたが、アレルギー患者数増加等により義務化されました。"}, {"m": 1, "q": "特定原材料に準ずるもの（推奨表示）の品目数として正しいものはどれですか？", "o": ["8品目", "15品目", "20品目", "28品目"], "h": "義務表示8品目とは別に推奨表示もあります。", "c": 2, "e": "特定原材料に準ずるもの（推奨表示）は20品目です：アーモンド・あわび・いか・いくら・オレンジ・カシューナッツ・キウイフルーツ・牛肉・ごま・さけ・さば・大豆・鶏肉・バナナ・豚肉・まつたけ・もも・やまいも・りんご・ゼラチン。"}, {"m": 1, "q": "アレルゲン表示の原則的な方法として正しいものはどれですか？", "o": ["一括表示（製品ラベル下部に全アレルゲンをまとめて表示）", "個別表示（原材料名の直後に「（小麦を含む）」等と表示）", "アレルゲン不使用の場合は表示不要", "アレルゲンが微量の場合は表示不要"], "h": "「個別」と「一括」のどちらが原則かを確認しましょう。", "c": 1, "e": "アレルゲン表示の原則は個別表示（原材料名の直後に「（小麦を含む）」等と表示）です。一括表示（「一部に小麦・卵・乳を含む」）は個別表示が困難な場合の例外です。"}, {"m": 1, "q": "製造ラインの共用による意図しないアレルゲン混入（コンタミネーション）の表示について正しいものはどれですか？", "o": ["義務表示であり必ず表示しなければならない", "義務ではないが推奨表示として記載可能", "表示してはいけない", "製品を回収して製造ラインを変更しなければならない"], "h": "意図しない混入と意図的な使用で扱いが異なります。", "c": 1, "e": "コンタミネーション（製造ライン共用による混入）は法的義務ではありませんが、推奨表示として「当製品は○○を使用した設備で製造しています」等の記載が可能です。"}, {"m": 1, "q": "山田製造所食品部門が新製品開発のたびに行うアレルゲン管理として正しいものはどれですか？", "o": ["アレルゲン管理はサプライヤーに全て委託する", "アレルゲン確認チェックリストを作成し、サプライヤーから証明書を取得、製造ラインアレルゲンマップを更新する", "消費者からのクレームで初めてアレルゲンを確認する", "年1回の一括確認で管理する"], "h": "体制化・文書化・更新の3点セットが管理の基本です。", "c": 1, "e": "山田製造所食品部門では新製品開発のたびにアレルゲン確認チェックリストを作成し、サプライヤーから「アレルゲン含有証明書」を取得、製造ライン別アレルゲン使用マップを更新しています。"}, {"m": 1, "q": "くるみ義務化（令和5年3月）への対応として正しいものはどれですか？", "o": ["施行後に慌ててラベル変更すればよい", "半年前から計画し、ラベル在庫の切替スケジュールも管理した", "くるみを使用していない製品は変更不要なので対応しなかった", "義務化は推奨なので対応は任意"], "h": "施行前から準備することで混乱を防げます。", "c": 1, "e": "令和5年3月のくるみ義務化への対応として、半年前から計画し「くるみ」の個別表示追加・一括表示への反映・ラベル在庫の切替スケジュール管理を実施しました。"}, {"m": 1, "q": "アレルゲン表示ミスが特に深刻な理由として最も適切なものはどれですか？", "o": ["表示ミスは製造コストを増加させるから", "アナフィラキシー等の重篤な健康被害を招く可能性があるから", "表示ミスは消費者の混乱を招くだけで健康被害はないから", "アレルゲン表示は任意なのでミスしても問題ない"], "h": "食物アレルギーの最悪の場合の結果を考えましょう。", "c": 1, "e": "アレルゲン表示のミスはアナフィラキシーショック等の重篤な健康被害、最悪の場合は死亡事故につながる可能性があります。原材料変更のたびに必ずアレルゲン確認チェックを実施してください。"}, {"m": 1, "q": "アレルゲン情報が変更になるきっかけとして最も注意が必要なものはどれですか？", "o": ["製品の販売価格変更", "原材料の変更（サプライヤー変更・配合変更等）", "製品の容量変更", "外装デザインの変更"], "h": "「何が変わったか」ではなく「何の変更がアレルゲン情報に影響するか」を考えましょう。", "c": 1, "e": "原材料の変更（サプライヤー変更・配合変更等）が発生すると、アレルゲン情報が変わる可能性があります。原材料変更のたびに必ずアレルゲン確認チェックを実施することが重要です。"}, {"m": 1, "q": "新製品のアレルゲンが変わる際の自動的な対応として正しいものはどれですか？", "o": ["変更後に担当者が気づいた時に対応する", "ラベル確認フローが自動的に走る仕組みを構築する", "年次監査で確認する", "消費者からの問い合わせを待つ"], "h": "「気づき」に依存せず「仕組み」で対応することが重要です。", "c": 1, "e": "山田製造所では新製品のアレルゲンが変わる際に自動的にラベル確認フローが走る仕組みを構築しました。人の気づきに依存せず、仕組みでアレルゲン確認を担保します。"}, {"m": 2, "q": "栄養成分表示の5必須項目として正しいものはどれですか？", "o": ["たんぱく質・脂質・炭水化物・食物繊維・ビタミンC", "熱量・たんぱく質・脂質・炭水化物・食塩相当量", "カロリー・糖質・脂肪・塩分・ミネラル", "熱量・糖質・脂質・カルシウム・鉄"], "h": "5つのうち、「エネルギー」と「塩分」に当たる項目の正確な名称を確認しましょう。", "c": 1, "e": "栄養成分表示の5必須項目は①熱量（kcal）、②たんぱく質（g）、③脂質（g）、④炭水化物（g）、⑤食塩相当量（g）です。"}, {"m": 2, "q": "食塩相当量の算出式として正しいものはどれですか？", "o": ["ナトリウム量(mg) ÷ 1000", "ナトリウム量(mg) × 2.54 ÷ 1000", "塩化ナトリウム量(mg) ÷ 400", "カリウム量(mg) × 1.5 ÷ 1000"], "h": "ナトリウムに換算係数をかけてから単位変換します。", "c": 1, "e": "食塩相当量（g）＝ナトリウム量（mg）×2.54÷1000という算出式が食品表示基準で定められています。実測値はナトリウムとして測定し、計算式で食塩相当量に換算します。"}, {"m": 2, "q": "栄養成分の測定方法として認められている方式はどれですか？", "o": ["実測のみ認められる", "実測・計算値・推定の3方式が認められる", "公的機関の試験のみ認められる", "自社測定のみ認められる"], "h": "複数の方法が法規上認められています。", "c": 1, "e": "測定方法は①実測（分析機関による化学分析）、②計算値（成分表を用いた計算）、③推定（製品類似品の成分値）の3方式が認められています。"}, {"m": 2, "q": "栄養成分表示が義務付けられる食品として正しいものはどれですか？", "o": ["すべての食品（生鮮食品含む）", "容器包装された一般用加工食品・一般用添加物", "業務用食品のみ", "輸入食品のみ"], "h": "「容器包装された」という条件と「一般用」という条件があります。", "c": 1, "e": "栄養成分表示が義務付けられるのは容器包装された一般用加工食品・一般用添加物です。生鮮食品・業務用食品・小規模事業者は対象外になる場合があります。"}, {"m": 2, "q": "はるかさんが食塩相当量を算出した方法として正しいものはどれですか？", "o": ["塩化ナトリウムを直接測定した", "ナトリウム実測値から計算式で算出した", "過去の類似製品のデータを流用した", "食品成分表の値をそのまま使用した"], "h": "試験機関で実測した後、計算式で算出しています。", "c": 1, "e": "はるかさんは公的認定試験機関で栄養成分を実測し、食塩相当量はナトリウム実測値から計算式（ナトリウム×2.54÷1000）で算出しました。"}, {"m": 2, "q": "製造ロット変更時の栄養成分再測定の頻度として紹介された例はどれですか？", "o": ["毎ロット毎に測定する", "3ロット毎の再測定を実施", "年1回まとめて測定", "初回のみ測定して以降は不要"], "h": "毎回では負担が大きく、全く測定しないのはリスクがあります。", "c": 1, "e": "はるかさんの会社では製造ロット変更時にも3ロット毎の再測定を実施し、表示値との乖離が生じていないかを確認しています。"}, {"m": 2, "q": "古いデータを使い続けた菓子メーカーの事例から学ぶべき教訓として正しいものはどれですか？", "o": ["栄養成分表示は一度設定すれば変更不要", "原材料が変わったら栄養成分表示も見直す", "栄養成分は概算値でよいので測定不要", "消費者は栄養成分表示をほとんど確認しない"], "h": "「原材料変更＝表示見直し」を原則として組織全体で徹底することが重要です。", "c": 1, "e": "原料配合変更後も旧数値で表示し続けた結果、消費者庁から指導を受けた事例があります。「原材料が変わったら栄養成分表示も見直す」という原則を組織全体で徹底することが重要です。"}, {"m": 2, "q": "任意表示（記載する場合は規定に従う）として紹介されたものはどれですか？", "o": ["熱量・たんぱく質・脂質", "飽和脂肪酸・食物繊維・カルシウム等", "アレルゲン・原産国名・賞味期限", "製造業者名・原材料名"], "h": "5必須項目以外でよく記載される栄養素です。", "c": 1, "e": "飽和脂肪酸・n-3系脂肪酸・食物繊維・カリウム・カルシウム・マグネシウム・鉄・亜鉛等は任意表示として認められています（記載する場合は規定に従う）。"}, {"m": 2, "q": "栄養成分表示の正確性が重要な理由として最も適切なものはどれですか？", "o": ["正確な表示は製品の高級感を演出するから", "消費者の健康管理支援と法的遵守の両方に関わるから", "競合製品との差別化のためだけに必要だから", "栄養成分表示は任意なので重要度は低い"], "h": "消費者にとっての価値と、法規制への対応の両面から考えましょう。", "c": 1, "e": "栄養成分表示の正確性は消費者の健康管理の支援（糖尿病・高血圧等の食事管理に利用される）と法的遵守の両方に関わります。測定・算出・表示の全プロセスを記録として残すことが重要です。"}, {"m": 2, "q": "「3ロット毎の再測定」のような継続的な確認活動の目的として正しいものはどれですか？", "o": ["試験機関への発注業務を定期化して管理しやすくするため", "表示値と実際の成分値の乖離を早期に発見し、表示の正確性を維持するため", "行政による抜き打ち検査への対策のため", "コスト削減のために測定回数を最小化するため"], "h": "継続的な確認は乖離の「早期発見」が目的です。", "c": 1, "e": "3ロット毎の再測定は、原料や製造条件の微変化による成分値の変動を早期に発見し、表示値との乖離が生じていないかを継続的に確認するためです。"}, {"m": 3, "q": "景品表示法の制定年として正しいものはどれですか？", "o": ["昭和37年", "平成元年", "平成25年", "令和元年"], "h": "比較的古い法律です。消費者庁設置よりずっと前に制定されています。", "c": 0, "e": "景品表示法は昭和37年法律第134号として制定されました。消費者庁（平成21年設置）が現在所管しています。"}, {"m": 3, "q": "景品表示法で禁止される不当表示の3類型として正しいものはどれですか？", "o": ["虚偽表示・誇大表示・隠ぺい表示", "優良誤認表示・有利誤認表示・ステルスマーケティング", "不実告知・断定的判断の提供・不利益な事実の不告知", "欺罔行為・脅迫行為・信用毀損行為"], "h": "令和5年10月に3つ目の類型が追加されました。", "c": 1, "e": "景品表示法で禁止される3類型は①優良誤認表示（品質等について実際より優良と誤認させる表示）、②有利誤認表示（価格等について実際より有利と誤認させる表示）、③ステルスマーケティング（令和5年10月施行）です。"}, {"m": 3, "q": "ステルスマーケティングが景品表示法の規制対象になった時期として正しいものはどれですか？", "o": ["平成25年10月", "令和元年10月", "令和5年10月", "令和6年10月"], "h": "比較的最近の規制強化です。", "c": 2, "e": "ステルスマーケティング（インフルエンサー等に報酬を払って宣伝させながら広告表示をしない行為）が景品表示法の規制対象となったのは令和5年10月施行の告示からです。"}, {"m": 3, "q": "令和6年（2024年）10月施行の景品表示法改正で追加された制度として正しいものはどれですか？", "o": ["新たな課徴金制度の全廃", "確約手続きの導入と課徴金返金措置の追加", "行政指導の廃止", "ステルスマーケティングの規制強化"], "h": "自主的是正と消費者返金の2つの新制度です。", "c": 1, "e": "令和6年10月施行の改正では①確約手続きの導入（自主的是正措置による処分回避）、②課徴金返金措置の追加（消費者への返金による課徴金減額）が追加されました。"}, {"m": 3, "q": "景品表示法の課徴金の算定基準として正しいものはどれですか？", "o": ["違反行為1件につき100万円の定額", "違反対象製品の売上額の4.5%", "企業の年間売上の1%", "違反が続いた期間（日数）×10万円"], "h": "売上に連動した課徴金制度です。", "c": 1, "e": "景品表示法の課徴金は違反対象製品の売上額の4.5%です。売上規模が大きいほど課徴金も増加するため、大企業への抑止効果があります。"}, {"m": 3, "q": "「顧客満足度No.1」表示で行政指導を受けた理由として正しいものはどれですか？", "o": ["「No.1」という表現自体が禁止されているから", "調査会社・調査期間・調査対象・調査方法の根拠資料を提出できなかったから", "競合他社からクレームが来たから", "消費者庁が独自に調査してNo.1でないことを証明したから"], "h": "「No.1」表示には客観的根拠の保管が必須です。", "c": 1, "e": "「顧客満足度No.1」の根拠となる調査会社・調査期間・調査対象・調査方法の資料を提出できず、優良誤認として行政指導を受けました。「No.1」表示には客観的根拠の文書化・保管が必須です。"}, {"m": 3, "q": "スマイル化粧品工業の広告チェック体制として正しいものはどれですか？", "o": ["マーケティング担当のみが確認する", "マーケティング→薬事担当→法務担当の三者確認フロー", "外部法律事務所への全委託", "消費者庁への事前申請制度を活用"], "h": "内部の3部門が順番に確認する体制です。", "c": 1, "e": "スマイル化粧品工業ではマーケティング→薬事担当→法務担当の三者確認フローを設置しています。特にインフルエンサーへの依頼時は「#PR」「#広告」の明示を契約書に明記しています。"}, {"m": 3, "q": "インフルエンサーに製品宣伝を依頼する際のステルスマーケティング対策として正しいものはどれですか？", "o": ["報酬の支払いをしなければ広告表示は不要", "「#PR」「#広告」の明示を契約書に明記し、投稿のスクリーンショットを保管する", "インフルエンサーが自主的に判断して対応すればよい", "SNSでの宣伝は広告とみなされない"], "h": "契約書への明記と証拠保管の両方が必要です。", "c": 1, "e": "ステルスマーケティング対策として「#PR」「#広告」の明示を契約書に明記し、投稿のスクリーンショットを証拠として保管することが重要です。企業側が管理責任を負います。"}, {"m": 3, "q": "「有利誤認表示」の具体例として正しいものはどれですか？", "o": ["「当社製品は業界最高品質」という根拠のない品質強調", "根拠のない「通常価格50,000円が今だけ5,000円」という価格表示", "製造年月日の改ざん", "健康効果がないのに「健康に良い」と表示"], "h": "「価格・取引条件」について実際より有利であるかのように示す表示です。", "c": 1, "e": "有利誤認表示（第5条第2号）は価格・取引条件について実際より著しく有利であるかのように示す表示です。根拠のない大幅値引き表示などが典型例です。"}, {"m": 3, "q": "景品表示法が「消費者の正しい選択を守る法律」と言われる理由として最も適切なものはどれですか？", "o": ["商品の品質を直接規制しているから", "誤解を招く表示・広告を禁止することで、消費者が正確な情報に基づいて選択できるよう保護するから", "企業の競争を制限して価格を安定させるから", "消費者に無料サンプルを提供することを義務付けているから"], "h": "「正しい選択」のためには「正確な情報」が前提です。", "c": 1, "e": "景品表示法は誤解を招く表示・広告を禁止することで、消費者が正確な情報に基づいて製品を選択できるよう保護する法律です。薬機法と景品表示法の両面から広告表現を確認する体制が重要です。"}, {"m": 4, "q": "食品表示の内部監査で確認すべき事項として紹介されたものはどれですか？", "o": ["義務9項目の記載の有無・アレルゲン表示の最新性・栄養成分表示値の根拠データ保管等", "製品の販売価格・原材料の仕入れコスト・製造設備の維持費", "従業員の教育訓練記録・設備の点検記録・ISO認証書", "競合製品との比較データ・市場シェア・顧客満足度"], "h": "表示が正確かつ最新かを確認する6点の確認事項があります。", "c": 0, "e": "食品表示の内部監査では①義務9項目の記載の有無・正確性、②アレルゲン表示の最新性、③栄養成分表示値の根拠データ保管、④期限設定根拠の記録、⑤原材料名の表示順序、⑥原産国名の正確性を確認します。"}, {"m": 4, "q": "年次ラベル監査の方法として正しいものはどれですか？", "o": ["監査は消費者アンケートをもとに実施する", "全製品のラベル現品と承認済みラベルデータを照合し、チェックリストで次回確認予定日も管理する", "外部コンサルタントに全委託する", "新製品のみを対象にする"], "h": "現品と承認データの照合が中心です。", "c": 1, "e": "山田製造所食品部門では年1回、全製品のラベル現品と承認済みラベルデータを照合する年次監査を実施しています。チェックリストには「アレルゲン最終確認日」「栄養成分最終測定日」「次回確認予定日」を記載します。"}, {"m": 4, "q": "スマイル化粧品工業食品部門の新製品上市前チェックシートの項目数として正しいものはどれですか？", "o": ["5項目", "10項目", "20項目", "50項目"], "h": "義務表示事項を網羅する数として紹介されました。", "c": 2, "e": "スマイル化粧品工業食品部門では新製品の発売前に「食品表示法最終確認チェックシート（20項目）」を使用しています。担当者・薬事担当・法務担当の三名が順番に確認し署名します。"}, {"m": 4, "q": "新製品上市前チェックで全員のサインが揃わないとどうなりますか？", "o": ["そのまま発売できる", "発売GOサインが出ない", "1名のサインで発売できる", "経営者判断で発売できる"], "h": "全員の確認が揃わないと先に進めない仕組みです。", "c": 1, "e": "スマイル化粧品工業食品部門では担当者・薬事担当・法務担当の三名全員のサインが揃わないと発売GOサインが出ない仕組みです。この厳格な三者確認がミスを防ぎます。"}, {"m": 4, "q": "表示見直しのトリガー（きっかけ）として正しいものはどれですか？", "o": ["競合他社が新製品を発売した時", "原材料変更・法改正・製造ライン変更などが発生した時", "年に1回定期的に", "消費者からクレームが来た時のみ"], "h": "外部の変化と内部の変化の両方がトリガーになります。", "c": 1, "e": "表示見直しのトリガーは原材料変更・法改正・製造ライン変更などの変化が発生した時です。「一度作ったら終わり」ではなく、変化のたびに自動的にラベル確認フローが回る仕組みが重要です。"}, {"m": 4, "q": "広告表示の内部監査で確認すべき事項として紹介されたものはどれですか？", "o": ["広告費の予算配分・効果測定・ROI計算", "薬機法の効能効果逸脱の有無・景品表示法上の根拠なき優良表現・ステルスマーケティング対応", "競合他社の広告内容・市場シェア・ブランド認知度", "SNSフォロワー数・エンゲージメント率・クリック率"], "h": "法的コンプライアンスの3点が中心です。", "c": 1, "e": "広告表示の内部監査では①薬機法の効能効果の範囲逸脱の有無、②景品表示法上の根拠がない優良表現の有無、③ステルスマーケティング対応（#PR表示等）の確認を行います。"}, {"m": 4, "q": "表示管理が「継続的な確認が必要」と言われる理由として正しいものはどれですか？", "o": ["消費者の好みが常に変化するから", "原材料変更・法改正・製造ライン変更が随時発生するから", "毎年新製品を発売する義務があるから", "競合他社への対抗上、定期的な更新が必要だから"], "h": "「外部環境の変化」と「内部の変化」が継続的確認を必要とします。", "c": 1, "e": "表示管理は「一度作ったら終わり」ではなく継続的な確認が必要です。原材料変更・法改正・製造ライン変更のたびに表示の正確性が変わる可能性があるためです。"}, {"m": 4, "q": "年次監査の結果を報告すべき対象として正しいものはどれですか？", "o": ["監査担当者の上司のみ", "品質保証担当と経営者に報告する", "外部監査機関に報告する", "消費者庁に報告する義務がある"], "h": "社内の品質保証部門と経営トップへの報告が基本です。", "c": 1, "e": "年次監査の結果は品質保証担当と経営者に報告します。経営者が表示管理の現状を把握し、必要なリソース（人・予算）を配分することで継続的な改善が実現します。"}, {"m": 4, "q": "食品表示法・景品表示法の両面から広告表現を確認する体制が重要な理由として最も適切なものはどれですか？", "o": ["2つの法律の担当省庁が異なるから", "食品の広告は食品表示法（義務表示）と景品表示法（表示の公正性）の両方の規制を受けるから", "景品表示法は化粧品にのみ適用されるから", "食品表示法は販売店のみに適用されるから"], "h": "「何を表示するか（義務）」と「どう表示するか（公正性）」の両面です。", "c": 1, "e": "食品の広告・表示は食品表示法（義務表示事項）と景品表示法（表示の公正性・優良誤認禁止）の両方の規制を受けます。薬機法が適用される場合も含め、複数の法律の観点から確認する体制が必要です。"}, {"m": 4, "q": "「表示管理のゴール」として最も適切に表現されているものはどれですか？", "o": ["すべての表示を毎月リニューアルすること", "原材料変更・法改正・製造ライン変更のたびに自動的にラベル確認フローが回る仕組みを作ること", "表示ミスが起きた時に迅速に謝罪できる体制を整えること", "行政からの指導を受けてから改善すること"], "h": "「自動的に」「フローが回る」仕組み化が目標です。", "c": 1, "e": "表示管理のゴールは原材料変更・法改正・製造ライン変更のたびに自動的にラベル確認フローが回る仕組みを作ることです。担当者の気づきに頼らず、仕組みで担保することが重要です。"}]};
+const totalPool = QD.questions.length;
+const courseShowCount = Math.floor(totalPool / 2);
+
+// コース全体テスト表示数の初期化
+document.getElementById('courseTotal').textContent = totalPool;
+document.getElementById('courseCount').textContent = courseShowCount;
+
+// 動画選択リスト生成
+var sl = document.getElementById('slList');
+QD.titles.forEach(function(t, i) {
+  var cnt = QD.questions.filter(function(q){return q.m===i}).length;
+  var div = document.createElement('div');
+  div.className='sl-item';
+  div.innerHTML='<div class="sl-num">'+(i+1)+'</div><div class="sl-title">'+t+'</div>';
+  div.onclick=function(){selectVideo(i)};
+  sl.appendChild(div);
+});
+
+var modIdx = 0, mode = 'video';
+
+function selectVideo(idx) {
+  modIdx = idx;
+  document.getElementById('panelSelect').style.display='none';
+  document.getElementById('svTitle').textContent = QD.titles[idx]+' 確認テスト';
+  var mc = QD.questions.filter(function(q){return q.m===idx}).length;
+  document.getElementById('svCount').textContent = mc;
+  document.getElementById('panelVideo').style.display='block';
+  document.getElementById('startVideo').style.display='block';
+  document.getElementById('qVideo').style.display='none';
+  document.getElementById('rVideo').style.display='none';
+}
+
+function switchTab(t) {
+  document.querySelectorAll('.tb').forEach(function(b){
+    var isMatch=(t==='select'&&b.classList.contains('t-video'))||b.classList.contains('t-'+t);
+    b.classList.toggle('on',isMatch);
+  });
+  var ps=document.getElementById('panelSelect');
+  if(t==='select'){
+    if(ps)ps.style.display='block';
+    document.getElementById('panelVideo').style.display='none';
+  }else if(t==='video'){
+    if(ps)ps.style.display='none';
+    document.getElementById('panelVideo').style.display='block';
+  }else{
+    if(ps)ps.style.display='none';
+    document.getElementById('panelVideo').style.display='none';
+  }
+  document.getElementById('panelCourse').style.display=t==='course'?'block':'none';
+}
+
+var quizzes = {video:{qs:[],ci:0,sc:0,ans:[]},course:{qs:[],ci:0,sc:0,ans:[]}};
+
+window.go = function(m) {
+  mode=m; var qz=quizzes[m]; qz.ci=0; qz.sc=0; qz.ans=[];
+  if(m==='video'){
+    qz.qs = QD.questions.filter(function(q){return q.m===modIdx});
+    for(var i=qz.qs.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=qz.qs[i];qz.qs[i]=qz.qs[j];qz.qs[j]=t}
+  } else {
+    var pool = QD.questions.slice();
+    for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=pool[i];pool[i]=pool[j];pool[j]=t}
+    qz.qs = pool.slice(0, courseShowCount);
+  }
+  g('start'+(m==='video'?'Video':'Course')).style.display='none';
+  g('r'+(m==='video'?'Video':'Course')).style.display='none';
+  var qEl=g('q'+(m==='video'?'Video':'Course'));
+  qEl.style.display='block';
+  showQ(m); qEl.scrollIntoView({behavior:'smooth'});
+};
+
+function g(id){return document.getElementById(id)}
+
+function showQ(m) {
+  var qz=quizzes[m], q=qz.qs[qz.ci], total=qz.qs.length;
+  var cls=m==='video'?'c-video':'c-course';
+  var qEl=g('q'+(m==='video'?'Video':'Course'));
+  var pct=Math.round((qz.ci/total)*100);
+  qEl.innerHTML=
+    '<div class="pg"><div class="pgb"><div class="pgf '+cls+'" style="width:'+pct+'%"></div></div>'+
+    '<div class="pgc">'+(qz.ci+1)+'/'+total+'</div></div>'+
+    '<div class="qm">Q'+(qz.ci+1)+'</div>'+
+    '<div class="qt">'+q.q+'</div>'+
+    '<button class="hb" onclick="toggleHint(this,\''+m+'\')">💡 ヒントを見る</button>'+
+    '<div class="hi">'+q.h+'</div>'+
+    '<div class="os">'+
+    q.o.map(function(opt,i){
+      return '<button class="o" onclick="ans('+i+',\''+m+'\')" data-idx="'+i+'">'+
+             '<div class="ol">'+['Ａ','Ｂ','Ｃ','Ｄ'][i]+'</div><div>'+opt+'</div></button>';
+    }).join('')+
+    '</div>'+
+    '<div class="ex"></div>'+
+    '<button class="nx '+cls+'" onclick="next(\''+m+'\')" id="nx'+m+'">'+(qz.ci+1<total?'次の問題 →':'結果を見る')+'</button>';
+}
+
+function toggleHint(btn, m) {
+  var qEl=g('q'+(m==='video'?'Video':'Course'));
+  var hi=qEl.querySelector('.hi');
+  hi.style.display=hi.style.display==='block'?'none':'block';
+}
+
+function ans(idx, m) {
+  var qz=quizzes[m], q=qz.qs[qz.ci];
+  var qEl=g('q'+(m==='video'?'Video':'Course'));
+  var os=qEl.querySelectorAll('.o');
+  os.forEach(function(o){o.classList.add('lk');o.style.cursor='default'});
+  var correct=(idx===q.c);
+  if(correct)qz.sc++;
+  qz.ans.push({q:q.q,ua:q.o[idx],ca:q.o[q.c],correct:correct,e:q.e});
+  os[idx].classList.add(correct?'ok':'ng');
+  if(!correct)os[q.c].classList.add('ok');
+  var ex=qEl.querySelector('.ex');
+  ex.style.display='block'; ex.textContent=q.e;
+  g('nx'+m).style.display='inline-block';
+}
+
+function next(m) {
+  var qz=quizzes[m];
+  qz.ci++;
+  if(qz.ci<qz.qs.length){
+    showQ(m);
+  } else {
+    showResult(m);
+  }
+}
+
+function showResult(m) {
+  var qz=quizzes[m];
+  var rEl=g('r'+(m==='video'?'Video':'Course'));
+  var qEl=g('q'+(m==='video'?'Video':'Course'));
+  qEl.style.display='none';
+  rEl.style.display='block';
+  var pct=Math.round((qz.sc/qz.qs.length)*100);
+  var pass=pct>=70;
+  var emoji=pct>=90?'🎉':pct>=70?'😊':pct>=50?'📚':'💪';
+  var wrongItems=qz.ans.filter(function(a){return !a.correct}).map(function(a){
+    return '<div class="rvi"><div class="rvq">'+a.q+'</div>'+
+           '<div class="rvy">あなたの回答：'+a.ua+'</div>'+
+           '<div class="rvc">正解：'+a.ca+'</div>'+
+           '<div class="rve">'+a.e+'</div></div>';
+  }).join('');
+  rEl.innerHTML=
+    '<div class="rc '+(pass?'ps':'fl')+'">'+
+    '<div class="rk">'+emoji+'</div>'+
+    '<div class="rs">'+qz.sc+' / '+qz.qs.length+'問正解</div>'+
+    '<div class="rd">正答率 '+pct+'%</div>'+
+    (pass?'<div class="rpm">✅ 合格！よくできました</div>':'<div class="rfm">📖 復習して再挑戦しましょう</div>')+
+    '</div>'+
+    (wrongItems?'<div class="rvt">📝 間違えた問題</div>'+wrongItems:'')+
+    '<div class="rt">'+
+    (m==='video'?'<button class="B bg" onclick="go(\'video\')">🔄 もう一度</button><button class="B" style="background:#1e293b;color:#f1f5f9" onclick="switchTab(\'select\')">← 動画選択に戻る</button>':
+                 '<button class="B bo" onclick="go(\'course\')">🔄 もう一度</button>')+
+    '</div>';
+}
+</script>
+</body>
+</html>
