@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>健康食品GMPコース 確認テスト | 産業技術アカデミー</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <style>
+    body{margin:0;padding:0;background:#0a0e1a;}
+    iframe{width:100%;min-height:800px;border:none;display:block;}
+  </style>
+</head>
+<body>
+  <iframe id="qz" src="https://course-quiz.sangyo-tech.jp/?course=%E5%81%A5%E5%BA%B7%E9%A3%9F%E5%93%81GMP%E3%82%B3%E3%83%BC%E3%82%B9"></iframe>
+  <script>
+    window.addEventListener('message', function(e) {
+      if (e.data && e.data.qh) {
+        document.getElementById('qz').style.height = e.data.qh + 'px';
+      }
+    });
+  </script>
+</body>
+</html>
