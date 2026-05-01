@@ -113,7 +113,7 @@ function pickRandom(arr,n){var a=arr.slice();for(var i=a.length-1;i>0;i--){var j
 function postHeight(){try{var h=document.documentElement.scrollHeight;if(window.parent)window.parent.postMessage({qh:h},'*');}catch(e){}}
 function todayJP(){var d=new Date();return d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日';}
 
-fetch('data/'+courseSlug+'.json?v='+Date.now()).then(function(r){if(!r.ok)throw r.status;return r.json();}).then(function(d){DATA=d;render();}).catch(function(e){root.innerHTML='<div class="loading">クイズデータの読込に失敗しました（'+e+'）</div>';});
+fetch(courseSlug+'.json?v='+Date.now()).then(function(r){if(!r.ok)throw r.status;return r.json();}).then(function(d){DATA=d;render();}).catch(function(e){root.innerHTML='<div class="loading">クイズデータの読込に失敗しました（'+e+'）</div>';});
 
 function render(){
   if(STATE.mode==='quiz')return renderQuiz();
