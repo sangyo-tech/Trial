@@ -158,6 +158,7 @@ function bindMenu(){
 }
 function renderVideoTab(){
   var vids=DATA.videos||[];
+  if(vids.length===0)return '<div class="center-card"><p class="subtitle">準備中</p><p class="desc">動画別テストは現在準備中です</p></div>';
   var html='<p class="section-label">'+escapeHTML(DATA.courseName)+' · 動画ごとに5問</p>';
   if(DATA.videoGroups&&DATA.videoGroups.length){
     DATA.videoGroups.forEach(function(g){
