@@ -195,7 +195,7 @@ function renderCategoryTab(){
   var cats=DATA.categories||{};
   var names=Object.keys(cats);
   if(names.length===0)return '<div class="center-card"><p class="subtitle">準備中</p><p class="desc">カテゴリ別テストは現在準備中です</p></div>';
-  var html='<p class="section-label">カテゴリから選択 · 各50問ランダム · 合格基準80% · 修了証発行</p><div class="cat-grid">';
+  var html='<p class="section-label">関連カテゴリから · 各50問ランダム · 合格基準80% · 修了証発行</p><div class="cat-grid">';
   names.forEach(function(n){
     var count=(cats[n]||[]).length;
     var disabled=count===0;
