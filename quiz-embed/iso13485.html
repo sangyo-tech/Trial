@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>ç¢ºèªãã¹ã | ç£æ¥­æè¡ã¢ã«ããã¼</title>
+<title>確認テスト | 産業技術アカデミー</title>
 <style>
 :root{--bg:#0a0e1a;--card:rgba(255,255,255,0.04);--line:rgba(255,255,255,0.08);--gold:#f5c46b;--gold2:#c4a275;--text:#fff;--text2:#aaa;--text3:#666;--green:#7ed957;--red:#e85a5a}
 *{box-sizing:border-box}
@@ -104,7 +104,7 @@ body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:-appl
 </style>
 </head>
 <body>
-<div class="wrap" id="root"><div class="loading">èª­ã¿è¾¼ã¿ä¸­â¦</div></div>
+<div class="wrap" id="root"><div class="loading">読み込み中…</div></div>
 <script>
 (function(){
 "use strict";
@@ -117,9 +117,9 @@ var STATE = { mode: 'menu', tab: 'video', quiz: null, result: null, certName: ''
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,function(c){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]});}
 function pickRandom(arr,n){var a=arr.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a.slice(0,Math.min(n,a.length));}
 function postHeight(){try{var h=document.documentElement.scrollHeight;if(window.parent)window.parent.postMessage({qh:h},'*');}catch(e){}}
-function todayJP(){var d=new Date();return d.getFullYear()+'å¹´'+(d.getMonth()+1)+'æ'+d.getDate()+'æ¥';}
+function todayJP(){var d=new Date();return d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日';}
 
-fetch(courseSlug+'.json?v='+Date.now()).then(function(r){if(!r.ok)throw r.status;return r.json();}).then(function(d){DATA=d;render();}).catch(function(e){root.innerHTML='<div class="loading">ã¯ã¤ãºãã¼ã¿ã®èª­è¾¼ã«å¤±æãã¾ããï¼'+e+'ï¼</div>';});
+fetch(courseSlug+'.json?v='+Date.now()).then(function(r){if(!r.ok)throw r.status;return r.json();}).then(function(d){DATA=d;render();}).catch(function(e){root.innerHTML='<div class="loading">クイズデータの読込に失敗しました（'+e+'）</div>';});
 
 function render(){
   if(STATE.mode==='quiz')return renderQuiz();
@@ -131,9 +131,9 @@ function render(){
 function renderMenu(){
   var html=''
     +'<div class="tabs">'
-    +'<button class="tab'+(STATE.tab==='video'?' active':'')+'" data-tab="video">åç»å¥</button>'
-    +'<button class="tab'+(STATE.tab==='course'?' active':'')+'" data-tab="course">ã³ã¼ã¹å¥</button>'
-    +'<button class="tab'+(STATE.tab==='category'?' active':'')+'" data-tab="category">ã«ãã´ãªã¼å¥</button>'
+    +'<button class="tab'+(STATE.tab==='video'?' active':'')+'" data-tab="video">動画別</button>'
+    +'<button class="tab'+(STATE.tab==='course'?' active':'')+'" data-tab="course">コース別</button>'
+    +'<button class="tab'+(STATE.tab==='category'?' active':'')+'" data-tab="category">カテゴリー別</button>'
     +'</div>';
   if(STATE.tab==='video')html+=renderVideoTab();
   else if(STATE.tab==='course')html+=renderCourseTab();
@@ -149,26 +149,26 @@ function bindMenu(){
     if(act==='video'){
       var idx=parseInt(b.dataset.video,10);
       var v=DATA.videos[idx];
-      if(!v||!v.questions||!v.questions.length){alert('åé¡ãæºåä¸­ã§ã');return;}
+      if(!v||!v.questions||!v.questions.length){alert('問題が準備中です');return;}
       startQuiz(pickRandom(v.questions,5),v.title,'video');
     }else if(act==='course'){
-      if(!DATA.courseQuestions||!DATA.courseQuestions.length){alert('åé¡ãæºåä¸­ã§ã');return;}
-      startQuiz(pickRandom(DATA.courseQuestions,Math.min(20,DATA.courseQuestions.length)),DATA.courseName+' ç·å','course');
+      if(!DATA.courseQuestions||!DATA.courseQuestions.length){alert('問題が準備中です');return;}
+      startQuiz(pickRandom(DATA.courseQuestions,Math.min(20,DATA.courseQuestions.length)),DATA.courseName+' 総合','course');
     }else if(act==='category'){
       var cat=b.dataset.cat;
       var pool=DATA.categories&&DATA.categories[cat];
-      if(!pool||!pool.length){alert('ã«ãã´ãªã®åé¡ãæºåä¸­ã§ã');return;}
-      startQuiz(pickRandom(pool,Math.min(50,pool.length)),cat+' ã«ãã´ãª','category');
+      if(!pool||!pool.length){alert('カテゴリの問題が準備中です');return;}
+      startQuiz(pickRandom(pool,Math.min(50,pool.length)),cat+' カテゴリ','category');
     }
   });});
 }
 function renderVideoTab(){
   var vids=DATA.videos||[];
-  if(vids.length===0)return '<div class="center-card"><p class="subtitle">æºåä¸­</p><p class="desc">åç»å¥ãã¹ãã¯ç¾å¨æºåä¸­ã§ã</p></div>';
-  var html='<p class="section-label">'+escapeHTML(DATA.courseName)+' Â· åç»ãã¨ã«5å</p>';
+  if(vids.length===0)return '<div class="center-card"><p class="subtitle">準備中</p><p class="desc">動画別テストは現在準備中です</p></div>';
+  var html='<p class="section-label">'+escapeHTML(DATA.courseName)+' · 動画ごとに5問</p>';
   if(DATA.videoGroups&&DATA.videoGroups.length){
     DATA.videoGroups.forEach(function(g){
-      html+='<p class="section-label gold">â '+escapeHTML(g.name)+' â</p>';
+      html+='<p class="section-label gold">— '+escapeHTML(g.name)+' —</p>';
       g.indices.forEach(function(vi){html+=videoRowHTML(vids[vi],vi);});
     });
   }else{
@@ -184,38 +184,38 @@ function videoRowHTML(v,idx){
     return '<button class="video-row" data-action="video" data-video="'+idx+'">'
       +'<span class="video-num">'+num+'</span>'
       +'<span class="video-title">'+escapeHTML(v.title)+'</span>'
-      +'<span class="video-arrow">5å éå§ â</span>'
+      +'<span class="video-arrow">5問 開始 →</span>'
       +'</button>';
   }
   return '<div class="video-row disabled">'
     +'<span class="video-num">'+num+'</span>'
     +'<span class="video-title">'+escapeHTML(v.title)+'</span>'
-    +'<span class="video-arrow">æºåä¸­</span>'
+    +'<span class="video-arrow">準備中</span>'
     +'</div>';
 }
 function renderCourseTab(){
   var n=(DATA.courseQuestions||[]).length;
-  if(n===0)return '<div class="center-card"><p class="subtitle">æºåä¸­</p><p class="desc">ãã®ã³ã¼ã¹ã®ç·åãã¹ãã¯ç¾å¨æºåä¸­ã§ã</p></div>';
+  if(n===0)return '<div class="center-card"><p class="subtitle">準備中</p><p class="desc">このコースの総合テストは現在準備中です</p></div>';
   return '<div class="center-card">'
-    +'<p class="subtitle">'+escapeHTML(DATA.courseName)+' ç·åç¢ºèªãã¹ã</p>'
-    +'<h3>20å</h3>'
-    +'<p class="desc">ã³ã¼ã¹å¨ä½ããã©ã³ãã åºé¡ Â· è§£èª¬ä»ã Â· åæ ¼åºæº80% Â· ä¿®äºè¨¼çºè¡</p>'
-    +'<button class="big-btn" data-action="course">ãã¹ããå§ãã â</button>'
-    +'<p class="meta">æ³å®æè¦æéï¼ç´10å</p>'
+    +'<p class="subtitle">'+escapeHTML(DATA.courseName)+' 総合確認テスト</p>'
+    +'<h3>20問</h3>'
+    +'<p class="desc">コース全体からランダム出題 · 解説付き · 合格基準80% · 修了証発行</p>'
+    +'<button class="big-btn" data-action="course">テストを始める →</button>'
+    +'<p class="meta">想定所要時間：約10分</p>'
     +'</div>';
 }
 function renderCategoryTab(){
   var cats=DATA.categories||{};
   var names=Object.keys(cats);
-  if(names.length===0)return '<div class="center-card"><p class="subtitle">æºåä¸­</p><p class="desc">ã«ãã´ãªå¥ãã¹ãã¯ç¾å¨æºåä¸­ã§ã</p></div>';
-  var html='<p class="section-label">ã«ãã´ãªããé¸æ Â· å50åã©ã³ãã  Â· åæ ¼åºæº80% Â· ä¿®äºè¨¼çºè¡</p><div class="cat-grid">';
+  if(names.length===0)return '<div class="center-card"><p class="subtitle">準備中</p><p class="desc">カテゴリ別テストは現在準備中です</p></div>';
+  var html='<p class="section-label">カテゴリから選択 · 各50問ランダム · 合格基準80% · 修了証発行</p><div class="cat-grid">';
   names.forEach(function(n){
     var count=(cats[n]||[]).length;
     var disabled=count===0;
     html+='<button class="cat-card'+(disabled?' disabled':'')+'" data-action="category" data-cat="'+escapeHTML(n)+'"'+(disabled?' disabled':'')+'>'
       +'<span class="cat-name">'+escapeHTML(n)+'</span>'
-      +'<span class="cat-count">'+(disabled?'æºåä¸­':count+'å')+'</span>'
-      +'<span class="cat-arrow">â</span>'
+      +'<span class="cat-count">'+(disabled?'準備中':count+'問')+'</span>'
+      +'<span class="cat-arrow">→</span>'
       +'</button>';
   });
   html+='</div>';
@@ -239,7 +239,7 @@ function renderQuiz(){
     +'</div>'
     +'<div class="quiz-bar"><div class="quiz-bar-fill" style="width:'+Math.round((idx+(showResult?1:0))/total*100)+'%"></div></div>'
     +'<p class="quiz-q">'+escapeHTML(q.question)+'</p>';
-  if(q.hint&&!showResult)html+='<details class="quiz-hint"><summary>ãã³ããè¦ã</summary><div style="margin-top:6px">'+escapeHTML(q.hint)+'</div></details>';
+  if(q.hint&&!showResult)html+='<details class="quiz-hint"><summary>ヒントを見る</summary><div style="margin-top:6px">'+escapeHTML(q.hint)+'</div></details>';
   html+='<div class="quiz-options">';
   q.options.forEach(function(opt,i){
     var cls='quiz-opt';
@@ -254,7 +254,7 @@ function renderQuiz(){
   if(showResult){
     if(q.explanation)html+='<div class="quiz-explain">'+escapeHTML(q.explanation)+'</div>';
     html+='<div class="quiz-actions">'
-      +(idx+1<total?'<button class="btn primary" data-act="next">æ¬¡ã®åé¡ã¸ â</button>':'<button class="btn primary" data-act="finish">çµæãè¦ã â</button>')
+      +(idx+1<total?'<button class="btn primary" data-act="next">次の問題へ →</button>':'<button class="btn primary" data-act="finish">結果を見る →</button>')
       +'</div>';
   }
   root.innerHTML=html;
@@ -283,14 +283,14 @@ function renderResult(){
     dots+='<div class="result-dot '+(ok?'ok':'ng')+'"></div>';
   });
   var btns='';
-  if(canIssueCert)btns+='<button class="btn primary" data-act="cert">ä¿®äºè¨¼ãçºè¡ãã â</button>';
-  btns+='<button class="btn'+(canIssueCert?'':' primary')+'" data-act="retry">ããä¸åº¦åãã</button>';
-  btns+='<button class="btn ghost" data-act="back">æ»ã</button>';
+  if(canIssueCert)btns+='<button class="btn primary" data-act="cert">修了証を発行する →</button>';
+  btns+='<button class="btn'+(canIssueCert?'':' primary')+'" data-act="retry">もう一度受ける</button>';
+  btns+='<button class="btn ghost" data-act="back">戻る</button>';
   root.innerHTML='<div class="result">'
     +'<p class="label-text">'+escapeHTML(r.label)+'</p>'
     +'<div class="score '+(passed?'pass':'fail')+'">'+pct+'%</div>'
-    +'<p style="color:var(--text2);font-size:13px;margin:0 0 4px">æ­£è§£ '+correct+' / '+total+' å</p>'
-    +'<p style="color:'+(passed?'var(--green)':'var(--red)')+';font-size:14px;font-weight:500">'+(passed?'åæ ¼ (åºæº80%ä»¥ä¸)':'ä¸åæ ¼ (åºæº80%ä»¥ä¸)')+'</p>'
+    +'<p style="color:var(--text2);font-size:13px;margin:0 0 4px">正解 '+correct+' / '+total+' 問</p>'
+    +'<p style="color:'+(passed?'var(--green)':'var(--red)')+';font-size:14px;font-weight:500">'+(passed?'合格 (基準80%以上)':'不合格 (基準80%以上)')+'</p>'
     +'<div class="result-bar">'+dots+'</div>'
     +'<div style="margin-top:24px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">'+btns+'</div>'
     +'</div>';
@@ -310,19 +310,19 @@ function renderResult(){
 }
 function renderCertForm(){
   root.innerHTML='<div class="cert-form">'
-    +'<h3>ä¿®äºè¨¼ãçºè¡ãã</h3>'
-    +'<p>ä¿®äºè¨¼ã«è¨è¼ãããååãå¥åãã¦ãã ãã</p>'
-    +'<input type="text" id="certNameInput" placeholder="ä¾ï¼å±±ç° å¤ªé" value="'+escapeHTML(STATE.certName||'')+'" maxlength="40">'
+    +'<h3>修了証を発行する</h3>'
+    +'<p>修了証に記載するお名前を入力してください</p>'
+    +'<input type="text" id="certNameInput" placeholder="例：山田 太郎" value="'+escapeHTML(STATE.certName||'')+'" maxlength="40">'
     +'<div class="cert-actions">'
-    +'<button class="btn primary" data-act="issue">çºè¡ãã â</button>'
-    +'<button class="btn ghost" data-act="back">æ»ã</button>'
+    +'<button class="btn primary" data-act="issue">発行する →</button>'
+    +'<button class="btn ghost" data-act="back">戻る</button>'
     +'</div>'
     +'</div>';
   var input=root.querySelector('#certNameInput');
   if(input){input.focus();input.addEventListener('keydown',function(e){if(e.key==='Enter')issue();});}
   function issue(){
     var name=(input.value||'').trim();
-    if(!name){alert('ãååãå¥åãã¦ãã ãã');return;}
+    if(!name){alert('お名前を入力してください');return;}
     STATE.certName=name;STATE.mode='certificate';render();
   }
   Array.prototype.forEach.call(root.querySelectorAll('[data-act]'),function(b){b.addEventListener('click',function(){
@@ -339,22 +339,22 @@ function renderCertificate(){
   var courseTitle=DATA.courseName;
   var label=r.label;
   root.innerHTML='<div class="no-print" style="text-align:center;margin-bottom:14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">'
-    +'<button class="btn primary" data-act="print">å°å· / PDFä¿å­</button>'
-    +'<button class="btn ghost" data-act="back">çµæã«æ»ã</button>'
+    +'<button class="btn primary" data-act="print">印刷 / PDF保存</button>'
+    +'<button class="btn ghost" data-act="back">結果に戻る</button>'
     +'</div>'
     +'<div class="certificate">'
     +'<p class="cert-title">Certificate of Completion</p>'
-    +'<h2 class="cert-jp-title">ä¿®ãäºãè¨¼</h2>'
-    +'<p class="cert-name-label">åè¬èå</p>'
+    +'<h2 class="cert-jp-title">修　了　証</h2>'
+    +'<p class="cert-name-label">受講者名</p>'
     +'<p class="cert-name">'+escapeHTML(STATE.certName)+'</p>'
-    +'<p class="cert-honor">æ®¿</p>'
-    +'<p class="cert-body">ããªãã¯ç£æ¥­æè¡ã¢ã«ããã¼ãå®ãã<br><strong>ã'+escapeHTML(label)+'ã</strong> ç¢ºèªãã¹ãã«ããã¦<br>åæ ¼åºæºï¼80%ä»¥ä¸ï¼ãéæãããæå®ã®ä¿®äºè¦ä»¶ãæºãããã¾ããã<br>ããã«ä¿®äºããããã¨ãèªå®ãã¾ãã</p>'
-    +'<p class="cert-score">ã¹ã³ã¢ï¼'+correct+' / '+total+' åæ­£è§£ï¼'+pct+'%ï¼</p>'
+    +'<p class="cert-honor">殿</p>'
+    +'<p class="cert-body">あなたは産業技術アカデミーが定める<br><strong>「'+escapeHTML(label)+'」</strong> 確認テストにおいて<br>合格基準（80%以上）を達成され、所定の修了要件を満たされました。<br>ここに修了されたことを認定します。</p>'
+    +'<p class="cert-score">スコア：'+correct+' / '+total+' 問正解（'+pct+'%）</p>'
     +'<div class="cert-foot">'
-    +'<div class="cert-date">çºè¡æ¥<br><strong style="color:#1a1a1a;font-size:14px">'+todayJP()+'</strong></div>'
-    +'<div class="cert-issuer">çºè¡<div class="org">ç£æ¥­æè¡ã¢ã«ããã¼</div><div style="font-size:10px">Qulio LLC</div></div>'
+    +'<div class="cert-date">発行日<br><strong style="color:#1a1a1a;font-size:14px">'+todayJP()+'</strong></div>'
+    +'<div class="cert-issuer">発行<div class="org">産業技術アカデミー</div><div style="font-size:10px">Qulio LLC</div></div>'
     +'</div>'
-    +'<div class="cert-mark">ç£æ¥­æè¡<br>ã¢ã«ããã¼<br>èªå®</div>'
+    +'<div class="cert-mark">産業技術<br>アカデミー<br>認定</div>'
     +'</div>';
   Array.prototype.forEach.call(root.querySelectorAll('[data-act]'),function(b){b.addEventListener('click',function(){
     if(b.dataset.act==='print')window.print();
