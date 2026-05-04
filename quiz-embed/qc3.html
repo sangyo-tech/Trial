@@ -129,11 +129,9 @@ function render(){
   return renderMenu();
 }
 function renderMenu(){
-  var hasVideos=DATA&&DATA.videos&&DATA.videos.length>0;
-  if(!hasVideos&&STATE.tab==='video')STATE.tab='course';
   var html=''
     +'<div class="tabs">'
-    +(hasVideos?'<button class="tab'+(STATE.tab==='video'?' active':'')+'" data-tab="video">動画別</button>':'')
+    +'<button class="tab'+(STATE.tab==='video'?' active':'')+'" data-tab="video">動画別</button>'
     +'<button class="tab'+(STATE.tab==='course'?' active':'')+'" data-tab="course">コース別</button>'
     +'<button class="tab'+(STATE.tab==='category'?' active':'')+'" data-tab="category">カテゴリー別</button>'
     +'</div>';
