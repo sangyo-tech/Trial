@@ -112,7 +112,7 @@ var params = new URLSearchParams(location.search);
 var courseSlug = 'theme-kpi';
 var root = document.getElementById('root');
 var DATA = null;
-var STATE = { mode: 'menu', tab: 'video', quiz: null, result: null, certName: '' };
+var STATE = { mode: 'menu', tab: 'course', quiz: null, result: null, certName: '' };
 
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,function(c){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]});}
 function pickRandom(arr,n){var a=arr.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a.slice(0,Math.min(n,a.length));}
