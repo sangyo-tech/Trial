@@ -112,14 +112,14 @@ var params = new URLSearchParams(location.search);
 var courseSlug = 'yakkihou';
 var root = document.getElementById('root');
 var DATA = null;
-var STATE = { mode: 'menu', tab: 'video', quiz: null, result: null, certName: '' };
+var STATE = { mode: 'menu', tab: 'course', quiz: null, result: null, certName: '' };
 
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,function(c){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]});}
 function pickRandom(arr,n){var a=arr.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a.slice(0,Math.min(n,a.length));}
 function postHeight(){try{var h=document.documentElement.scrollHeight;if(window.parent)window.parent.postMessage({qh:h},'*');}catch(e){}}
 function todayJP(){var d=new Date();return d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日';}
 
-fetch(courseSlug+'.json?v='+Date.now()).then(function(r){if(!r.ok)throw r.status;return r.json();}).then(function(d){DATA=d;render();}).catch(function(e){root.innerHTML='<div class="loading">クイズデータの読込に失敗しました（'+e+'）</div>';});
+var THEME_REGEX={'theme-fmea':/FMEA|設計審査|DR|源流|信頼性|予防保全/i,'theme-claim':/クレーム|苦情|是正|原因解析|再発防止|8D|A3|なぜなぜ/i,'theme-4m':/4M|変化点|変更|ECN|MOC|初期流動/i,'theme-qms':/QMS|品質マネジメント|品質方針|文書体系|コミットメント|主任|マネジメントレビュー/i,'theme-stats':/統計|データ分析|Cp|Cpk|代表値|ヒストグラム|箱ひげ|サンプル数|ピボット|相関|回帰|仮説検定|バラつき/i,'theme-qc7':/QC七|特性要因|パレート|チェックシート|層別|魚の骨|管理図|散布図/i,'theme-supplier':/サプライヤ|調達|下請|外注|受入検査|購買/i,'theme-kpi':/KPI|コスト|予防コスト|評価コスト|失敗コスト|品質コスト|原価|指標|PAF/i,'theme-risk':/リスク|アセスメント|HACCP|危険/i,'theme-tps':/トヨタ|TPS|ジャストインタイム|JIT|かんばん|自働化|平準化|タクト|レイアウト|セル|一個流|ポカヨケ|フールプルーフ|フェールセーフ/i,'theme-standard':/標準化|標準作業|マニュアル|手順書|文書|フォーマット/i,'theme-dx':/DX|デジタル|eQMS|ピボットテーブル|AI|RPA|IoT|データ活用|BI/i,'theme-inspection':/検査|計測|校正|測定|Gage|抜き取り|含量|証明|保証|トレーサビリティ|MSA/i,'short-fmea':/FMEA|設計審査|DR|源流|信頼性|予防保全/i,'short-claim':/クレーム|苦情|是正|原因解析|再発防止|8D|A3|なぜなぜ/i,'short-4m':/4M|変化点|変更|ECN|MOC|初期流動/i,'short-kpi':/KPI|コスト|予防コスト|評価コスト|失敗コスト|品質コスト|原価|指標|PAF/i,'short-audit':/監査|内部監査|外部監査|顧客監査|是正|是正処置|不適合/i};var SOURCES=['chuukyuu','shokyuu','jissen','kyouyou','theme-qc7','theme-stats','theme-inspection','theme-qms','theme-4m','theme-claim','theme-kpi','theme-risk','theme-supplier','theme-tps','theme-standard','theme-dx','theme-fmea','iso9001','iso13485','iso14001','iso22000','iso22716','iso16949','kenko-gmp','gqp','gvp','yakkihou','industry-auto','industry-cosmetics','industry-food','industry-medical'];var CAT_SOURCES={'レベル別コース':['kyouyou','shokyuu','chuukyuu','jissen'],'基礎・入門':['kyouyou','shokyuu'],'QC・統計・検査':['theme-qc7','theme-stats','theme-inspection'],'マネジメント・管理':['theme-qms','theme-4m','theme-claim','theme-kpi','theme-risk','theme-supplier','theme-tps','theme-standard','theme-dx'],'専門・業界特化':['iso9001','iso13485','iso14001','iso22000','iso22716','iso16949','kenko-gmp','gqp','gvp','yakkihou','industry-auto','industry-cosmetics','industry-food','industry-medical'],'テーマ横断コース':['theme-fmea','theme-claim','theme-4m','theme-qms','theme-stats','theme-qc7','theme-supplier','theme-kpi','theme-risk','theme-tps','theme-standard','theme-dx','theme-inspection']};Promise.all([fetch(courseSlug+'.json?v='+Date.now()).then(function(r){return r.json()})].concat(SOURCES.map(function(s){return fetch(s+'.json?v='+Date.now()).then(function(r){return r.json()}).catch(function(){return{}})}))).then(function(results){var d=results[0];var srcArr=results.slice(1);var srcMap={};SOURCES.forEach(function(s,i){srcMap[s]=srcArr[i]||{}});var videoSrcs=['chuukyuu','shokyuu','jissen','kyouyou'];var re=THEME_REGEX[courseSlug];if(re&&(!d.videos||!d.videos.length)){var allVids=[];videoSrcs.forEach(function(s){(srcMap[s].videos||[]).forEach(function(v){if(re.test(v.title))allVids.push(v)})});d.videos=allVids;}if(!d.categories||!Object.keys(d.categories).length){var cats={};Object.keys(CAT_SOURCES).forEach(function(cat){var qs=[];CAT_SOURCES[cat].forEach(function(s){var j=srcMap[s]||{};(j.courseQuestions||[]).forEach(function(q){qs.push(q)});(j.videos||[]).forEach(function(v){(v.questions||[]).forEach(function(q){qs.push(q)})})});cats[cat]=qs});d.categories=cats;}DATA=d;if(!DATA.videos||!DATA.videos.length)STATE.tab='course';else STATE.tab='video';render();}).catch(function(e){root.innerHTML='<div class="loading">クイズデータの読込に失敗しました（'+e+'）</div>';});
 
 function render(){
   if(STATE.mode==='quiz')return renderQuiz();
@@ -129,9 +129,11 @@ function render(){
   return renderMenu();
 }
 function renderMenu(){
+  var hasVideos=DATA&&DATA.videos&&DATA.videos.length>0;
+  if(!hasVideos&&STATE.tab==='video')STATE.tab='course';
   var html=''
     +'<div class="tabs">'
-    +'<button class="tab'+(STATE.tab==='video'?' active':'')+'" data-tab="video">動画別</button>'
+    +(hasVideos?'<button class="tab'+(STATE.tab==='video'?' active':'')+'" data-tab="video">動画別</button>':'')
     +'<button class="tab'+(STATE.tab==='course'?' active':'')+'" data-tab="course">コース別</button>'
     +'<button class="tab'+(STATE.tab==='category'?' active':'')+'" data-tab="category">カテゴリー別</button>'
     +'</div>';
