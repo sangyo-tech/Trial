@@ -1,4 +1,4 @@
-<html lang="ja"><head>
+﻿<html lang="ja"><head>
 <meta name="msvalidate.01" content="1EAB0BC3FBE864CAA39AE49601B7A63A">
 <meta name="google-site-verification" content="S68H3uQmgQ2OM5R5D9znABM8I8WkGgyP68UsZdgixtk">
 <meta charset="UTF-8">
@@ -31,7 +31,7 @@ button{font-family:inherit}
 .unav-links{display:flex;align-items:center;gap:4px}
 .unav-links a{color:#b0b8c8;text-decoration:none;font-size:.85rem;padding:8px 14px;border-radius:6px;transition:all .25s ease;white-space:nowrap;font-weight:500;background:none;border:none}
 .unav-links a:hover{color:#fff;background-color:rgba(200,168,78,.12)}
-.unav-links a.unav-active{color:#c8a84e;background-color:rgba(200,168,78,.15);font-weight:600}
+
 .unav-links a.unav-cta{color:#0a1628;background-color:#c8a84e;font-weight:600;border-radius:20px;padding:8px 18px;margin-left:4px}
 .unav-links a.unav-cta:hover{background-color:#d4b862;color:#0a1628}
 .unav-toggle{display:none;background:none;border:none;color:#c8a84e;font-size:1.5rem;cursor:pointer;padding:4px}
@@ -546,7 +546,7 @@ function renderModuleQuiz(idx) {
   const countEl = document.getElementById('mqCount');
 
   if (all.length === 0) {
-    container.innerHTML = '<div class="mq-empty">🚧 この研修動画の確認テストは現在準備中です。<br>ほかの研修動画でテストをお試しください。</div>';
+    container.innerHTML = '<div class="mq-empty">🚧 この研修動画の確認テストは現在追加予定です。<br>ほかの研修動画でテストをお試しください。</div>';
     summary.innerHTML = '';
     countEl.textContent = '';
     return;
