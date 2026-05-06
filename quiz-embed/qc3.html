@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -149,22 +149,22 @@ function bindMenu(){
     if(act==='video'){
       var idx=parseInt(b.dataset.video,10);
       var v=DATA.videos[idx];
-      if(!v||!v.questions||!v.questions.length){alert('問題が準備中です');return;}
+      if(!v||!v.questions||!v.questions.length){alert('問題が追加予定です');return;}
       startQuiz(pickRandom(v.questions,5),v.title,'video');
     }else if(act==='course'){
-      if(!DATA.courseQuestions||!DATA.courseQuestions.length){alert('問題が準備中です');return;}
+      if(!DATA.courseQuestions||!DATA.courseQuestions.length){alert('問題が追加予定です');return;}
       startQuiz(pickRandom(DATA.courseQuestions,Math.min(20,DATA.courseQuestions.length)),DATA.courseName+' 総合','course');
     }else if(act==='category'){
       var cat=b.dataset.cat;
       var pool=DATA.categories&&DATA.categories[cat];
-      if(!pool||!pool.length){alert('カテゴリの問題が準備中です');return;}
+      if(!pool||!pool.length){alert('カテゴリの問題が追加予定です');return;}
       startQuiz(pickRandom(pool,Math.min(50,pool.length)),cat+' カテゴリ','category');
     }
   });});
 }
 function renderVideoTab(){
   var vids=DATA.videos||[];
-  if(vids.length===0)return '<div class="center-card"><p class="subtitle">準備中</p><p class="desc">動画別テストは現在準備中です</p></div>';
+  if(vids.length===0)return '<div class="center-card"><p class="subtitle">追加予定</p><p class="desc">動画別テストは現在追加予定です</p></div>';
   var html='<p class="section-label">'+escapeHTML(DATA.courseName)+' · 動画ごとに5問</p>';
   if(DATA.videoGroups&&DATA.videoGroups.length){
     DATA.videoGroups.forEach(function(g){
@@ -190,12 +190,12 @@ function videoRowHTML(v,idx){
   return '<div class="video-row disabled">'
     +'<span class="video-num">'+num+'</span>'
     +'<span class="video-title">'+escapeHTML(v.title)+'</span>'
-    +'<span class="video-arrow">準備中</span>'
+    +'<span class="video-arrow">追加予定</span>'
     +'</div>';
 }
 function renderCourseTab(){
   var n=(DATA.courseQuestions||[]).length;
-  if(n===0)return '<div class="center-card"><p class="subtitle">準備中</p><p class="desc">このコースの総合テストは現在準備中です</p></div>';
+  if(n===0)return '<div class="center-card"><p class="subtitle">追加予定</p><p class="desc">このコースの総合テストは現在追加予定です</p></div>';
   return '<div class="center-card">'
     +'<p class="subtitle">'+escapeHTML(DATA.courseName)+' 総合確認テスト</p>'
     +'<h3>20問</h3>'
@@ -207,14 +207,14 @@ function renderCourseTab(){
 function renderCategoryTab(){
   var cats=DATA.categories||{};
   var names=Object.keys(cats);
-  if(names.length===0)return '<div class="center-card"><p class="subtitle">準備中</p><p class="desc">カテゴリ別テストは現在準備中です</p></div>';
+  if(names.length===0)return '<div class="center-card"><p class="subtitle">追加予定</p><p class="desc">カテゴリ別テストは現在追加予定です</p></div>';
   var html='<p class="section-label">カテゴリから選択 · 各50問ランダム · 合格基準80% · 修了証発行</p><div class="cat-grid">';
   names.forEach(function(n){
     var count=(cats[n]||[]).length;
     var disabled=count===0;
     html+='<button class="cat-card'+(disabled?' disabled':'')+'" data-action="category" data-cat="'+escapeHTML(n)+'"'+(disabled?' disabled':'')+'>'
       +'<span class="cat-name">'+escapeHTML(n)+'</span>'
-      +'<span class="cat-count">'+(disabled?'準備中':count+'問')+'</span>'
+      +'<span class="cat-count">'+(disabled?'追加予定':count+'問')+'</span>'
       +'<span class="cat-arrow">→</span>'
       +'</button>';
   });
@@ -352,7 +352,7 @@ function renderCertificate(){
     +'<p class="cert-score">スコア：'+correct+' / '+total+' 問正解（'+pct+'%）</p>'
     +'<div class="cert-foot">'
     +'<div class="cert-date">発行日<br><strong style="color:#1a1a1a;font-size:14px">'+todayJP()+'</strong></div>'
-    +'<div class="cert-issuer">発行<div class="org">産業技術アカデミー</div><div style="font-size:10px">Qulio LLC</div></div>'
+    +'<div class="cert-issuer">発行<div class="org">産業技術アカデミー</div><div style="font-size:10px">Qulio合同会社</div></div>'
     +'</div>'
     +'<div class="cert-mark">産業技術<br>アカデミー<br>認定</div>'
     +'</div>';
