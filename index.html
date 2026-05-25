@@ -884,11 +884,16 @@ switchUpTab('mgmt');
     window.scrollTo(0,0);
     var rc=document.getElementById("resultCard");
     if(rc && !document.getElementById("certificateSection")){
-      var h="<div id=\"certificateSection\" style=\"display:none;margin-top:24px;padding:20px;background:#fff9e6;border:2px solid #f5a623;border-radius:12px;text-align:center;\">";
-      h+="<div style=\"font-size:1.1rem;font-weight:bold;color:#333;margin-bottom:8px;\">🎓 修了証の発行</div>";
-      h+="<p style=\"font-size:.9rem;color:#666;margin-bottom:12px;\">お名前を入力して修了証をダウンロードできます。</p>";
-      h+="<input type=\"text\" id=\"certName\" placeholder=\"お名前を入力\" style=\"padding:8px 12px;border:1px solid #ccc;border-radius:6px;width:200px;font-size:1rem;\">";
-      h+="<br><button class=\"btn btn-orange\" onclick=\"downloadCertificate()\" style=\"margin-top:12px;\">📄 修了証をダウンロード</button></div>";
+      var h='<div id="certificateSection" style="display:none;margin-top:24px;padding:20px;background:#fff9e6;border:2px solid #f5a623;border-radius:12px;text-align:center;">';
+      h+='<div style="font-size:1.1rem;font-weight:bold;color:#333;margin-bottom:8px;">🎓 修了証・訓練記録の発行</div>';
+      h+='<p style="font-size:.9rem;color:#666;margin-bottom:12px;">お名前・部署・職位を入力してダウンロードできます。</p>';
+      h+='<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:10px;">';
+      h+='<input type="text" id="certName" placeholder="お名前" style="padding:8px;border:1px solid #ccc;border-radius:6px;width:120px;font-size:.95rem;">';
+      h+='<input type="text" id="certDept" placeholder="部署名" style="padding:8px;border:1px solid #ccc;border-radius:6px;width:120px;font-size:.95rem;">';
+      h+='<input type="text" id="certPos" placeholder="職位" style="padding:8px;border:1px solid #ccc;border-radius:6px;width:100px;font-size:.95rem;"></div>';
+      h+='<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">';
+      h+='<button class="btn btn-orange" onclick="downloadCertificate()" style="margin-top:4px;">📄 修了証</button>';
+      h+='<button class="btn btn-orange" onclick="downloadTrainingRecord()" style="margin-top:4px;background:#27ae60;border-color:#27ae60;">📋 教育訓練実施記録</button></div></div>';
       rc.insertAdjacentHTML("beforeend",h);
     }
     setTimeout(function(){
@@ -922,6 +927,40 @@ function downloadCertificate(){
   t+="<p>を修了したことを証明します。<\/p>";
   t+="<div class=\"dt\">"+ds+"<\/div><div class=\"o\">産業技術アカデミー<\/div><\/div>";
   w.document.write(t);w.document.close();
+  setTimeout(function(){w.print();},300);
+}
+function downloadTrainingRecord(){
+  var name=(document.getElementById("certName")||{value:""}).value.trim()||"受講者";
+  var dept=(document.getElementById("certDept")||{value:""}).value.trim()||"―";
+  var pos=(document.getElementById("certPos")||{value:""}).value.trim()||"―";
+  var scoreEl=document.getElementById("resultScore");
+  var rankEl=document.getElementById("resultRank");
+  var scoreText=scoreEl?scoreEl.innerText:"―";
+  var rankText=rankEl?rankEl.innerText:"―";
+  var d=new Date();
+  var ds=d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日";
+  var recNo="ST-"+d.getFullYear()+("0"+(d.getMonth()+1)).slice(-2)+("0"+d.getDate()).slice(-2)+"-"+Math.floor(Math.random()*900+100);
+  var w=window.open("","_blank");
+  var a="<!DOCTYPE html><html lang=\"ja\"><head><meta charset=\"UTF-8\"><title>教育訓練実施記録<\/title>";
+  a+="<style>body{font-family:\"Yu Gothic\",sans-serif;font-size:13px;margin:20px;color:#222}";
+  a+="table{width:100%;border-collapse:collapse;margin-bottom:16px}";
+  a+="td,th{border:1px solid #999;padding:6px 10px}th{background:#e8e8e8;width:28%;text-align:left}";
+  a+=".ttl{font-size:1.2rem;font-weight:bold;text-align:center;margin-bottom:16px}.sign{height:40px}";
+  a+=".foot{font-size:.8rem;color:#666;margin-top:20px;text-align:center}";
+  a+="@media print{body{margin:10mm}}<\/style><\/head><body>";
+  a+='<div class="ttl">教育訓練実施記録</div>';
+  a+='<table>';
+  a+='<tr><th>記録番号</th><td>'+recNo+'</td><th>記録日</th><td>'+ds+'</td></tr>';
+  a+='<tr><th>受講者氏名</th><td>'+name+'</td><th>部署・職位</th><td>'+dept+' ／ '+pos+'</td></tr>';
+  a+='<tr><th>教育訓練名称</th><td colspan="3">品質管理 基礎コース（産業技術アカデミー）</td></tr>';
+  a+='<tr><th>実施日</th><td>'+ds+'</td><th>実施時間</th><td>約90分</td></tr>';
+  a+='<tr><th>教育訓練内容</th><td colspan="3">①品質とは何か ②品質概念の基礎 ③品質管理の構造 ④後工程はお客様 ⑤トレーサビリティとロット管理 ⑥トレーサビリティ設計 ⑦品質文書管理 ⑧SDCAサイクル ⑨標準化の重要性</td></tr>';
+  a+='<tr><th>評価方法</th><td colspan="3">理解度確認テスト（15問、合格基準80%）</td></tr>';
+  a+='<tr><th>評価結果</th><td>'+scoreText+'</td><th>合否</th><td>'+rankText+'</td></tr>';
+  a+='<tr><th>教育担当者</th><td class="sign"></td><th>確認者（上長）</th><td class="sign"></td></tr>';
+  a+='</table>';
+  a+='<div class="foot">※ISO 9001 / ISO 22716等のQMS教育訓練記録として保管いただけます。</div>';
+  w.document.write(a);w.document.close();
   setTimeout(function(){w.print();},300);
 }
 </script>
