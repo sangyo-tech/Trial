@@ -873,4 +873,56 @@ switchUpTab('mgmt');
 </svg>
 <span id="claude-static-close-tooltip" style="position: absolute; bottom: calc(100% + 12px); left: 50%; transform: translateX(-50%); padding: 6px 12px; background: #30302E; color: #FAF9F5; border-radius: 6px; font-size: 12px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">Dismiss</span>
 </button>
-</div><script defer="True" src="https://sangyo-tech.jp/unav.js?v=41"></script></body></html>
+</div><script defer="True" src="https://sangyo-tech.jp/unav.js?v=41"></script><script>
+(function(){
+  var _s=window.showResults;
+  if(typeof _s!="function")return;
+  window.showResults=function(){
+    _s.apply(this,arguments);
+    var nav=document.querySelector("nav.unav");
+    if(nav)nav.style.display="none";
+    window.scrollTo(0,0);
+    var rc=document.getElementById("resultCard");
+    if(rc && !document.getElementById("certificateSection")){
+      var h="<div id=\"certificateSection\" style=\"display:none;margin-top:24px;padding:20px;background:#fff9e6;border:2px solid #f5a623;border-radius:12px;text-align:center;\">";
+      h+="<div style=\"font-size:1.1rem;font-weight:bold;color:#333;margin-bottom:8px;\">🎓 修了証の発行</div>";
+      h+="<p style=\"font-size:.9rem;color:#666;margin-bottom:12px;\">お名前を入力して修了証をダウンロードできます。</p>";
+      h+="<input type=\"text\" id=\"certName\" placeholder=\"お名前を入力\" style=\"padding:8px 12px;border:1px solid #ccc;border-radius:6px;width:200px;font-size:1rem;\">";
+      h+="<br><button class=\"btn btn-orange\" onclick=\"downloadCertificate()\" style=\"margin-top:12px;\">📄 修了証をダウンロード</button></div>";
+      rc.insertAdjacentHTML("beforeend",h);
+    }
+    setTimeout(function(){
+      var rank=document.getElementById("resultRank");
+      var cert=document.getElementById("certificateSection");
+      if(!cert)return;
+      var t=rank?rank.innerText:"";
+      var passed=t.indexOf("合格")>-1;
+      if(!passed){var sc=document.getElementById("resultScore");var st=sc?sc.innerText:"";
+        var m=st.match(/(\d+)\D+(\d+)/);if(m&&parseInt(m[2])>0)passed=parseInt(m[1])/parseInt(m[2])>=0.8;}
+      cert.style.display=passed?"block":"none";
+    },600);
+  };
+  var _q=window.startQuiz;
+  if(typeof _q=="function")window.startQuiz=function(){
+    var nav=document.querySelector("nav.unav");if(nav)nav.style.display="";
+    var c=document.getElementById("certificateSection");if(c)c.style.display="none";
+    _q.apply(this,arguments);
+  };
+})();
+function downloadCertificate(){
+  var n=(document.getElementById("certName")||{value:""}).value.trim()||"受講者";
+  var d=new Date();var ds=d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日";
+  var w=window.open("","_blank");
+  var t="<!DOCTYPE html><html lang=\"ja\"><head><meta charset=\"UTF-8\"><title>修了証<\/title>";
+  t+="<style>body{font-family:\"Yu Mincho\",serif;text-align:center;padding:60px 40px;background:#fffef9}.b{border:8px double #c8a951;padding:40px;max-width:680px;margin:0 auto}h1{font-size:2.5rem;letter-spacing:.3em;color:#8b6914}.n{font-size:2rem;font-weight:bold;border-bottom:2px solid #c8a951;display:inline-block;padding:0 20px 4px;margin:20px 0}.c{font-size:1.1rem;margin:20px 0}.dt{font-size:.9rem;color:#666;margin-top:30px}.o{font-weight:bold;margin-top:20px}<\/style><\/head><body>";
+  t+="<div class=\"b\"><div style=\"color:#888;margin-bottom:8px\">Certificate of Completion<\/div>";
+  t+="<h1>修 了 証<\/h1><p>以下の方が、産業技術アカデミーの<\/p>";
+  t+="<div class=\"n\">"+n+"<\/div>";
+  t+="<div class=\"c\">品質管理 基礎コース 確認テスト<\/div>";
+  t+="<p>を修了したことを証明します。<\/p>";
+  t+="<div class=\"dt\">"+ds+"<\/div><div class=\"o\">産業技術アカデミー<\/div><\/div>";
+  w.document.write(t);w.document.close();
+  setTimeout(function(){w.print();},300);
+}
+</script>
+</body></html>
