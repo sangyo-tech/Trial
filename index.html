@@ -85,6 +85,7 @@ button{font-family:inherit}
 
 /* Video area */
 .video-wrap{background:#000;border-radius:12px;overflow:hidden;aspect-ratio:16/9;margin-bottom:16px;position:relative}.video-wrap iframe{width:100%;height:100%;border:none;position:absolute;top:0;left:0}
+.video-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px;background:linear-gradient(135deg,#111827,#1f2937);color:#dbeafe;text-align:center;z-index:2;transition:opacity .3s ease,visibility .3s ease}.video-loading.is-hidden{opacity:0;visibility:hidden;pointer-events:none}.video-loading strong{color:#fff;font-size:17px}.video-loading span{color:#93c5fd;font-size:13px}.video-loading a,.video-fallback a{color:#fbbf24;text-decoration:underline;text-underline-offset:3px;font-weight:700}.video-fallback{margin:-4px 0 16px;color:var(--text2);font-size:13px;line-height:1.7}
 /*v removed*/
 .video-wrap iframe::-webkit-scrollbar{display:none}
 /* Quiz area - no scrollbars */
@@ -293,9 +294,11 @@ footer a{color:var(--gold)}
 <div class="mod-tabs" id="modTabs"><button class="mod-tab active"><span class="mod-n">01</span>品質とは何か</button><button class="mod-tab"><span class="mod-n">02</span>品質概念の基礎</button><button class="mod-tab"><span class="mod-n">03</span>品質管理の構造「設計」「製造」「安心」の3つの品質</button><button class="mod-tab"><span class="mod-n">04</span>「後工程はお客様」の考え方</button><button class="mod-tab"><span class="mod-n">05</span>トレーサビリティとロット管理の重要性</button><button class="mod-tab"><span class="mod-n">06</span>トレーサビリティ設計と情報項目</button><button class="mod-tab"><span class="mod-n">07</span>品質文書の維持管理</button><button class="mod-tab"><span class="mod-n">08</span>SDCA</button><button class="mod-tab"><span class="mod-n">09</span>標準化の重要性 ～業務フローの可視化と再現性の確立</button></div>
 <div class="video-wrap" id="videoWrap">
 <iframe allow="autoplay; fullscreen" allowfullscreen="" id="videoFrame" scrolling="no" src="https://ulizaportal.jp/pages/0067697a-55c3-531f-d1fc-01ce48a11e98"></iframe>
+<div class="video-loading" id="videoLoading"><strong>動画プレイヤーを読み込んでいます</strong><span>表示まで数秒かかる場合があります。空白が続く場合は <a href="https://ulizaportal.jp/pages/0067697a-55c3-531f-d1fc-01ce48a11e98" target="_blank" rel="noopener">別タブで開く</a> をお試しください。</span></div>
 </div>
 <div class="video-title" id="videoTitle">01. 品質とは何か：お客様が決める「良い製品」</div>
 <div class="video-meta" id="videoMeta">教養 ─ 品質管理 基礎コース</div>
+<p class="video-fallback">動画が表示されない場合：<a href="https://ulizaportal.jp/pages/0067697a-55c3-531f-d1fc-01ce48a11e98" target="_blank" rel="noopener">動画ページを別タブで開く</a></p>
 <!-- Per-module inline quiz -->
 <div class="mq-section" id="moduleQuiz">
 <div class="mq-head">
@@ -511,6 +514,17 @@ function selectModule(idx) {
   }
   document.getElementById('videoTitle').textContent = String(idx+1).padStart(2,'0') + '. ' + QUIZ_DATA.titles[idx];
   renderModuleQuiz(idx);
+}
+
+const videoLoading = document.getElementById('videoLoading');
+const videoFrame = document.getElementById('videoFrame');
+if (videoFrame && videoLoading) {
+  videoFrame.addEventListener('load', () => {
+    window.setTimeout(() => videoLoading.classList.add('is-hidden'), 9000);
+  });
+  window.setTimeout(() => {
+    videoLoading.querySelector('strong').textContent = '動画の読み込みに時間がかかっています';
+  }, 5000);
 }
 
 // --- Per-module inline quiz ---
