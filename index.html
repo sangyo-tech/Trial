@@ -664,7 +664,8 @@ let score = 0;
 let answers = [];
 
 function startQuiz() {
-  // Select 20 questions: ~1-2 from each module, randomly
+  // Select 15 questions: at least one from each module, then fill randomly.
+  const targetCount = 15;
   const pool = [...QUIZ_DATA.questions];
   const selected = [];
   const perModule = new Map();
@@ -678,9 +679,9 @@ function startQuiz() {
     perModule.set(m, 1);
   }
   
-  // Fill remaining 3 from random modules
+  // Fill remaining questions from random modules.
   const remaining = pool.filter(q => !selected.includes(q));
-  for (let i = 0; i < 3; i++) {
+  while (selected.length < targetCount && remaining.length > 0) {
     const pick = remaining.splice(Math.floor(Math.random() * remaining.length), 1)[0];
     if (pick) selected.push(pick);
   }
