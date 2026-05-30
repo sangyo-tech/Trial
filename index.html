@@ -651,7 +651,7 @@ function mqToggleHint(qi) {
 function mqReset() {
   delete mqAnswerState[mqCurrentModule];
   renderModuleQuiz(mqCurrentModule);
-  document.getElementById('moduleQuiz').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // 回答後に画面位置が動かないよう、ここではスクロールしない。
 }
 
 // Initial render: module 0
@@ -700,7 +700,7 @@ function startQuiz() {
   document.getElementById('resultArea').style.display = 'none';
   document.getElementById('quizArea').style.display = 'block';
   showQuestion();
-  document.getElementById('test').scrollIntoView({ behavior: 'smooth' });
+  // テスト操作後に画面位置が動かないよう、ここではスクロールしない。
 }
 
 function showQuestion() {
@@ -709,7 +709,7 @@ function showQuestion() {
   
   document.getElementById('qBar').style.width = ((currentQ / total) * 100) + '%';
   document.getElementById('qCount').textContent = (currentQ + 1) + ' / ' + total;
-  document.getElementById('qModule').textContent = '📘 ' + QUIZ_DATA.titles[q.m];
+  document.getElementById('qModule').textContent = '研修コンテンツ: ' + QUIZ_DATA.titles[q.m];
   document.getElementById('qText').textContent = q.q;
   
   // Hint
@@ -751,7 +751,7 @@ function selectAnswer(idx) {
   
   // Show explanation
   const expEl = document.getElementById('qExp');
-  expEl.textContent = (isCorrect ? '✅ 正解！ ' : '❌ 不正解… ') + q.e;
+  expEl.textContent = (isCorrect ? '正解です。' : '不正解です。') + ' ' + q.e;
   expEl.style.display = 'block';
   
   // Show next button
@@ -769,7 +769,7 @@ function nextQuestion() {
   currentQ++;
   if (currentQ < quizQuestions.length) {
     showQuestion();
-    document.getElementById('test').scrollIntoView({ behavior: 'smooth' });
+    // テスト操作後に画面位置が動かないよう、ここではスクロールしない。
   } else {
     showResults();
   }
@@ -819,8 +819,7 @@ function showResults() {
   } else {
     reviewEl.innerHTML = '<div style="text-align:center;color:var(--green);font-weight:700;font-size:18px;padding:20px">🎊 全問正解です！素晴らしい！</div>';
   }
-  
-  document.getElementById('test').scrollIntoView({ behavior: 'smooth' });
+  // テスト操作後に画面位置が動かないよう、ここではスクロールしない。
 }
 
 // Back to top
@@ -895,44 +894,86 @@ switchUpTab('mgmt');
 <script defer="True" src="https://sangyo-tech.jp/unav.js?v=45"></script>
 <script>
 (function(){
-  function keepScroll(fn){
+  function rememberScroll(fn){
     return function(){
-      var x=window.scrollX||0;
-      var y=window.scrollY||0;
-      var result=fn.apply(this,arguments);
-      requestAnimationFrame(function(){ window.scrollTo(x,y); });
-      setTimeout(function(){ window.scrollTo(x,y); },80);
-      setTimeout(function(){ window.scrollTo(x,y); },260);
+      var x = window.scrollX || 0;
+      var y = window.scrollY || 0;
+      var result = fn.apply(this, arguments);
+      requestAnimationFrame(function(){ window.scrollTo(x, y); });
+      setTimeout(function(){ window.scrollTo(x, y); }, 80);
+      setTimeout(function(){ window.scrollTo(x, y); }, 260);
       return result;
     };
   }
 
   function getResultPercent(){
-    var score=document.getElementById('resultScore');
-    if(!score) return 0;
-    var match=String(score.textContent||'').match(/(\d+)/);
-    return match ? parseInt(match[1],10) : 0;
+    var scoreEl = document.getElementById('resultScore');
+    var match = scoreEl ? String(scoreEl.textContent || '').match(/([0-9]+)/) : null;
+    return match ? parseInt(match[1], 10) : 0;
   }
 
   function todayJP(){
-    var d=new Date();
-    return d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日';
+    var d = new Date();
+    return d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日';
+  }
+
+  function escapeHtml(value){
+    return String(value == null ? '' : value).replace(/[&<>"']/g, function(ch){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];
+    });
+  }
+
+  function normalizeResultCopy(){
+    if (typeof quizQuestions === 'undefined' || !Array.isArray(quizQuestions)) return;
+    var total = quizQuestions.length || 0;
+    var correct = typeof score === 'number' ? score : 0;
+    var pct = total ? Math.round((correct / total) * 100) : getResultPercent();
+    var passed = pct >= 80;
+    var detail = document.getElementById('resultDetail');
+    var msg = document.getElementById('resultMsg');
+    var review = document.getElementById('reviewSection');
+    if (detail) detail.textContent = total + '問中 ' + correct + '問正解';
+    if (msg) {
+      msg.innerHTML = passed
+        ? '<div class="result-pass">合格です。理解度チェックを修了しました。</div>'
+        : '<div class="result-fail-msg">合格基準は80%以上です。動画を復習して、もう一度挑戦してください。</div>';
+    }
+    if (review && typeof answers !== 'undefined' && Array.isArray(answers)) {
+      var wrongs = answers.filter(function(a){ return !a.correct; });
+      var labels = ['A','B','C','D'];
+      if (wrongs.length) {
+        var html = '<div class="review-title">間違えた問題の復習</div>';
+        wrongs.forEach(function(w){
+          var moduleName = typeof QUIZ_DATA !== 'undefined' && QUIZ_DATA.titles ? QUIZ_DATA.titles[w.q.m] : '';
+          html += '<div class="review-item">';
+          html += '<div class="q-module" style="margin-bottom:6px">研修コンテンツ: ' + escapeHtml(moduleName) + '</div>';
+          html += '<div class="review-q">' + escapeHtml(w.q.q) + '</div>';
+          html += '<div class="review-your">あなたの回答: ' + labels[w.selected] + '. ' + escapeHtml(w.q.o[w.selected]) + '</div>';
+          html += '<div class="review-correct">正解: ' + labels[w.q.c] + '. ' + escapeHtml(w.q.o[w.q.c]) + '</div>';
+          html += '<div class="review-exp">解説: ' + escapeHtml(w.q.e) + '</div>';
+          html += '</div>';
+        });
+        review.innerHTML = html;
+      } else {
+        review.innerHTML = '<div style="text-align:center;color:var(--green);font-weight:700;font-size:18px;padding:20px">全問正解です。すばらしい理解度です。</div>';
+      }
+    }
   }
 
   function cleanCertificateSection(){
-    var card=document.getElementById('resultCard');
-    if(!card) return;
-    var passed=getResultPercent()>=80;
-    var section=document.getElementById('certificateSection');
-    if(!section){
-      section=document.createElement('div');
-      section.id='certificateSection';
+    var card = document.getElementById('resultCard');
+    if (!card) return;
+    var passed = getResultPercent() >= 80;
+    var section = document.getElementById('certificateSection');
+    if (!section) {
+      section = document.createElement('div');
+      section.id = 'certificateSection';
       card.appendChild(section);
     }
-    section.style.cssText='display:'+(passed?'block':'none')+';margin-top:24px;padding:20px;background:#fff9e6;border:2px solid #f5a623;border-radius:12px;text-align:center;color:#333;';
-    section.innerHTML=[
+    section.style.cssText = 'display:' + (passed ? 'block' : 'none') + ';margin-top:24px;padding:20px;background:#fff9e6;border:2px solid #f5a623;border-radius:12px;text-align:center;color:#333;';
+    section.innerHTML = [
       '<div style="font-size:1.1rem;font-weight:bold;margin-bottom:8px;">修了証サンプル・教育訓練実施記録</div>',
-      '<p style="font-size:.9rem;color:#666;margin:0 0 12px;">80点以上の場合、サンプルとして修了証と教育訓練実施記録を発行できます。</p>',
+      '<p style="font-size:.9rem;color:#666;margin:0 0 12px;">80点以上の場合、サンプルとして修了証と教育訓練実施記録を表示できます。</p>',
       '<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:10px;">',
       '<input type="text" id="certName" placeholder="お名前" style="padding:8px;border:1px solid #ccc;border-radius:6px;width:130px;font-size:.95rem;">',
       '<input type="text" id="certDept" placeholder="部署名" style="padding:8px;border:1px solid #ccc;border-radius:6px;width:130px;font-size:.95rem;">',
@@ -945,60 +986,59 @@ switchUpTab('mgmt');
     ].join('');
   }
 
-  var originalShowResults=window.showResults;
-  if(typeof originalShowResults==='function'){
-    window.showResults=function(){
-      var x=window.scrollX||0;
-      var y=window.scrollY||0;
-      var result=originalShowResults.apply(this,arguments);
-      var nav=document.querySelector('nav.unav');
-      if(nav) nav.style.display='';
+  var originalShowResults = window.showResults;
+  if (typeof originalShowResults === 'function') {
+    window.showResults = function(){
+      var x = window.scrollX || 0;
+      var y = window.scrollY || 0;
+      var result = originalShowResults.apply(this, arguments);
+      normalizeResultCopy();
       cleanCertificateSection();
-      requestAnimationFrame(function(){ window.scrollTo(x,y); });
-      setTimeout(function(){ window.scrollTo(x,y); },80);
-      setTimeout(function(){ window.scrollTo(x,y); },260);
+      requestAnimationFrame(function(){ window.scrollTo(x, y); });
+      setTimeout(function(){ window.scrollTo(x, y); }, 80);
+      setTimeout(function(){ window.scrollTo(x, y); }, 260);
       return result;
     };
   }
 
-  ['startQuiz','nextQuestion','mqReset'].forEach(function(name){
-    if(typeof window[name]==='function') window[name]=keepScroll(window[name]);
+  ['startQuiz', 'nextQuestion', 'mqReset'].forEach(function(name){
+    if (typeof window[name] === 'function') window[name] = rememberScroll(window[name]);
   });
 
-  window.downloadCertificate=function(){
-    var name=(document.getElementById('certName')||{value:''}).value.trim()||'受講者';
-    var pct=getResultPercent();
-    var w=window.open('','_blank');
-    var html='<!doctype html><html lang="ja"><head><meta charset="UTF-8"><title>修了証サンプル</title>'
-      +'<style>body{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;text-align:center;padding:56px 36px;background:#fffef9;color:#222}.box{border:8px double #c8a951;padding:42px;max-width:760px;margin:auto}h1{font-size:2.7rem;letter-spacing:.28em;color:#8b6914;margin:12px 0 28px}.name{font-size:2rem;font-weight:bold;border-bottom:2px solid #c8a951;display:inline-block;padding:0 30px 6px;margin:18px 0}.body{font-size:1.08rem;line-height:2}.note{font-size:.86rem;color:#777;margin-top:26px}.issuer{font-weight:bold;margin-top:20px}</style></head><body>'
-      +'<div class="box"><div style="color:#777;letter-spacing:.18em">Certificate of Completion</div><h1>修了証</h1>'
-      +'<div class="name">'+name+'</div><div class="body">あなたは産業技術アカデミーの<br><strong>品質管理基礎コース 理解度確認テスト</strong>において<br>合格基準80%以上を達成されました。</div>'
-      +'<p>スコア：'+pct+'%</p><div>'+todayJP()+'</div><div class="issuer">産業技術アカデミー<br>Qulio合同会社</div><div class="note">※無料体験ページ用のサンプル表示です。</div></div>'
-      +'</body></html>';
+  window.downloadCertificate = function(){
+    var name = (document.getElementById('certName') || {value:''}).value.trim() || '受講者';
+    var pct = getResultPercent();
+    var w = window.open('', '_blank');
+    var html = '<!doctype html><html lang="ja"><head><meta charset="UTF-8"><title>修了証サンプル</title>'
+      + '<style>body{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;text-align:center;padding:56px 36px;background:#fffef9;color:#222}.box{border:8px double #c8a951;padding:42px;max-width:760px;margin:auto}h1{font-size:2.7rem;letter-spacing:.28em;color:#8b6914;margin:12px 0 28px}.name{font-size:2rem;font-weight:bold;border-bottom:2px solid #c8a951;display:inline-block;padding:0 30px 6px;margin:18px 0}.body{font-size:1.08rem;line-height:2}.note{font-size:.86rem;color:#777;margin-top:26px}.issuer{font-weight:bold;margin-top:20px}</style></head><body>'
+      + '<div class="box"><div style="color:#777;letter-spacing:.18em">Certificate of Completion</div><h1>修了証</h1>'
+      + '<div class="name">' + escapeHtml(name) + '</div><div class="body">あなたは産業技術アカデミーの<br><strong>品質管理基礎コース 理解度確認テスト</strong>において<br>合格基準80%以上を達成されました。</div>'
+      + '<p>スコア: ' + pct + '%</p><div>' + todayJP() + '</div><div class="issuer">産業技術アカデミー<br>Qulio合同会社</div><div class="note">※無料体験ページ用のサンプル表示です。</div></div>'
+      + '</body></html>';
     w.document.write(html);
     w.document.close();
-    setTimeout(function(){ w.print(); },300);
+    setTimeout(function(){ w.print(); }, 300);
   };
 
-  window.downloadTrainingRecord=function(){
-    var name=(document.getElementById('certName')||{value:''}).value.trim()||'受講者';
-    var dept=(document.getElementById('certDept')||{value:''}).value.trim()||'未入力';
-    var pos=(document.getElementById('certPos')||{value:''}).value.trim()||'未入力';
-    var pct=getResultPercent();
-    var w=window.open('','_blank');
-    var html='<!doctype html><html lang="ja"><head><meta charset="UTF-8"><title>教育訓練実施記録サンプル</title>'
-      +'<style>body{font-family:"Yu Gothic",Meiryo,sans-serif;font-size:13px;margin:22px;color:#222}.title{text-align:center;font-size:1.35rem;font-weight:bold;margin-bottom:18px}table{width:100%;border-collapse:collapse;margin-bottom:14px}th,td{border:1px solid #888;padding:8px 10px}th{width:26%;background:#eef2f7;text-align:left}.foot{font-size:.82rem;color:#666;text-align:center;margin-top:18px}@media print{body{margin:10mm}}</style></head><body>'
-      +'<div class="title">教育訓練実施記録（サンプル）</div><table>'
-      +'<tr><th>受講者名</th><td>'+name+'</td><th>部署・職位</th><td>'+dept+' / '+pos+'</td></tr>'
-      +'<tr><th>研修名</th><td colspan="3">品質管理基礎コース（無料体験）</td></tr>'
-      +'<tr><th>実施日</th><td>'+todayJP()+'</td><th>評価方法</th><td>理解度確認テスト（合格基準80%）</td></tr>'
-      +'<tr><th>結果</th><td>'+pct+'%</td><th>判定</th><td>'+(pct>=80?'合格':'未達')+'</td></tr>'
-      +'<tr><th>実施内容</th><td colspan="3">動画視聴、確認テスト、解説確認</td></tr>'
-      +'<tr><th>確認者</th><td></td><th>備考</th><td>産業技術アカデミー無料体験ページ用サンプル</td></tr>'
-      +'</table><div class="foot">※本記録はサンプルです。企業契約時は受講履歴・確認テスト結果に基づく教育訓練記録として活用できます。</div></body></html>';
+  window.downloadTrainingRecord = function(){
+    var name = (document.getElementById('certName') || {value:''}).value.trim() || '受講者';
+    var dept = (document.getElementById('certDept') || {value:''}).value.trim() || '未入力';
+    var pos = (document.getElementById('certPos') || {value:''}).value.trim() || '未入力';
+    var pct = getResultPercent();
+    var w = window.open('', '_blank');
+    var html = '<!doctype html><html lang="ja"><head><meta charset="UTF-8"><title>教育訓練実施記録サンプル</title>'
+      + '<style>body{font-family:"Yu Gothic",Meiryo,sans-serif;font-size:13px;margin:22px;color:#222}.title{text-align:center;font-size:1.35rem;font-weight:bold;margin-bottom:18px}table{width:100%;border-collapse:collapse;margin-bottom:14px}th,td{border:1px solid #888;padding:8px 10px}th{width:26%;background:#eef2f7;text-align:left}.foot{font-size:.82rem;color:#666;text-align:center;margin-top:18px}@media print{body{margin:10mm}}</style></head><body>'
+      + '<div class="title">教育訓練実施記録（サンプル）</div><table>'
+      + '<tr><th>受講者名</th><td>' + escapeHtml(name) + '</td><th>部署・職位</th><td>' + escapeHtml(dept) + ' / ' + escapeHtml(pos) + '</td></tr>'
+      + '<tr><th>研修名</th><td colspan="3">品質管理基礎コース（無料体験）</td></tr>'
+      + '<tr><th>実施日</th><td>' + todayJP() + '</td><th>評価方法</th><td>理解度確認テスト（合格基準80%）</td></tr>'
+      + '<tr><th>結果</th><td>' + pct + '%</td><th>判定</th><td>' + (pct >= 80 ? '合格' : '未達') + '</td></tr>'
+      + '<tr><th>実施内容</th><td colspan="3">動画視聴、確認テスト、解説確認</td></tr>'
+      + '<tr><th>確認者</th><td></td><th>備考</th><td>産業技術アカデミー無料体験ページ用サンプル</td></tr>'
+      + '</table><div class="foot">※本記録はサンプルです。企業契約時は受講履歴・確認テスト結果に基づく教育訓練記録として活用できます。</div></body></html>';
     w.document.write(html);
     w.document.close();
-    setTimeout(function(){ w.print(); },300);
+    setTimeout(function(){ w.print(); }, 300);
   };
 })();
 </script>
