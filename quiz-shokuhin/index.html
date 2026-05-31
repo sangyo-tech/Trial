@@ -240,7 +240,7 @@ window.go = function(m) {
   g('r'+(m==='video'?'Video':'Course')).style.display='none';
   var qEl=g('q'+(m==='video'?'Video':'Course'));
   qEl.style.display='block';
-  showQ(m); qEl.scrollIntoView({behavior:'smooth'});
+  showQ(m);
 };
 
 function g(id){return document.getElementById(id)}
