@@ -740,7 +740,7 @@ function startQuiz() {
   const pool = [...QUIZ_DATA.questions];
   const selected = [];
   const perModule = new Map();
-  
+
   // Ensure at least 1 from each module that has questions
   for (let m = 0; m < QUIZ_DATA.titles.length; m++) {
     const mqs = pool.filter(q => q.m === m);
@@ -749,25 +749,25 @@ function startQuiz() {
     selected.push(pick);
     perModule.set(m, 1);
   }
-  
+
   // Fill remaining questions from random modules.
   const remaining = pool.filter(q => !selected.includes(q));
   while (selected.length < targetCount && remaining.length > 0) {
     const pick = remaining.splice(Math.floor(Math.random() * remaining.length), 1)[0];
     if (pick) selected.push(pick);
   }
-  
+
   // Shuffle
   for (let i = selected.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [selected[i], selected[j]] = [selected[j], selected[i]];
   }
-  
+
   quizQuestions = selected;
   currentQ = 0;
   score = 0;
   answers = [];
-  
+
   document.getElementById('quizStart').style.display = 'none';
   document.getElementById('resultArea').style.display = 'none';
   document.getElementById('quizArea').style.display = 'block';
@@ -778,17 +778,17 @@ function startQuiz() {
 function showQuestion() {
   const q = quizQuestions[currentQ];
   const total = quizQuestions.length;
-  
+
   document.getElementById('qBar').style.width = ((currentQ / total) * 100) + '%';
   document.getElementById('qCount').textContent = (currentQ + 1) + ' / ' + total;
   document.getElementById('qModule').textContent = '研修コンテンツ: ' + QUIZ_DATA.titles[q.m];
   document.getElementById('qText').textContent = q.q;
-  
+
   // Hint
   document.getElementById('qHintBtn').style.display = q.h ? 'inline-block' : 'none';
   document.getElementById('qHint').style.display = 'none';
   document.getElementById('qHint').textContent = q.h;
-  
+
   // Options
   const labels = ['A', 'B', 'C', 'D'];
   const optsEl = document.getElementById('qOpts');
@@ -800,7 +800,7 @@ function showQuestion() {
     div.onclick = () => selectAnswer(i);
     optsEl.appendChild(div);
   });
-  
+
   // Hide explanation & next
   document.getElementById('qExp').style.display = 'none';
   document.getElementById('qNext').style.display = 'none';
@@ -809,23 +809,23 @@ function showQuestion() {
 function selectAnswer(idx) {
   const q = quizQuestions[currentQ];
   const opts = document.querySelectorAll('.q-opt');
-  
+
   // Prevent double-click
   if (opts[0].classList.contains('locked')) return;
   opts.forEach(o => o.classList.add('locked'));
-  
+
   const isCorrect = idx === q.c;
   if (isCorrect) score++;
   answers.push({ q: q, selected: idx, correct: isCorrect });
-  
+
   opts[q.c].classList.add('correct');
   if (!isCorrect) opts[idx].classList.add('wrong');
-  
+
   // Show explanation
   const expEl = document.getElementById('qExp');
   expEl.textContent = (isCorrect ? '正解です。' : '不正解です。') + ' ' + q.e;
   expEl.style.display = 'block';
-  
+
   // Show next button
   const nextBtn = document.getElementById('qNext');
   nextBtn.textContent = currentQ < quizQuestions.length - 1 ? '次の問題へ →' : '結果を見る →';
@@ -850,10 +850,10 @@ function nextQuestion() {
 function showResults() {
   document.getElementById('quizArea').style.display = 'none';
   document.getElementById('resultArea').style.display = 'block';
-  
+
   const pct = Math.round((score / quizQuestions.length) * 100);
   const passed = pct >= 80;
-  
+
   // Rank
   let rank, rankColor;
   if (pct >= 95) { rank = 'S'; rankColor = '#d4a017'; }
@@ -861,7 +861,7 @@ function showResults() {
   else if (pct >= 75) { rank = 'B'; rankColor = '#3b82f6'; }
   else if (pct >= 60) { rank = 'C'; rankColor = '#f59e0b'; }
   else { rank = 'D'; rankColor = '#ef4444'; }
-  
+
   const card = document.getElementById('resultCard');
   card.className = passed ? 'result-card' : 'result-card fail';
   document.getElementById('resultRank').textContent = rank;
@@ -871,7 +871,7 @@ function showResults() {
   document.getElementById('resultMsg').innerHTML = passed
     ? '<div class="result-pass">🎉 合格おめでとうございます！</div>'
     : '<div class="result-fail-msg">合格基準（80%）に届きませんでした。動画を復習して再挑戦してみましょう。</div>';
-  
+
   // Wrong answers review
   const wrongs = answers.filter(a => !a.correct);
   const reviewEl = document.getElementById('reviewSection');
@@ -963,7 +963,7 @@ if (numsSection) numObserver.observe(numsSection);
 switchUpTab('mgmt');
 </script>
 <script crossorigin="anonymous" data-cf-beacon='{"version":"2024.11.0","token":"48cf262eceec4bb7a1f5a3e965b2883b","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' defer="" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"></script>
-<script defer="True" src="https://sangyo-tech.jp/unav.js?v=49"></script>
+<script defer="True" src="https://sangyo-tech.jp/unav.js?v=50"></script>
 <script>
 (function(){
   function rememberScroll(fn){
