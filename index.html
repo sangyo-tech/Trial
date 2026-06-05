@@ -223,8 +223,11 @@ button{font-family:inherit}
 .upgrade-card p{font-size:13px;color:var(--text2);line-height:1.7}
 
 /* CTA */
-.upgrade-cta{text-align:center;margin-bottom:16px}
-.upgrade-sub{text-align:center;font-size:13px;color:var(--text3)}
+.upgrade-cta{display:flex;justify-content:center;margin:28px auto 14px;padding:0 16px}
+.upgrade-cta .btn{min-width:280px;justify-content:center;padding:16px 42px;font-size:17px;line-height:1.35}
+.upgrade-sub{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;text-align:center;font-size:13px;color:var(--text3);line-height:1.8}
+.upgrade-sub a{font-weight:700;text-underline-offset:3px}
+.upgrade-sub-sep{color:var(--text3);opacity:.65}
 
 .footer-cta{text-align:center;padding:56px 24px 72px;max-width:700px;margin:0 auto}
 .footer-cta h2{font-family:'Noto Serif JP',serif;font-size:24px;font-weight:700;margin-bottom:12px}
@@ -246,9 +249,14 @@ footer a{color:var(--gold)}
   .mod-tab{padding:6px 10px;font-size:12px}
   .sec{padding:0 16px 40px}
   .quiz-specs{gap:20px}
+  .upgrade-cta{margin-top:24px;padding:0}
+  .upgrade-cta .btn{width:100%;max-width:360px;min-width:0;padding:14px 24px;font-size:16px}
 }
 @media(max-width:480px){
   .hero h1{font-size:22px}
+  .upgrade-sub{gap:4px 8px;font-size:12px}
+  .upgrade-sub > span:first-child{width:100%}
+  .upgrade-sub-sep{display:none}
 }
 </style>
 <script type="application/ld+json">
@@ -575,9 +583,9 @@ footer a{color:var(--gold)}
 </div>
 </div>
 <div class="upgrade-cta">
-<a class="btn btn-gold" href="https://apply.sangyo-tech.jp/" style="font-size:18px;padding:16px 48px">有料プランに申し込む →</a>
+<a class="btn btn-gold" href="https://apply.sangyo-tech.jp/">有料プランに申し込む →</a>
 </div>
-<div class="upgrade-sub">まずは<a href="https://pricing.sangyo-tech.jp/" style="color:var(--gold);text-decoration:underline">料金プラン</a>をご確認ください ／ <a href="https://course.sangyo-tech.jp/" style="color:var(--cyan);text-decoration:underline">全コース一覧を見る</a></div>
+<div class="upgrade-sub"><span>まずは<a href="https://pricing.sangyo-tech.jp/" style="color:var(--gold);text-decoration:underline">料金プラン</a>をご確認ください</span><span class="upgrade-sub-sep">／</span><a href="https://course.sangyo-tech.jp/" style="color:var(--cyan);text-decoration:underline">全コース一覧を見る</a></div>
 </div>
 <footer>
 <p>© 2026 <a href="https://sangyo-tech.jp/">品質カレッジ</a>（運営：Qulio合同会社）</p>
