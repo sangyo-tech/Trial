@@ -349,6 +349,53 @@ footer a{color:var(--gold)}
 <!-- AIO rich schema 2026-06-03 -->
 <script type="application/ld+json" data-codex-aio-rich="2026-06-03">{"@context":"https://schema.org","@graph":[{"@type":"FAQPage","@id":"https://sangyo-tech.jp/#%E7%84%A1%E6%96%99%E4%BD%93%E9%A8%93%20%#aio-faq","mainEntity":[{"@type":"Question","name":"無料体験では何ができますか？","acceptedAnswer":{"@type":"Answer","text":"品質管理基礎などの教材を動画で学び、確認テストで理解度を確認できます。"}},{"@type":"Question","name":"クレジットカード登録は必要ですか？","acceptedAnswer":{"@type":"Answer","text":"無料体験の案内に従い、必要事項を確認して利用できます。"}}]},{"@type":"HowTo","@id":"https://trial.sangyo-tech.jp#howto","name":"無料体験を受講する流れ","inLanguage":"ja-JP","step":[{"@type":"HowToStep","position":1,"name":"対象教材を開く"},{"@type":"HowToStep","position":2,"name":"動画で内容を学ぶ"},{"@type":"HowToStep","position":3,"name":"確認テストで理解度を確認する"}]},{"@type":"LearningResource","@id":"https://trial.sangyo-tech.jp#learning-resource","name":"無料体験 | 品質カレッジ","description":"お申し込みありがとうございます。 動画で学び、確認テストで理解度をチェック。さっそく学習を始めましょう。","url":"https://trial.sangyo-tech.jp/","inLanguage":"ja-JP","learningResourceType":"online course material","educationalUse":["self study","employee training","quality education"],"teaches":["品質管理","製造業教育","ISO","GMP","HACCP","現場教育"],"provider":{"@type":"Organization","name":"品質カレッジ","legalName":"Qulio合同会社","url":"https://sangyo-tech.jp/"}},{"@type":"VideoObject","@id":"https://trial.sangyo-tech.jp#video","name":"無料体験 | 品質カレッジ","description":"お申し込みありがとうございます。 動画で学び、確認テストで理解度をチェック。さっそく学習を始めましょう。","embedUrl":"https://ulizaportal.jp/pages/0067697a-55c3-531f-d1fc-01ce48a11e98","url":"https://trial.sangyo-tech.jp/","inLanguage":"ja-JP","uploadDate":"2026-06-03","publisher":{"@type":"Organization","name":"品質カレッジ","url":"https://sangyo-tech.jp/"}}]}</script>
 <!-- /AIO rich schema -->
+<style id="qc-light-override">
+/* === 新デザイン統一：ライトテーマ上書き（クイズ機能は不変） === */
+:root{
+ --bg:#f8f4ea!important;--bg-card:#fff!important;--bg-card-hover:#fff7ec!important;--bg-accent:#fbeed9!important;
+ --text:#26313f!important;--text2:#5b6775!important;--text3:#8a929c!important;
+ --gold:#c2600a!important;--border:#efe5d8!important;--border2:#e4d6c0!important;
+}
+body{background:#f8f4ea!important;color:#26313f!important;font-family:"Noto Sans JP",-apple-system,"Yu Gothic",Meiryo,sans-serif!important}
+.hero{background:radial-gradient(1100px 460px at 80% -12%,#fff2df,#f8f4ea 60%)!important}
+.hero::before{display:none!important}
+.hero h1,.hero h2,h1,h2,h3{color:#26313f!important}
+.hero p,p{color:#5b6775!important}
+/* ナビ（独自） */
+.unav{background-color:#fcf9f3!important;border-bottom:1px solid #efe5d8!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.unav-brand-en{color:#9a8a72!important}
+.unav-brand-ja{color:#26313f!important}
+.unav-links a{color:#5b6775!important;background:none!important}
+.unav-links a:hover{color:#c2600a!important;background-color:#fff7ec!important}
+.unav-links a.unav-cta{background-color:#f5811f!important;color:#fff!important}
+.unav-toggle{color:#26313f!important}
+@media(max-width:768px){.unav-links{background-color:#fcf9f3!important;border-bottom:1px solid #efe5d8!important}}
+/* カード/タブ/クイズ */
+.mod-tab{background:#fff!important;border:1px solid #efe5d8!important;color:#5b6775!important}
+.mq-q,.mq-opt{background:#fff!important;border-color:#efe5d8!important;color:#26313f!important}
+.mq-opt .mq-opt-l{background:#fbeed9!important;color:#c2600a!important}
+.mq-opt:hover:not(.locked){background:#fff7ec!important;border-color:#f3cda1!important}
+/* インライン濃色の上書き */
+[style*="#0a0f1a"],[style*="#060d1a"],[style*="#0f1b2d"],[style*="#0a1628"],[style*="#111827"],[style*="#1e293b"]{background:#fff!important}
+[style*="#f1f5f9"],[style*="#94a3b8"]{color:#26313f!important}
+a.unav-cta,.btn-primary{color:#fff!important}
+/* === まなくま配置 === */
+.mk-hero-wrap{display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:8px}
+.mk-hero{width:140px;height:auto;flex-shrink:0;filter:drop-shadow(0 6px 14px rgba(192,96,10,.18))}
+.mk-hero-text{text-align:left;max-width:560px}
+.mk-hero-text h1{margin:0 0 10px!important}
+@media(max-width:600px){.mk-hero-wrap{gap:10px}.mk-hero{width:96px}.mk-hero-text{text-align:center}.mk-br{display:none}}
+.mk-cta-wrap{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;margin:8px auto 22px;max-width:680px}
+.mk-cta{width:120px;height:auto;flex-shrink:0;filter:drop-shadow(0 6px 14px rgba(192,96,10,.18))}
+.mk-cta-bubble{position:relative;background:#fff!important;color:#26313f!important;border:1px solid #efe5d8;border-radius:16px;padding:16px 20px;font-size:.98rem;line-height:1.7;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.06);text-align:left}
+.mk-cta-bubble::before{content:"";position:absolute;left:-12px;top:50%;transform:translateY(-50%);border:7px solid transparent;border-right-color:#fff}
+@media(max-width:600px){.mk-cta{width:90px}.mk-cta-bubble{text-align:center}.mk-cta-bubble::before{left:50%;top:-12px;transform:translateX(-50%);border-right-color:transparent;border-bottom-color:#fff}}
+/* バッジ/ボタン/↑ をライト配色（オレンジ＋白文字）に */
+.hero-badge{background:#f5811f!important;color:#fff!important}
+.btn-gold,.btn-orange{background:#f5811f!important;color:#fff!important;box-shadow:0 6px 18px rgba(245,129,31,.25)!important}
+.btn-gold:hover,.btn-orange:hover{background:#e06c0a!important;box-shadow:0 10px 26px rgba(245,129,31,.32)!important}
+.btt{background:#f5811f!important;color:#fff!important}
+</style>
 </head>
 <body>
 <!-- Nav -->
@@ -372,8 +419,13 @@ footer a{color:var(--gold)}
 <!-- Hero -->
 <section class="hero">
 <div class="hero-badge">無料体験コース</div>
+<div class="mk-hero-wrap">
+<img class="mk-hero" src="assets/manakuma-t.png?v=1" alt="まなくま" loading="eager"/>
+<div class="mk-hero-text">
 <h1>ようこそ、<em>品質管理 基礎コース</em>へ</h1>
-<p>お申し込みありがとうございます。<br/>動画で学び、確認テストで理解度をチェック。さっそく学習を始めましょう。</p>
+<p>お申し込みありがとうございます。<br/>動画で学び、確認テストで理解度をチェック。<br class="mk-br"/>まなくまと一緒に、さっそく学習を始めましょう！</p>
+</div>
+</div>
 </section>
 <!-- Steps -->
 <div class="steps">
@@ -581,6 +633,10 @@ footer a{color:var(--gold)}
 <h3>助成金で実質負担を最大75%減</h3>
 <p>厚生労働省「人材開発支援助成金」の対象。条件次第で受講料の最大75%が還付。実質月825円水準で導入できます。</p>
 </div>
+</div>
+<div class="mk-cta-wrap">
+<img class="mk-cta" src="assets/manakuma-daijobu.png?v=1" alt="まなくま 大丈夫" loading="lazy"/>
+<div class="mk-cta-bubble">基礎が身についたら、次は現場で使える専門コースへ。<br/>まなくまと一緒に学びをつづけよう！</div>
 </div>
 <div class="upgrade-cta">
 <a class="btn btn-gold" href="https://pricing.sangyo-tech.jp/?plan=corporate#pricingApply">有料プランに申し込む →</a>
@@ -971,7 +1027,7 @@ if (numsSection) numObserver.observe(numsSection);
 switchUpTab('mgmt');
 </script>
 <script crossorigin="anonymous" data-cf-beacon='{"version":"2024.11.0","token":"48cf262eceec4bb7a1f5a3e965b2883b","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' defer="" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"></script>
-<script defer="True" src="https://sangyo-tech.jp/unav.js?v=68"></script>
+<script defer="True" src="https://sangyo-tech.jp/unav.js?v=69"></script>
 <script>
 (function(){
   function rememberScroll(fn){
